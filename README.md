@@ -1,8 +1,10 @@
 # angular4-primeng-admin
 
+项目地址预览地址:http://1.myhbb.applinzi.com/dist1/login
+
 项目目前基于
 
-[Angular CLI]
+[Angular CLI](https://cli.angular.io/) [Angular CLI]
 
 [primeNg](https://www.primefaces.org/primeng/#/) version `4.0.2`.[primeNg]
 
@@ -16,9 +18,9 @@
 
 npm 下载   npm install -g @angular/cli
 
-如果下载失败,(公司网有可能被抢了),`请尝试管理员身份运行CMD` 尝试下载
+如果下载cli失败,(公司网有可能被抢了),`请尝试管理员身份运行CMD` 尝试下载
 
-npm install  (cnpm快,但是下下来的可能有问题)
+npm install  (下载依赖的时候cnpm快,但是直接下载的可能有问题,另外交大家一个,首先用npm下载,若果碰到有个文件下不下来报错,切换成cnpm跑完,那么就可以了)
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
