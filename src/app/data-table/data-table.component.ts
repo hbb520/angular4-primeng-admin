@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Car, Message, SelectItem} from '../common/car';
-import {beforeUrl, left25Animation, pageAnimation, right25Animation, rotateY90Animation,} from '../common/public-data';
+import {beforeUrl, left25Animation, pageAnimation, right25Animation, rotateY90Animation} from '../common/public-data';
 import {DataTableService} from './data-table.service';
 import NProgress from 'nprogress';
 @Component({
