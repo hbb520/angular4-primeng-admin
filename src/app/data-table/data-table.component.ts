@@ -17,12 +17,12 @@ import NProgress from 'nprogress';
 export class DataTableComponent implements OnInit {
   constructor(private myService: DataTableService) {
   }
-
+  
   ngOnInit() {
     this.getIndustries();
     NProgress.start();
   }
-
+  
   /************************* 当组件渲染后再调用动画 ********************************/
   tag_state: string = 'start';                           //表格标签动画初始
   page_state: string = 'start';                          //page动画
@@ -33,7 +33,7 @@ export class DataTableComponent implements OnInit {
     this.button1_state = 'end';
     this.button2_state = 'end';
   }
-
+  
   /************************* 定义********************************/
   msgs: Message[] = [];                                  //消息
   cars: Car;                                             // get获取数据 {}
@@ -59,8 +59,8 @@ export class DataTableComponent implements OnInit {
   deleteAllArrray: any[] = [];                           //批量删除数组
   nameModel: any;                                        //品牌名称ngModel
   timeout: any;                                          //错误信息 msg 时间超时
-
-
+  
+  
   /************************* 获取数据 ********************************/
   get(pageNo) {
     let params = {
@@ -103,7 +103,7 @@ export class DataTableComponent implements OnInit {
         }
       );
   }
-
+  
   /************************* 分页函数 ********************************/
   paginate(event) {
     const num = event.page + 1;
@@ -111,7 +111,7 @@ export class DataTableComponent implements OnInit {
     this.tag_state = 'start';                                                                //我们想初始化表格里面的动画
     this.get(num);
   }
-
+  
   /************************* 前往页数 ********************************/
   blurGotoPage() {
     if (this.gotoPage > this.totalPages) {
@@ -119,7 +119,7 @@ export class DataTableComponent implements OnInit {
     }
     this.get(this.gotoPage);
   }
-
+  
   /************************* 行业数据 ********************************/
   getIndustries() {
     this.myService.getIndustries()
@@ -143,7 +143,7 @@ export class DataTableComponent implements OnInit {
         }
       );
   }
-
+  
   /************************* 添加 ********************************/
   addShow() {
     this.addEditHtmlNgif = true;
@@ -153,7 +153,7 @@ export class DataTableComponent implements OnInit {
       this.dialog = true;
     }, 1);
   }
-
+  
   add() {
     let params = {
       'name': this.nameModel,
@@ -162,11 +162,11 @@ export class DataTableComponent implements OnInit {
       .then(res => {
           console.log(res);
           this.dialog = false;
-          this.msg(1,'添加成功')
+          this.msg(1, '添加成功');
         }, error => this.msgError(error)
       );
   }
-
+  
   /************************* 编辑 ********************************/
   editShow(car: Car) {
     this.addEditHtmlNgif = true;
@@ -179,7 +179,7 @@ export class DataTableComponent implements OnInit {
     this.mySelectionId = car.id;
     this.nameModel = car.name;                                                  //当然这里是应该进行http请求的
   }
-
+  
   edit() {
     let params = {
       'id': this.mySelectionId,
@@ -193,9 +193,9 @@ export class DataTableComponent implements OnInit {
       );
     this.get(this.first + 1);                                                       //我们希望当数据停留在这一页时,分页页码也停留在此页
   }
-
+  
   /************************* 删除 ********************************/
-
+  
   deleteShow(car: Car) {
     this.deleteHtmlNgif = true;
     this.dialogHeader = '删除';
@@ -205,7 +205,7 @@ export class DataTableComponent implements OnInit {
     this.mySelectionObject = car;
     this.deleteAllArrray = [car.id];
   }
-
+  
   delete() {
     this.myService.delete(this.deleteAllArrray)
       .then(res => {
@@ -215,7 +215,7 @@ export class DataTableComponent implements OnInit {
       );
     this.get(this.first + 1);
   }
-
+  
   /************************* 批量删除 ********************************/
   deleteAllShow() {
     console.log(this.mySelection);
@@ -237,7 +237,7 @@ export class DataTableComponent implements OnInit {
       this.msg(2, '请您至少勾选一条数据');
     }
   }
-
+  
   deleteAll() {
     this.myService.delete(this.deleteAllArrray)
       .then(res => {
@@ -247,7 +247,7 @@ export class DataTableComponent implements OnInit {
       );
     this.get(this.first + 1);
   }
-
+  
   /************************* 信息返回函数 ********************************/
   msgError(error) {
     this.msgs.push({severity: <any>error.split('|')[1], detail: <any>error.split('|')[0]});
@@ -258,7 +258,7 @@ export class DataTableComponent implements OnInit {
       this.msgs = [];
     }, 3000);
   }
-
+  
   msg(num, msg) {
     let type = 'info';
     if (num == 1) {
@@ -278,7 +278,7 @@ export class DataTableComponent implements OnInit {
       this.msgs = [];
     }, 3000);
   }
-
+  
   /************************* 当Dialog关闭时回调 ********************************/
   dialogHide(event) {
     this.addEditHtmlNgif = false;
