@@ -53,3 +53,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## 效果图
 
 ![缩略图](src/assets/image/md/1.png)
+
+
+![缩略图](src/assets/image/md/2.png)
