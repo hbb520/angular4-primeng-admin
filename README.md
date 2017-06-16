@@ -1,14 +1,14 @@
-# Cjds
+# angular4-primeng-admin
 
 项目目前基于
 
-[Angular CLI](https://github.com/angular/angular-cli) version `1.0.4`.[Angular CLI]
+[Angular CLI]
 
-[primeNg](https://www.primefaces.org/primeng/#/) version `4.0.1`.[primeNg]
+[primeNg](https://www.primefaces.org/primeng/#/) version `4.0.2`.[primeNg]
 
 [js-base64](https://github.com/dankogai/js-base64) version `2.1.5`.[js-base64]
 
-[ngx-uploader](https://github.com/jkuri/ngx-uploader) version `3.0.5`.[ngx-uploader]
+[ngx-uploader](https://github.com/jkuri/ngx-uploader) version `3.0.5`.[ngx-uploader]目前没写
 
 [项目预览](http://1.myhbb.applinzi.com/dist1/index.html) version `1.0.0`.
 
