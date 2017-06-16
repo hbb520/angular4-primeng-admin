@@ -2,6 +2,22 @@
 
 项目地址预览地址:http://1.myhbb.applinzi.com/dist1/login
 
+项目介绍:使用angular2,4+primeng开发半年了,所以写下这个项目后台模板 ,展示了一个真实的项目模板,从零到bulid的过程,以及primeng的坑 ,
+
+1,项目暂时不去展示ng4的一些组件,主要展示 primeng 的用法以及 ng4的简单用法,针对刚学习ng4的同学 以及正在优化自己项目的铜须
+
+2,项目 基于 一个测试服务器 , 展示了真实的增删改查 ,分页 ,等 该怎么写!
+
+3,项目 展示了 登录 以及工作区域 子路由的配置关系
+
+4,项目 展示了 若何把http封装成 一个公共的  ajax 
+
+4,项目展示了 primeng 的引用 以及 他的常用组件的用法
+
+5,项目展示了 一个自己的皮肤
+
+6,当你用ng4开发后台的时候,不知道该选用什么UI,那么不妨看看 [primeNg](https://www.primefaces.org/primeng/#/)
+
 项目目前基于
 
 [Angular4](https://angular.cn/docs/ts/latest/quickstart.html) [Angular CLI]
@@ -34,5 +50,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 如果你想得到更小的包 Run `ng build --prod --aot`
 
+## 效果图
 
-![缩略图](src/assets/image/md/img.png)
+![缩略图](src/assets/image/md/1.png)
