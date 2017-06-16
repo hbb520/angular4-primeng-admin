@@ -1,0 +1,142 @@
+<p-growl [(value)]="msgs"  life="1000"></p-growl>
+<div [@pageAnimation]="page_state">
+  <my-breadcrumb name1="数据管理" name2="data-table"></my-breadcrumb>
+
+  <div class="search-area">
+    <label class="mr15">行业</label>
+    <p-dropdown required [options]="industriesSelect" [style]="{'width':'150px','margin-right':'20px'}"
+                [(ngModel)]="industriesSearchNgModel" placeholder="请选择行业"></p-dropdown>
+    <label class="mr15">关键字</label>
+    <input type="text" pInputText [(ngModel)]="keywordNgModel" class="mr20"/>
+    <button pButton type="button" class="ui-button-secondary" label="清空搜索"
+            (click)="industriesSearchNgModel=null;keywordNgModel=null"></button>
+    <button pButton type="button" label="搜索" (click)="get(1)"></button>
+  </div>
+
+  <div class="operation-area">
+    <button pButton type="button" class="ui-button-success" label="添加品牌" (click)="addShow()"
+            [@right25Animation]="button1_state"></button>
+    <button pButton type="button" class="ui-button-danger" label="批量删除" (click)="deleteAllShow()"
+            [@left25Animation]="button2_state"></button>
+
+  </div>
+
+  <p-dataTable [value]="data"
+               [(selection)]="mySelection"
+               [responsive]="true">
+    <p-column selectionMode="multiple" [style]="{'width':'33px'}"></p-column>
+    <p-column field="logo" header="logo" [style]="{'width':'190px'}">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <img src="{{car[col.field]}}" alt="" class="table-img" [@rotateY90Animation]="tag_state">
+      </ng-template>
+    </p-column>
+    <p-column field="createTime" header="创建时间" [sortable]="true">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        {{car[col.field] | date:"y/MM/dd HH:mm"}}
+      </ng-template>
+    </p-column>
+    <p-column field="name" header="品牌名称">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span style="color:#337ab7">{{car[col.field]}}</span>
+      </ng-template>
+    </p-column>
+    <p-column field="industryId" header="行业">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span class="my-tag" *ngIf="car[col.field]" [@rotateY90Animation]="tag_state">{{car[col.field]}}</span>
+      </ng-template>
+    </p-column>
+    <p-column field="ue4Open" header="编辑器公开" [sortable]="true">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span *ngIf="car[col.field];else elseBlock" class="text-success">是</span>
+        <ng-template #elseBlock><span class="text-warn">否</span></ng-template>
+      </ng-template>
+    </p-column>
+    <p-column field="clientOpen" header="客户端公开">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span *ngIf="car[col.field];else elseBlock" class="text-success">是</span>
+        <ng-template #elseBlock><span class="text-warn">否</span></ng-template>
+      </ng-template>
+    </p-column>
+    <p-column field="auditPassed" header="审核状态">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span *ngIf="car[col.field];else elseBlock" class="my-tag my-tag-success"
+              [@rotateY90Animation]="tag_state">通过</span>
+        <ng-template #elseBlock><span class="my-tag my-tag-danger" [@rotateY90Animation]="tag_state">未通过</span>
+        </ng-template>
+      </ng-template>
+    </p-column>
+    <p-column styleClass="col-button" header="操作">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <div id="handle-button">
+          <button pButton type="button" label="编辑" (click)="editShow(car)" class="ui-button-success"></button>
+          <button pButton type="button" label="删除" (click)="deleteShow(car)" class="ui-button-danger"></button>
+        </div>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+  <div class="paginator-box">
+    <p-paginator rows="1" totalRecords="{{totalPages}}" (onPageChange)="paginate($event)"
+                 first="{{first}}"></p-paginator>
+    <div class="paginator-goto">
+      共 <span class="text-info">{{totalPages}}</span> 页 ; 前往 <input type="text" pInputText [(ngModel)]="gotoPage" (blur)="blurGotoPage()" /> 页
+    </div>
+  </div>
+</div>
+
+
+<p-dialog header="{{dialogHeader}}" [(visible)]="dialog" modal="modal" width="500" [responsive]="true"
+          (onHide)="dialogHide($event)">
+
+  <div *ngIf="addEditHtmlNgif">
+    <div class="ui-grid ui-grid-responsive ui-fluid">
+      <div class="ui-grid-row">
+        <label class="ui-grid-col-4">品牌名称</label>
+        <div class="ui-grid-col-8"><input pInputText [(ngModel)]="nameModel" placeholder="请填写名称"/></div>
+      </div>
+      <div class="ui-grid-row" *ngIf="mySelectionObject">
+        {{mySelectionObject |json}}
+      </div>
+    </div>
+
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <button type="button" pButton (click)="add()" label="确认" *ngIf="addSubmitNgif"></button>
+        <button type="button" pButton (click)="edit()" label="确认" *ngIf="editSubmitNgif"></button>
+        <button type="button" pButton (click)="dialog=false" label="取消"></button>
+      </div>
+    </p-footer>
+  </div>
+
+  <div *ngIf="deleteHtmlNgif">
+    <div class="ui-grid-row">
+      您确定要删除 <span class="text-info">{{mySelectionObject.name}}</span> 吗?
+    </div>
+    <div class="ui-grid-row">
+      {{mySelectionObject |json}}
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <button type="button" pButton label="确认" (click)="delete()"></button>
+        <button type="button" pButton (click)="dialog=false" label="取消"></button>
+      </div>
+    </p-footer>
+  </div>
+  <div *ngIf="deleteAllHtmlNgif">
+    <div class="ui-grid-row">
+      您确定要删除选中的 <span class="text-info">{{deleteAllArrray.length}}</span> 项吗?
+    </div>
+    <div class="ui-grid-row">
+      {{deleteAllArrray|json}}
+    </div>
+
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <button type="button" pButton label="确认" (click)="deleteAll()"></button>
+        <button type="button" pButton (click)="dialog=false" label="取消"></button>
+      </div>
+    </p-footer>
+  </div>
+</p-dialog>
+
+
+

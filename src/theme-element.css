@@ -1,0 +1,176 @@
+/*对primeng样式覆盖*/
+.router .ui-state-highlight{
+  background-color: #4db3ff !important;
+  border-color: #4db3ff !important;
+}
+.router .ui-state-active{
+  background: #20a0ff !important;
+  color: #ffffff !important;
+  border-color: #20a0ff !important;
+}
+
+
+/*1,错误消息位置*/
+.ui-growl {
+  left: 45% ;
+  top: 70%;
+}
+
+/*2,OverlayPanel*/
+.ui-overlaypanel {
+  width: 300px !important;
+}
+
+.ui-overlaypanel-content {
+  word-break: break-all;
+  color: #fff;
+  background-color: #2d353c;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;;
+}
+
+/*3,ui-tooltip*/
+.ui-tooltip {
+  z-index: 2000 !important;
+}
+
+.ui-tooltip .ui-tooltip-text {
+  width: 200px;
+  word-break: break-all;
+  display: block;
+  padding: 10px !important;
+  white-space: pre-wrap !important;
+  background-color: #324057;
+  opacity: 0.9;
+}
+
+.router  .ui-datatable th.ui-state-active {
+  background: #8492A6 !important;
+  border-color:  #8492A6 !important;;
+  color: #ffffff !important;
+}
+
+.ui-datatable tbody > tr.ui-widget-content.ui-state-highlight {
+  background-color: #8492A6 !important;
+  border-color:  #8492A6 !important;;
+  color: #FFFFFF !important;
+}
+/*4,分页样式*/
+.ui-paginator {
+  padding: 10px 0 20px 0 !important;
+}
+
+.ui-paginator.ui-widget-header {
+  border: 0
+}
+
+.ui-paginator .ui-paginator-page {
+  padding: 5px 9px !important;
+}
+
+.ui-paginator .ui-paginator-prev, .ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-last {
+  padding: 5px 9px !important;
+}
+
+
+/*5,消息色*/
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-success {
+  background-color: #13ce66 !important;
+  border-color: #13ce66 !important;
+}
+
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-info {
+  background-color: #50bfff !important;
+  border-color: #50bfff !important;
+}
+
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-warn {
+  background-color: #f7ba2a !important;
+  border-color: #f7ba2a !important;
+}
+
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-error {
+  background-color: #ff4949 !important;
+  border-color: #ff4949 !important;
+}
+
+/*6,dialog*/
+.ui-dialog.ui-widget .ui-dialog-titlebar {
+  padding: 8px 1.5em;
+  cursor: move;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  padding: 5px;
+}
+
+.ui-dialog {
+  box-shadow: none !important;
+}
+
+.ui-widget-header {
+  background: #eff2f7 !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+  border: none !important;
+}
+.ui-dialog  .ui-dialog-footer{
+  border: none !important;
+}
+  /*7,按钮*/
+.ui-button.ui-button-secondary.ui-state-default {
+  background-color: #FFFFFF;
+  border-color: #bfcbd9;
+  color: #1f2d3d;
+}
+.ui-button.ui-button-secondary:enabled:hover {
+  background-color: #FFFFFF;
+  border-color: #42d885;
+  color: #42d885;
+}
+
+
+.ui-button.ui-button-success.ui-state-default {
+  background-color: #13ce66;
+  border-color: #13ce66;
+  color: #fff;
+}
+
+.ui-button.ui-button-success:enabled:hover {
+  background-color: #42d885;
+  border-color: #42d885;
+}
+
+.ui-button.ui-button-warning.ui-state-default {
+  background-color: #f7ba2a;
+  border-color: #f7ba2a;
+  color: #fff;
+}
+
+.ui-button.ui-button-warning:enabled:hover {
+  background-color: #f9c855;
+  border-color: #f9c855;
+}
+
+.ui-button.ui-button-danger.ui-state-default {
+  background-color: #ff4949;
+  border-color: #ff4949;
+  color: #fff;
+}
+
+.ui-button.ui-button-danger:enabled:hover {
+  background-color: #ff6d6d;
+  border-color: #ff6d6d;
+}
+/*面板*/
+.ui-panel-titlebar{
+  background-color: #d6e9c6 !important;
+  border-color: #d6e9c6 !important;
+  color: #3c763d;
+  font-weight: bold;
+}
+.ui-panel{
+  border-color: #d6e9c6;
+}

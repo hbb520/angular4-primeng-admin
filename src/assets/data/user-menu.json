@@ -1,0 +1,44 @@
+[
+  {
+    "name": "数据管理",
+    "icon": "fa-database",
+    "children": [
+      {
+        "name": "data-table",
+        "link":"data-table"
+      },
+      {
+        "name": "primeng-form",
+        "link":"primeng-form"
+      },
+      {
+        "name": "ng-form",
+        "link":"ng-form"
+      },
+      {
+        "name": "input",
+        "link":"input"
+      }
+    ]
+  },
+  {
+    "name": "charts",
+    "icon": "fa-line-chart",
+    "children": [
+      {
+        "name": "charts",
+        "link":"charts"
+      }
+    ]
+  },
+  {
+    "name": "tree",
+    "icon": "fa-tree",
+    "children": [
+      {
+        "name": "tree",
+        "link":"tree"
+      }
+    ]
+  }
+]
