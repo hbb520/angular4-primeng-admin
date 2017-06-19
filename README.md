@@ -24,7 +24,7 @@
 
 [Angular CLI](https://cli.angular.io/) [Angular CLI]
 
-[primeNg](https://www.primefaces.org/primeng/#/) version `4.0.2`.[primeNg]
+[primeNg](https://www.primefaces.org/primeng/#/) version ` 4.1.0-rc.1`.[primeNg]
 
 [js-base64](https://github.com/dankogai/js-base64) version `2.1.5`.[js-base64]
 
