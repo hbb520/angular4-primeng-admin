@@ -16,7 +16,7 @@ export class DataTableService {
   }
 
   //数据获取
-  private getUrl = '/assets/data.json';
+  private getUrl = 'assets/data.json';
 
   get(params): Promise<Car[]> {
     return this.ajax.get(this.getUrl, params)
@@ -24,7 +24,7 @@ export class DataTableService {
       .then(this.extractJson);
   }
   //行业获取
-  private getIndustriesUrl = '/assets/industries.json';
+  private getIndustriesUrl = 'assets/industries.json';
   
   getIndustries(): Promise<Car[]> {
     return this.ajax.get(this.getIndustriesUrl)
@@ -32,7 +32,7 @@ export class DataTableService {
       .then(this.extractJson);
   }
   //添加
-  private addUrl = '/add';
+  private addUrl = 'add';
 
   add(params): Promise<Car> {
     return this.ajax.post(this.addUrl, params)
@@ -41,7 +41,7 @@ export class DataTableService {
   }
 
   //编辑
-  private editUrl = '/edit';
+  private editUrl = 'edit';
 
   edit(params): Promise<Car> {
     return this.ajax.put(this.editUrl, params)
@@ -50,7 +50,7 @@ export class DataTableService {
   }
 
   //删除
-  private deleteUrl = '/delete';
+  private deleteUrl = 'delete';
 
   delete(params): Promise<Car> {
     let url = this.deleteUrl + '?ids=' + params;
