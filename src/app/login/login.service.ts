@@ -11,7 +11,7 @@ import {beforeUrl} from "../common/public-data";
 export class LoginService {
   constructor(private http: Http) {}
   //登录
-  private loginUrl = beforeUrl+'/users/info';
+  private loginUrl = 'assets/login.json';
   login(userToken:string): Promise<Car>{
     let headers = new Headers({ 'Content-Type': 'application/json' ,"Authorization": userToken});
     let options = new RequestOptions({ headers: headers });

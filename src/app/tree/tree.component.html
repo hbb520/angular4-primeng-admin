@@ -1,6 +1,6 @@
 <p-growl [(value)]="msgs" [sticky]="true"></p-growl>
 
-<div [@pageAnimation]="page_state" class="td-left">
+<div [@pageAnimation] = "'in'" class="td-left">
   <my-breadcrumb name1="tree" name2="tree"></my-breadcrumb>
 
   <p-treeTable [value]="files4" selectionMode="checkbox" [(selection)]="selectedFiles2" [style]="{'margin-top':'50px'}">

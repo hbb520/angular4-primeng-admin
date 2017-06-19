@@ -1,5 +1,5 @@
-<p-growl [(value)]="msgs"  life="1000"></p-growl>
-<div [@pageAnimation]="page_state">
+<p-growl [(value)]="msgs" life="1000"></p-growl>
+<div [@pageAnimation]="'in'">
   <my-breadcrumb name1="数据管理" name2="data-table"></my-breadcrumb>
 
   <div class="search-area">
@@ -7,17 +7,15 @@
     <p-dropdown required [options]="industriesSelect" [style]="{'width':'150px','margin-right':'20px'}"
                 [(ngModel)]="industriesSearchNgModel" placeholder="请选择行业"></p-dropdown>
     <label class="mr15">关键字</label>
-    <input type="text" pInputText [(ngModel)]="keywordNgModel" class="mr20"/>
+    <input type="text" pInputText [(ngModel)]="keywordNgModel" class="mr20" placeholder="请填写关键字"/>
     <button pButton type="button" class="ui-button-secondary" label="清空搜索"
             (click)="industriesSearchNgModel=null;keywordNgModel=null"></button>
     <button pButton type="button" label="搜索" (click)="get(1)"></button>
   </div>
 
   <div class="operation-area">
-    <button pButton type="button" class="ui-button-success" label="添加品牌" (click)="addShow()"
-            [@right25Animation]="button1_state"></button>
-    <button pButton type="button" class="ui-button-danger" label="批量删除" (click)="deleteAllShow()"
-            [@left25Animation]="button2_state"></button>
+    <button pButton type="button" class="ui-button-success" label="添加品牌" (click)="addShow()"></button>
+    <button pButton type="button" class="ui-button-danger" label="批量删除" (click)="deleteAllShow()"></button>
 
   </div>
 
@@ -27,7 +25,7 @@
     <p-column selectionMode="multiple" [style]="{'width':'33px'}"></p-column>
     <p-column field="logo" header="logo" [style]="{'width':'190px'}">
       <ng-template let-col let-car="rowData" pTemplate="body">
-        <img src="{{car[col.field]}}" alt="" class="table-img" [@rotateY90Animation]="tag_state">
+        <img src="{{car[col.field]}}" alt="" class="table-img">
       </ng-template>
     </p-column>
     <p-column field="createTime" header="创建时间" [sortable]="true">
@@ -42,7 +40,7 @@
     </p-column>
     <p-column field="industryId" header="行业">
       <ng-template let-col let-car="rowData" pTemplate="body">
-        <span class="my-tag" *ngIf="car[col.field]" [@rotateY90Animation]="tag_state">{{car[col.field]}}</span>
+        <span class="my-tag" *ngIf="car[col.field]"  [@tagAnimation]="tag_state">{{car[col.field]}}</span>
       </ng-template>
     </p-column>
     <p-column field="ue4Open" header="编辑器公开" [sortable]="true">
@@ -60,8 +58,8 @@
     <p-column field="auditPassed" header="审核状态">
       <ng-template let-col let-car="rowData" pTemplate="body">
         <span *ngIf="car[col.field];else elseBlock" class="my-tag my-tag-success"
-              [@rotateY90Animation]="tag_state">通过</span>
-        <ng-template #elseBlock><span class="my-tag my-tag-danger" [@rotateY90Animation]="tag_state">未通过</span>
+              [@tagAnimation]="tag_state">通过</span>
+        <ng-template #elseBlock><span class="my-tag my-tag-danger" [@tagAnimation]="tag_state">未通过</span>
         </ng-template>
       </ng-template>
     </p-column>
@@ -78,7 +76,8 @@
     <p-paginator rows="1" totalRecords="{{totalPages}}" (onPageChange)="paginate($event)"
                  first="{{first}}"></p-paginator>
     <div class="paginator-goto">
-      共 <span class="text-info">{{totalPages}}</span> 页 ; 前往 <input type="text" pInputText [(ngModel)]="gotoPage" (blur)="blurGotoPage()" /> 页
+      共 <span class="text-info">{{totalPages}}</span> 页 ; 前往 <input type="text" pInputText [(ngModel)]="gotoPage"
+                                                                    (blur)="blurGotoPage()"/> 页
     </div>
   </div>
 </div>

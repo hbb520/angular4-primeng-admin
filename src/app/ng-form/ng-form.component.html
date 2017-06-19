@@ -1,6 +1,6 @@
 <p-growl [(value)]="msgs" [sticky]="true"></p-growl>
 
-<div [@pageAnimation]="page_state">
+<div [@pageAnimation] = "'in'">
   <my-breadcrumb name1="数据管理" name2="ng-primeng"></my-breadcrumb>
 
   <form   #form="ngForm" novalidate (ngSubmit)="form.form.valid && doLogin() " role="form">

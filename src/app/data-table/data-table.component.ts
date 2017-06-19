@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Car, Message, SelectItem} from '../common/car';
-import {beforeUrl, left25Animation, pageAnimation, right25Animation, rotateY90Animation} from '../common/public-data';
+import {beforeUrl, pageAnimation, tagAnimation} from '../common/public-data';
 import {DataTableService} from './data-table.service';
 import NProgress from 'nprogress';
 @Component({
@@ -9,9 +9,7 @@ import NProgress from 'nprogress';
   styleUrls: ['./data-table.component.css'],
   animations: [
     pageAnimation,
-    rotateY90Animation,
-    right25Animation,
-    left25Animation
+    tagAnimation
   ]
 })
 export class DataTableComponent implements OnInit {
@@ -23,32 +21,18 @@ export class DataTableComponent implements OnInit {
     NProgress.start();
   }
   
-  /************************* 当组件渲染后再调用动画 ********************************/
-  tag_state: string = 'start';                           //表格标签动画初始
-  page_state: string = 'start';                          //page动画
-  button1_state: string = 'start';                         //添加按钮
-  button2_state: string = 'start';                         //批量删除按钮动画
-  ngAfterViewInit() {
-    this.page_state = 'end';
-    this.button1_state = 'end';
-    this.button2_state = 'end';
-  }
-  
   /************************* 定义********************************/
   msgs: Message[] = [];                                  //消息
   cars: Car;                                             // get获取数据 {}
   data: Car[];                                           //数据数组
-  totalPages: number = 1;                                   //获取总页数
+  totalPages: number = 1;                                //获取总页数
   totalCount: number = 0;                                //总条目数
   first: number = 0;                                     //初始时  分页 组件 停留的页数
-  gotoPage: number = 1;                                       //前往页数
-  keywordNgModel: string = null;                                //关键字
+  gotoPage: number = 1;                                  //前往页数
+  
   mySelection: Car[];                                    //选择
   mySelectionId: Car;                                    //选择的Id
-  mySelectionObject: any;                                  //选择时对象
-  industriesArray: Car[];                                //行业数组
-  industriesSelect: SelectItem[] = [];                   //行业下拉框数组
-  industriesSearchNgModel: any = null;                          //行业搜索
+  mySelectionObject: any;                                //选择时对象
   dialog: boolean = false;                               //dialog初始时状态
   dialogHeader: string;                                  //头部信息
   addEditHtmlNgif: boolean = false;                      //添加编辑dialog显示状态   因为primeNg的Dialog因数量而更卡,所以,我们暂时用这种方式来使一个HTML中就只有一个dialog,假使你的页面只有一种类型的Dialog,比如添加,便不容这么麻烦
@@ -57,9 +41,14 @@ export class DataTableComponent implements OnInit {
   deleteHtmlNgif: boolean = false;                       //删除dialog显示状态
   deleteAllHtmlNgif: boolean = false;                    //批量删除dialog显示状态
   deleteAllArrray: any[] = [];                           //批量删除数组
-  nameModel: any;                                        //品牌名称ngModel
-  timeout: any;                                          //错误信息 msg 时间超时
   
+  nameModel: any;                                        //品牌名称
+  timeout: any;                                          //错误信息 msg 时间超时
+  tag_state: string = 'active';                          //表格标签动画初始
+  industriesArray: Car[];                                //行业数组
+  industriesSelect: SelectItem[] = [];                   //行业选择框
+  industriesSearchNgModel: any;
+  keywordNgModel: any;
   
   /************************* 获取数据 ********************************/
   get(pageNo) {
@@ -94,7 +83,7 @@ export class DataTableComponent implements OnInit {
             this.totalPages = this.cars.totalPage;
             this.totalCount = this.cars.totalCount;
             window.setTimeout(() => {
-              this.tag_state = 'end';
+              this.tag_state = 'inactive';
             }, 10);                                                                            //加载完成时候执行表格内部内容动画
             console.log(this.data);
           } else {
@@ -108,7 +97,7 @@ export class DataTableComponent implements OnInit {
   paginate(event) {
     const num = event.page + 1;
     this.gotoPage = num;
-    this.tag_state = 'start';                                                                //我们想初始化表格里面的动画
+    this.tag_state = 'active';                                                                //我们想初始化表格里面的动画
     this.get(num);
   }
   
@@ -154,6 +143,7 @@ export class DataTableComponent implements OnInit {
     }, 1);
   }
   
+  /************************* 添加 ********************************/
   add() {
     let params = {
       'name': this.nameModel,

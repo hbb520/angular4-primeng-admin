@@ -1,4 +1,4 @@
-import {EventEmitter} from "@angular/core";
+import {EventEmitter} from '@angular/core';
 
 /**
  *数据类型
@@ -53,7 +53,9 @@ export interface Car {
   username?: string
   realname?: string
   roleId?: number
-  industryId?:any
+  industryId?: any
+  passwrod?: any
+  
 }
 /**
  *数据类型 this.cars.data
@@ -77,6 +79,7 @@ export interface Data {
   creatorId?: any
   industryId?: any
   logo?: any
+  thumb?: any
 }
 
 /**
@@ -101,7 +104,7 @@ export interface Message {
   detail?: string;
   id?: any;
 }
-//添加了个ID
+
 export interface SelectItem {
   label: string;
   value: any;

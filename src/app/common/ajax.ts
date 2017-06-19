@@ -7,7 +7,7 @@ import {beforeUrl} from './public-data';
 
 @Injectable()
 export class Ajax {
-  url: string = beforeUrl;
+  url: string = '';                                //接口之前的部分
   Headers: any = {
     'Content-Type': 'application/json', 'Authorization': sessionStorage.getItem('userToken')
   };
