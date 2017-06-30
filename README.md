@@ -56,9 +56,12 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ![缩略图](src/assets/image/md/2.png)
 
-
 ![缩略图](src/assets/image/md/1.png)
 
+#### 对于webstorm的朋友如果下下来抱tslint错误,可以把tslint关闭了
+
+![缩略图](src/assets/image/md/3.png)
+![缩略图](src/assets/image/md/4.png)
 
 # 关于
 

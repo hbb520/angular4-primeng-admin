@@ -14,6 +14,7 @@ export class FormPrimengComponent implements OnInit {
   
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
+    this.msgs.push({severity:'info', summary:'Info Message', detail:'PrimeNG rocks'});
     this.userform = this.fb.group({
       'firstname': new FormControl('', Validators.required),
       'lastname': new FormControl('', Validators.required),

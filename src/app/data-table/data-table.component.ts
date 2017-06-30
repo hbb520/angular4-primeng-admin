@@ -278,4 +278,5 @@ export class DataTableComponent implements OnInit {
     this.deleteAllHtmlNgif = false;
     this.mySelectionObject = null;
   }
+  
 }
