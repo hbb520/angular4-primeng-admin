@@ -5,19 +5,19 @@
     "children": [
       {
         "name": "data-table",
-        "link":"data-table"
+        "link": "data-table"
       },
       {
         "name": "primeng-form",
-        "link":"primeng-form"
+        "link": "primeng-form"
       },
       {
         "name": "ng-form",
-        "link":"ng-form"
+        "link": "ng-form"
       },
       {
         "name": "input",
-        "link":"input"
+        "link": "input"
       }
     ]
   },
@@ -27,7 +27,7 @@
     "children": [
       {
         "name": "charts",
-        "link":"charts"
+        "link": "charts"
       }
     ]
   },
@@ -37,7 +37,17 @@
     "children": [
       {
         "name": "tree",
-        "link":"tree"
+        "link": "tree"
+      }
+    ]
+  },
+  {
+    "name": "upload",
+    "icon": "fa-tree",
+    "children": [
+      {
+        "name": "upload",
+        "link": "upload"
       }
     ]
   }

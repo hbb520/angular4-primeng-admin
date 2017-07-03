@@ -312,3 +312,13 @@ td {
 .paginator-goto input {
   width: 29px;
 }
+
+
+#upload td{
+  padding: 0 !important;
+}
+
+#upload .zhengquanjiaoyima .zhengquanjiaoyima-li{
+  height: 40px;
+  line-height: 40px;
+}

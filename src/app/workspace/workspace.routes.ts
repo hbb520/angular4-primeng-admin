@@ -38,10 +38,14 @@ export const workspaceRoutes = [
         path: 'tree',
         loadChildren: '../tree/tree.module#TreeModule',
         data: {preload: true}
+      }, {
+        path: 'upload',
+        loadChildren: '../upload/upload.module#UploadModule',
+        data: {preload: true}
       },
       {
         path: '**',
-        component:PageNotFoundComponent
+        component: PageNotFoundComponent
       },
     ]
   }

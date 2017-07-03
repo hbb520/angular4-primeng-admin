@@ -1,5 +1,30 @@
-<p-growl [(value)]="msgs" [sticky]="true"></p-growl>
-<p>
-  upload works!
-</p>
+<div id="upload">
+  <p-dataTable [value]="cars">
+    <p-column field="vin" header="日期"></p-column>
+    <p-column field="year" header="行业分类">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <ul>
+          <li *ngFor="let i of car[col.field] ; first as isFirst" [ngClass]="{'td-border': !isFirst }" [ngStyle]="{'height.px': i.year2.length*40,'line-height.px': i.year2.length*40}">
+            {{i.year1}}
+            {{i.year2.length }}
+          </li>
+        </ul>
+      </ng-template>
+    </p-column>
+    <p-column field="year" header="证券交易码">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <ul class="zhengquanjiaoyima">
+          <li *ngFor="let i of car[col.field]; first as isFirst" [ngClass]="{'td-border': !isFirst }">
+            <ul>
+              <li *ngFor="let m of i.year2; first as isFirst" class="zhengquanjiaoyima-li" >
+                {{m.year3}}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </ng-template>
+    </p-column>
 
+  </p-dataTable>
+
+</div>
