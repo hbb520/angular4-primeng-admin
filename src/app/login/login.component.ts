@@ -11,10 +11,11 @@ import NProgress from 'nprogress';
 export class LoginComponent implements OnInit {
   
   constructor(public router: Router, private myService: LoginService,) {
+    NProgress.done();
   }
   
   ngOnInit() {
-    NProgress.done();
+
   }
   
   nameModel: any;

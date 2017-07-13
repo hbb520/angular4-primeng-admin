@@ -14,11 +14,12 @@ import NProgress from 'nprogress';
 })
 export class DataTableComponent implements OnInit {
   constructor(private myService: DataTableService) {
+    NProgress.start();
   }
   
   ngOnInit() {
     this.getIndustries();
-    NProgress.start();
+   
   }
   
   /************************* 定义********************************/
