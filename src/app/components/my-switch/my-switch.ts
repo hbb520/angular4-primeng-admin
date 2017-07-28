@@ -1,5 +1,5 @@
-import { NgModule,Component, Input, Output, EventEmitter, HostListener, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import {NgModule, Component, Input, Output, EventEmitter, HostListener, forwardRef} from '@angular/core';
+import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 
 const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
@@ -17,7 +17,7 @@ const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
           [class.switch-large]="size === 'large'"
           [class.switch-medium]="size === 'medium'"
           [class.switch-small]="size === 'small'"
-          [style.background-color]="getColor()"
+          [style.background-color]="getColor('')"
           [style.border-color]="getColor('borderColor')"
     >
       <span style="margin-left: 5px" *ngIf="checked">{{onText}}</span>
@@ -28,7 +28,7 @@ const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
   `,
   styles: [`
     .switch {
-      background-color: #f00 ;
+      background-color: #f00;
       border: 1px solid #dfdfdf;
       position: relative;
       display: inline-block;
@@ -44,6 +44,7 @@ const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
       line-height: 22px;
       color: #FFFFFF;
     }
+    
     small {
       border-radius: 100%;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
@@ -53,46 +54,57 @@ const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
       transition: 0.3s ease-out all;
       -webkit-transition: 0.3s ease-out all;
     }
+    
     .switch-large {
       width: 66px;
       height: 40px;
       border-radius: 40px;
     }
+    
     .switch-large small {
       width: 36px;
       height: 36px;
     }
+    
     .switch-medium {
       width: 58px;
       height: 22px;
       border-radius: 22px;
     }
+    
     .switch-medium small {
       width: 18px;
       height: 18px;
     }
+    
     .switch-small {
       width: 33px;
       height: 20px;
       border-radius: 20px;
     }
+    
     .switch-small small {
       width: 16px;
       height: 16px;
     }
+    
     .checked {
       background: rgb(100, 189, 99);
       border-color: rgb(100, 189, 99);
     }
+    
     .switch-large.checked small {
       left: 26px;
     }
+    
     .switch-medium.checked small {
       left: 37px;
     }
+    
     .switch-small.checked small {
       left: 13px;
     }
+    
     .disabled {
       opacity: .50;
       cursor: not-allowed;
@@ -143,6 +155,7 @@ export class UiSwitchComponent implements ControlValueAccessor {
   @Input() offText: string = 'OFF';
   defaultBgColor: string = '#f00';
   defaultBoColor: string = '#fff';
+  
   getColor(flag) {
     if (flag === 'borderColor') return this.defaultBoColor;
     if (flag === 'switchColor') {
@@ -162,13 +175,13 @@ export class UiSwitchComponent implements ControlValueAccessor {
     this.onTouchedCallback(this.checked);
   }
   
-  getMargin(){
-    if (this.checked){
-      return '5px'
-    }else {
-      return '26px'
+  getMargin() {
+    if (this.checked) {
+      return '5px';
+    } else {
+      return '26px';
     }
-
+    
   }
   
   writeValue(obj: any): void {
