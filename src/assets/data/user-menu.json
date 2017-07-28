@@ -8,16 +8,32 @@
         "link": "data-table"
       },
       {
-        "name": "primeng-form",
+        "name": "primeng验证",
         "link": "primeng-form"
       },
       {
-        "name": "ng-form",
+        "name": "表单验证",
         "link": "ng-form"
       },
       {
         "name": "input",
         "link": "input"
+      },
+      {
+        "name": "表格多行",
+        "link": "demo"
+      },
+      {
+        "name": "图标",
+        "link": "icon"
+      },
+      {
+        "name": "颜色",
+        "link": "color"
+      },
+      {
+        "name": "省级联动",
+        "link": "citys"
       }
     ]
   },
@@ -42,12 +58,24 @@
     ]
   },
   {
-    "name": "upload",
-    "icon": "fa-tree",
+    "name": "组件",
+    "icon": "fa-building",
     "children": [
       {
-        "name": "upload",
-        "link": "upload"
+        "name": "面包屑",
+        "link": "my-breadcrumb-demo"
+      },
+      {
+        "name": "开关",
+        "link": "my-switch-demo"
+      },
+      {
+        "name": "标签",
+        "link": "my-tag-demo"
+      },
+      {
+        "name": "加载",
+        "link": "my-loading-demo"
       }
     ]
   }

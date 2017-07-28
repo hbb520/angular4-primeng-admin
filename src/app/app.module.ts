@@ -14,6 +14,7 @@ import {WorkspaceService} from './workspace/workspace.service';
 import {DataTableService} from './data-table/data-table.service';
 import {Ajax} from './common/ajax';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -49,7 +50,7 @@ import {Ajax} from './common/ajax';
  *  WorkspaceService    工作区域服务
  *  DataTableService    DataTable 服务
  *
- *  
+ *
  * */
 export class AppModule {
 }

@@ -26,12 +26,15 @@ import {
   InputTextareaModule,// InputTextarea
   OverlayPanelModule,
   TooltipModule,
+  CodeHighlighterModule
 } from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
-import {MyBreadcrumbModule} from "../components/my-breadcrumb/my-breadcrumb";
-import {DataTableComponent} from "./data-table.component";
-import {Details} from './details';
+import {MyBreadcrumbDemoComponent} from './my-breadcrumb-demo.component';
+import {MyBreadcrumbModule} from '../../components/my-breadcrumb/my-breadcrumb';
+
+
+
 
 
 
@@ -42,31 +45,17 @@ import {Details} from './details';
     HttpModule,
     JsonpModule,
     CommonModule,
+    ReactiveFormsModule,
 
-    ButtonModule,
-    PanelModule,
-    InputTextModule,
-    DataTableModule,
-    DialogModule,
-    SharedModule,
-    CalendarModule,
-    GrowlModule,
-    MultiSelectModule,
-    DropdownModule,
-    CheckboxModule,
-    PaginatorModule,
-    TooltipModule,
-    OverlayPanelModule,
 
     MyBreadcrumbModule,
-
+    CodeHighlighterModule,
 
     RouterModule.forChild([
-      { path:'',component:DataTableComponent},
-      { path: 'details/:id',  component:Details },
+      { path:'',component:MyBreadcrumbDemoComponent}
     ])
   ],
-  declarations: [DataTableComponent,Details],
+  declarations: [MyBreadcrumbDemoComponent],
   exports:[RouterModule]
 })
-export class MyDataTableModule { }
+export class MyBreadcrumbDemoModule { }

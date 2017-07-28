@@ -1,0 +1,26 @@
+.iocn-box{
+  background-color: #C0CCDA;
+  border-radius: 5px;
+  width: 150px;
+  height: 80px;
+  margin: 10px;
+  float: left;
+  font-size: 30px;
+  text-align: center;
+  line-height: 40px;
+}
+.iocn-box p{
+  font-size: 14px;
+}
+.iconall-box{
+  float: left;
+  padding: 3px 0;
+  width: 190px ;
+
+}
+h2{
+  width: 100%;
+  padding: 20px 5px;
+  overflow: hidden;
+}
+

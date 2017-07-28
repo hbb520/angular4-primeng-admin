@@ -29,9 +29,10 @@ import {
 } from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
-import {MyBreadcrumbModule} from "../components/my-breadcrumb/my-breadcrumb";
-import {DataTableComponent} from "./data-table.component";
-import {Details} from './details';
+import {ColorComponent} from './color.component';
+import {MyBreadcrumbModule} from '../components/my-breadcrumb/my-breadcrumb';
+
+
 
 
 
@@ -42,6 +43,7 @@ import {Details} from './details';
     HttpModule,
     JsonpModule,
     CommonModule,
+    ReactiveFormsModule,
 
     ButtonModule,
     PanelModule,
@@ -62,11 +64,10 @@ import {Details} from './details';
 
 
     RouterModule.forChild([
-      { path:'',component:DataTableComponent},
-      { path: 'details/:id',  component:Details },
+      { path:'',component:ColorComponent}
     ])
   ],
-  declarations: [DataTableComponent,Details],
+  declarations: [ColorComponent],
   exports:[RouterModule]
 })
-export class MyDataTableModule { }
+export class ColorModule { }

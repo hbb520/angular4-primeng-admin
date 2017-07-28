@@ -1,5 +1,6 @@
-//这里我想封装一个http服务
+//封装一个http服务
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/timeout';
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, URLSearchParams, Headers,Response} from '@angular/http';
 import {beforeUrl} from './public-data';
@@ -11,10 +12,10 @@ export class Ajax {
   Headers: any = {
     'Content-Type': 'application/json', 'Authorization': sessionStorage.getItem('userToken')
   };
-
+  
   constructor(public http: Http) {
   }
-
+  
   get(endpoint: string, params?: any) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
@@ -25,31 +26,31 @@ export class Ajax {
       }
       options.search = !options.search && p || options.search;
     }
-    return this.http.get(this.url + endpoint,options).catch(this.handleError);
+    return this.http.get(this.url + endpoint,options).timeout(5000).catch(this.handleError);
   }
-
+  
   post(endpoint: string, body: any) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.post(this.url + endpoint, body, options).catch(this.handleError);
+    return this.http.post(this.url + endpoint, body, options).timeout(5000).catch(this.handleError);
   }
-
+  
   put(endpoint: string, body: any) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.put(this.url + endpoint, body, options).catch(this.handleError);
+    return this.http.put(this.url + endpoint, body, options).timeout(5000).catch(this.handleError);
   }
-
+  
   delete(endpoint: string) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.delete(this.url + endpoint, options).catch(this.handleError);
+    return this.http.delete(this.url + endpoint, options).timeout(5000).catch(this.handleError);
   }
-
+  
   patch(endpoint: string, body: any) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.put(this.url + endpoint, body, options).catch(this.handleError);
+    return this.http.patch(this.url + endpoint, body, options).timeout(5000).catch(this.handleError);
   }
 
 

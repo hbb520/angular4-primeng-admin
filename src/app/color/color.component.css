@@ -1,0 +1,16 @@
+.color-box{
+  width: 200px;
+  height: 100px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 10px;
+}
+.color-box p{
+  margin: 10px 10px;
+}
+.b{
+  color: #1f2d3d;
+}
+.w{
+  color: #FFFFFF;
+}

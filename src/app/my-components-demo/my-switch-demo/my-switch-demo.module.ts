@@ -26,12 +26,16 @@ import {
   InputTextareaModule,// InputTextarea
   OverlayPanelModule,
   TooltipModule,
+  CodeHighlighterModule
 } from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
-import {MyBreadcrumbModule} from "../components/my-breadcrumb/my-breadcrumb";
-import {DataTableComponent} from "./data-table.component";
-import {Details} from './details';
+import {MyBreadcrumbModule} from '../../components/my-breadcrumb/my-breadcrumb';
+import {MyUiSwitchModule} from '../../components/my-switch/my-switch';
+import {MySwitchDemoComponent} from './my-switch-demo.component';
+
+
+
 
 
 
@@ -42,31 +46,17 @@ import {Details} from './details';
     HttpModule,
     JsonpModule,
     CommonModule,
+    ReactiveFormsModule,
 
-    ButtonModule,
-    PanelModule,
-    InputTextModule,
-    DataTableModule,
-    DialogModule,
-    SharedModule,
-    CalendarModule,
-    GrowlModule,
-    MultiSelectModule,
-    DropdownModule,
-    CheckboxModule,
-    PaginatorModule,
-    TooltipModule,
-    OverlayPanelModule,
 
     MyBreadcrumbModule,
-
+    MyUiSwitchModule,
 
     RouterModule.forChild([
-      { path:'',component:DataTableComponent},
-      { path: 'details/:id',  component:Details },
+      { path:'',component:MySwitchDemoComponent}
     ])
   ],
-  declarations: [DataTableComponent,Details],
+  declarations: [MySwitchDemoComponent],
   exports:[RouterModule]
 })
-export class MyDataTableModule { }
+export class MySwitchDemoModule { }

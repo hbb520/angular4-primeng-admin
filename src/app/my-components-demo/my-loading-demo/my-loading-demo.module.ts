@@ -26,14 +26,13 @@ import {
   InputTextareaModule,// InputTextarea
   OverlayPanelModule,
   TooltipModule,
+  CodeHighlighterModule
 } from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
-import {MyBreadcrumbModule} from "../components/my-breadcrumb/my-breadcrumb";
-import {DataTableComponent} from "./data-table.component";
-import {Details} from './details';
 
-
+import {MyLoadingComponent} from './my-loading-demo.component';
+import {MyLoadingModule} from '../../components/my-loading/my-loading';
 
 @NgModule({
   imports: [
@@ -42,31 +41,16 @@ import {Details} from './details';
     HttpModule,
     JsonpModule,
     CommonModule,
-
-    ButtonModule,
-    PanelModule,
-    InputTextModule,
-    DataTableModule,
-    DialogModule,
-    SharedModule,
-    CalendarModule,
-    GrowlModule,
-    MultiSelectModule,
-    DropdownModule,
-    CheckboxModule,
-    PaginatorModule,
-    TooltipModule,
-    OverlayPanelModule,
-
-    MyBreadcrumbModule,
-
+    ReactiveFormsModule,
+  
+  
+    MyLoadingModule,
 
     RouterModule.forChild([
-      { path:'',component:DataTableComponent},
-      { path: 'details/:id',  component:Details },
+      { path:'',component:MyLoadingComponent}
     ])
   ],
-  declarations: [DataTableComponent,Details],
+  declarations: [MyLoadingComponent],
   exports:[RouterModule]
 })
-export class MyDataTableModule { }
+export class MyLoadingDemoModule { }

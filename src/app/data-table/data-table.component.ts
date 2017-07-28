@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Car, Message, SelectItem} from '../common/car';
-import {beforeUrl, pageAnimation, tagAnimation} from '../common/public-data';
+import {beforeUrl, China, pageAnimation, tagAnimation} from '../common/public-data';
 import {DataTableService} from './data-table.service';
 import NProgress from 'nprogress';
 @Component({
@@ -19,7 +19,8 @@ export class DataTableComponent implements OnInit {
   
   ngOnInit() {
     this.getIndustries();
-   
+    this.getCitys();
+    this.China = China;
   }
   
   /************************* 定义********************************/
@@ -36,9 +37,8 @@ export class DataTableComponent implements OnInit {
   mySelectionObject: any;                                //选择时对象
   dialog: boolean = false;                               //dialog初始时状态
   dialogHeader: string;                                  //头部信息
-  addEditHtmlNgif: boolean = false;                      //添加编辑dialog显示状态   因为primeNg的Dialog因数量而更卡,所以,我们暂时用这种方式来使一个HTML中就只有一个dialog,假使你的页面只有一种类型的Dialog,比如添加,便不容这么麻烦
-  addSubmitNgif: boolean = false;                        //添加提交按钮显示状态
-  editSubmitNgif: boolean = false;                       //编辑提交按钮显示状态
+  addHtmlNgif: boolean = false;                      //添加编辑dialog显示状态   因为primeNg的Dialog因数量而更卡,所以,我们暂时用这种方式来使一个HTML中就只有一个dialog,假使你的页面只有一种类型的Dialog,比如添加,便不容这么麻烦
+  editHtmlNgif: boolean = false;
   deleteHtmlNgif: boolean = false;                       //删除dialog显示状态
   deleteAllHtmlNgif: boolean = false;                    //批量删除dialog显示状态
   deleteAllArrray: any[] = [];                           //批量删除数组
@@ -50,7 +50,8 @@ export class DataTableComponent implements OnInit {
   industriesSelect: SelectItem[] = [];                   //行业选择框
   industriesSearchNgModel: any;
   keywordNgModel: any;
-  
+  startTime: any;
+  China: any;                                            // 时间 选择 框 China 化
   /************************* 获取数据 ********************************/
   get(pageNo) {
     let params = {
@@ -136,8 +137,7 @@ export class DataTableComponent implements OnInit {
   
   /************************* 添加 ********************************/
   addShow() {
-    this.addEditHtmlNgif = true;
-    this.addSubmitNgif = true;
+    this.addHtmlNgif = true;
     this.dialogHeader = '添加';
     window.setTimeout(() => {
       this.dialog = true;
@@ -160,8 +160,7 @@ export class DataTableComponent implements OnInit {
   
   /************************* 编辑 ********************************/
   editShow(car: Car) {
-    this.addEditHtmlNgif = true;
-    this.editSubmitNgif = true;
+    this.editHtmlNgif = true;
     this.dialogHeader = '编辑';
     window.setTimeout(() => {
       this.dialog = true;
@@ -239,6 +238,92 @@ export class DataTableComponent implements OnInit {
     this.get(this.first + 1);
   }
   
+  /************************* 省级联动 ********************************/
+  citys: any;                                             //省级 数据
+  city1Array: any = [];
+  city1NgModel: any;
+  city2Array: any = [];
+  city2NgModel: any;
+  city2Disabled: boolean = true;
+  city3Array: any = [];
+  city3NgModel: any;
+  city3Disabled: boolean = true;
+  //获取省市区县数据
+  getCitys() {
+    this.myService.getCitys()
+      .then(citys => {
+          this.citys = citys;
+        }, res => this.msg(4, '省市县数据获取失败')
+      )
+      .then(
+        () => {
+          for (let i in  this.citys) {
+            if (parseInt(i) % 10000 === 0) {
+              this.city1Array.push({
+                label: this.citys[i],
+                value: i
+              });
+            }
+            
+          }
+        }
+      );
+  }
+  
+  //省级 或 直辖市 级 下拉框change 事件
+  city1onChange() {
+    this.city2Array = [];
+    for (let i in  this.citys) {
+      if (parseInt(i.substring(0, 2)) == this.city1NgModel.substring(0, 2)) {
+        if (parseInt(i) % 100 === 0 && parseInt(i) % 10000 != 0) {
+          this.city2Array.push({
+            label: this.citys[i],
+            value: i
+          });
+        }
+        if (i.substring(0, 2) == '11' || i.substring(0, 2) == '12' || i.substring(0, 2) == '82' || i.substring(0, 2) == '81'
+          || i.substring(0, 2) == '50' || i.substring(0, 2) == '31'
+        ) {
+          if (parseInt(i) % 10000 != 0) {
+            this.city2Array.push({
+              label: this.citys[i],
+              value: i
+            });
+          }
+        }
+      }
+    }
+    if (this.city2Array.length == 0) {
+      this.city2Disabled = true;
+      this.city3Disabled = true;
+      this.city3Array = [];
+    } else {
+      this.city2Disabled = false;
+      this.city3Disabled = true;
+      this.city3Array = [];
+    }
+  }
+  
+  //第二个个下拉框change 事件
+  city2onChange() {
+    this.city3Array = [];
+    for (let i in  this.citys) {
+      if (parseInt(i.substring(0, 4)) == this.city2NgModel / 100) {
+        if (parseInt(i) % 100 != 0) {
+          this.city3Array.push({
+            label: this.citys[i],
+            value: i
+          });
+        }
+      }
+    }
+    if (this.city3Array.length == 0) {
+      this.city3Disabled = true;
+    } else {
+      this.city3Disabled = false;
+    }
+  }
+  
   /************************* 信息返回函数 ********************************/
   msgError(error) {
     this.msgs.push({severity: <any>error.split('|')[1], detail: <any>error.split('|')[0]});
@@ -272,9 +357,8 @@ export class DataTableComponent implements OnInit {
   
   /************************* 当Dialog关闭时回调 ********************************/
   dialogHide(event) {
-    this.addEditHtmlNgif = false;
-    this.addSubmitNgif = false;
-    this.editSubmitNgif = false;
+    this.addHtmlNgif = false;
+    this.editHtmlNgif = false;
     this.deleteHtmlNgif = false;
     this.deleteAllHtmlNgif = false;
     this.mySelectionObject = null;

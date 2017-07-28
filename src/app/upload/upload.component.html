@@ -1,3 +1,6 @@
+<my-breadcrumb name1="demo" name2="表格多列解决方案"></my-breadcrumb>
+
+
 <div id="upload">
   <p-dataTable [value]="cars">
     <p-column *ngFor="let item of head;let  i = index" header="{{item}}">
@@ -9,14 +12,7 @@
             {{child.dimName}}
           </li>
         </ul>
-        <div class="zhengquanjiaoyima" *ngIf="item == '时间维度'">
-          <ul *ngFor="let item1 of car.childs; first as isFirst" [ngClass]="{'td-border': !isFirst }">
-            <li *ngFor="let m of item1.childs; first as isFirst" class="zhengquanjiaoyima-li">
-              {{m.dimName}}
-            </li>
-          </ul>
-
-        </div>
+        
 
       </ng-template>
     </p-column>

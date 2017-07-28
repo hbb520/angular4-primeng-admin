@@ -1,19 +1,23 @@
+/*这里是对  primeng 的样式覆盖*/
+
 /*对primeng样式覆盖*/
-.router .ui-state-highlight{
+.router .ui-state-highlight {
   background-color: #4db3ff !important;
   border-color: #4db3ff !important;
 }
-.router .ui-state-active{
+
+.router .ui-state-active {
   background: #20a0ff !important;
   color: #ffffff !important;
   border-color: #20a0ff !important;
 }
 
-
 /*1,错误消息位置*/
 .ui-growl {
-  left: 45% ;
+  left: 50%;
   top: 70%;
+  margin-left: -10em;
+  z-index: 2000 !important;
 }
 
 /*2,OverlayPanel*/
@@ -45,17 +49,18 @@
   opacity: 0.9;
 }
 
-.router  .ui-datatable th.ui-state-active {
+.router .ui-datatable th.ui-state-active {
   background: #8492A6 !important;
-  border-color:  #8492A6 !important;;
+  border-color: #8492A6 !important;;
   color: #ffffff !important;
 }
 
 .ui-datatable tbody > tr.ui-widget-content.ui-state-highlight {
   background-color: #8492A6 !important;
-  border-color:  #8492A6 !important;;
+  border-color: #8492A6 !important;;
   color: #FFFFFF !important;
 }
+
 /*4,分页样式*/
 .ui-paginator {
   padding: 10px 0 20px 0 !important;
@@ -72,7 +77,6 @@
 .ui-paginator .ui-paginator-prev, .ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-last {
   padding: 5px 9px !important;
 }
-
 
 /*5,消息色*/
 .ui-growl-item-container.ui-state-highlight.ui-growl-message-success {
@@ -116,21 +120,23 @@
 .ui-dialog .ui-dialog-buttonpane {
   border: none !important;
 }
-.ui-dialog  .ui-dialog-footer{
+
+.ui-dialog .ui-dialog-footer {
   border: none !important;
 }
-  /*7,按钮*/
+
+/*7,按钮*/
 .ui-button.ui-button-secondary.ui-state-default {
   background-color: #FFFFFF;
   border-color: #bfcbd9;
   color: #1f2d3d;
 }
+
 .ui-button.ui-button-secondary:enabled:hover {
   background-color: #FFFFFF;
   border-color: #42d885;
   color: #42d885;
 }
-
 
 .ui-button.ui-button-success.ui-state-default {
   background-color: #13ce66;
@@ -164,13 +170,24 @@
   background-color: #ff6d6d;
   border-color: #ff6d6d;
 }
-/*面板*/
-.ui-panel-titlebar{
+
+/*8 面板*/
+.ui-panel-titlebar {
   background-color: #d6e9c6 !important;
   border-color: #d6e9c6 !important;
   color: #3c763d;
   font-weight: bold;
 }
-.ui-panel{
+
+.ui-panel {
   border-color: #d6e9c6;
+}
+
+/*ui-inputtext padding 修改    之前的padding太少了*/
+.ui-inputtext {
+  padding: 0.50em 0.25em !important;
+}
+
+.ui-multiselect .ui-multiselect-label {
+  padding: 0.50em 0.25em !important;
 }

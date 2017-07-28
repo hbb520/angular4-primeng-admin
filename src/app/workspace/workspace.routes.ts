@@ -39,9 +39,42 @@ export const workspaceRoutes = [
         loadChildren: '../tree/tree.module#TreeModule',
         data: {preload: true}
       }, {
-        path: 'upload',
+        path: 'color',
+        loadChildren: '../color/color.module#ColorModule',
+        // data: {preload: true}
+      }, {
+        path: 'icon',
+        loadChildren: '../icon/icon.module#IconModule',
+        // data: {preload: true}
+      }, {
+        path: 'citys',
+        loadChildren: '../citys/citys.module#CitysModule',
+        // data: {preload: true}
+      },
+      {
+        path: 'demo',
         loadChildren: '../upload/upload.module#UploadModule',
         data: {preload: true}
+      }, {
+        path: 'my-breadcrumb-demo',
+        loadChildren: '../my-components-demo/my-breadcrumb-demo/my-breadcrumb-demo.module#MyBreadcrumbDemoModule'
+        // data: {preload: true}
+      }, {
+        path: 'my-switch-demo',
+        loadChildren: '../my-components-demo/my-switch-demo/my-switch-demo.module#MySwitchDemoModule'
+        // data: {preload: true}
+      }, {
+        path: 'my-tag-demo',
+        loadChildren: '../my-components-demo/my-tag-demo/my-tag-demo.module#MyTagDemoModule'
+        // data: {preload: true}
+      }, {
+        path: 'my-loading-demo',
+        loadChildren: '../my-components-demo/my-loading-demo/my-loading-demo.module#MyLoadingDemoModule'
+        // data: {preload: true}
+      }, {
+        path: 'my-carousel-demo',
+        loadChildren: '../my-components-demo/my-carousel-demo/my-carousel-demo.module#MyCarouselDemoModule'
+        // data: {preload: true}
       },
       {
         path: '**',
