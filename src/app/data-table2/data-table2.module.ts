@@ -24,17 +24,15 @@ import {
   PaginatorModule,//分页
   ConfirmDialogModule,//删除弹出框
   InputTextareaModule,// InputTextarea
-  OverlayPanelModule,
   TooltipModule,
 } from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
-import { UploadComponent} from './upload.component';
-import {MyBreadcrumbModule} from '../components/my-breadcrumb/my-breadcrumb';
-
-import {NgUploaderModule} from 'ngx-uploader';
 
 
+
+import {MyBreadcrumbModule} from "../components/my-breadcrumb/my-breadcrumb";
+import {UploadComponent} from "./data-table2.component";      //面包屑
 
 @NgModule({
   imports: [
@@ -43,7 +41,6 @@ import {NgUploaderModule} from 'ngx-uploader';
     HttpModule,
     JsonpModule,
     CommonModule,
-    ReactiveFormsModule,
 
     ButtonModule,
     PanelModule,
@@ -52,17 +49,16 @@ import {NgUploaderModule} from 'ngx-uploader';
     DialogModule,
     SharedModule,
     CalendarModule,
+
     GrowlModule,
     MultiSelectModule,
     DropdownModule,
     CheckboxModule,
     PaginatorModule,
     TooltipModule,
-    OverlayPanelModule,
+
 
     MyBreadcrumbModule,
-    NgUploaderModule,
-
     RouterModule.forChild([
       { path:'',component:UploadComponent}
     ])

@@ -1,21 +1,37 @@
-<my-breadcrumb name1="demo" name2="表格多列解决方案"></my-breadcrumb>
+<my-breadcrumb name1="上传" name2="上传"></my-breadcrumb>
 
 
-<div id="upload">
-  <p-dataTable [value]="cars">
-    <p-column *ngFor="let item of head;let  i = index" header="{{item}}">
-      <ng-template let-col let-car="rowData" pTemplate="body">
-        <span *ngIf="item == '证券代码'">{{car.dimName}} </span>
-        <ul *ngIf="item == '名称'">
-          <li *ngFor="let child of car.childs ; first as isFirst" [ngClass]="{'td-border': !isFirst }"
-              [ngStyle]="{'height.px': child.high*40,'line-height.px': child.high*40}">
-            {{child.dimName}}
-          </li>
-        </ul>
-        
+<div class="ui-g " id="cadId">
+  <div class="ui-g-12  typefileinput ">
+    <label class="upload-button">
+      <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
+             multiple>
+      请选择文件
+    </label>
+  </div>
 
-      </ng-template>
-    </p-column>
-  </p-dataTable>
-
+  <div class="ui-g-11">
+    <div class="upload-file" *ngFor="let f of files; let i = index;">
+      <div class="progress-bar-container">
+        <span>{{ f.name }}</span>
+        <div class="bar" [style.width]="f.progress.data.percentage + '%'"
+             [style.background-color]=" spanSuccee? 'green': 'red'">
+          <span *ngIf="spanSuccee" style="color: #ffffff">上传成功</span>
+          <span *ngIf="spanError" style="color: #ffffff">上传失败,服务器超时</span>
+        </div>
+        <span class="fa fa-trash shanchu" (click)="removeFile(f.id)"></span>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<button type="button" pButton icon="fa-upload" type="submit" label="上传CAD并保存" (click)="startUpload()"
+        *ngIf="files.length"></button>
+
+
+<br>
+展示 和 primeng 不一样的上传 (带请求头);样式大家自己可以组装一下;他的官网样式也不是很好
+
+
+github  地址  ngx-uploader  <a href="https://github.com/jkuri/ngx-uploader" style="font-size: 20px">ngx-uploader</a>

@@ -50,10 +50,14 @@ export const workspaceRoutes = [
         path: 'citys',
         loadChildren: '../citys/citys.module#CitysModule',
         // data: {preload: true}
+      }, {
+        path: 'upload',
+        loadChildren: '../upload/upload.module#UploadModule',
+        // data: {preload: true}
       },
       {
-        path: 'demo',
-        loadChildren: '../upload/upload.module#UploadModule',
+        path: 'data-table2',
+        loadChildren: '../data-table2/data-table2.module#UploadModule',
         data: {preload: true}
       }, {
         path: 'my-breadcrumb-demo',

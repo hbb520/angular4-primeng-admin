@@ -401,6 +401,7 @@ td {
   padding: 0;
 }
 
+
 /*dialog-content  中下拉选择超出显示*/
 .dialog-content-inherit .ui-dialog-content {
   overflow: inherit;
@@ -408,4 +409,7 @@ td {
 
 .high-td td {
   height: 90px !important;
+}
+.none-padding-td td{
+  padding: 0 !important;
 }

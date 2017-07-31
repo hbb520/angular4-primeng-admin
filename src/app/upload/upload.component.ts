@@ -1,5 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Message} from '../common/car';
+import {Component, EventEmitter, OnInit} from '@angular/core';
+import {UploadOutput, UploadInput, UploadFile, humanizeBytes} from 'ngx-uploader';
+interface FormData {
+  concurrency: number;
+  autoUpload: boolean;
+  verbose: boolean;
+}
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -8,218 +14,83 @@ import {Message} from '../common/car';
 export class UploadComponent implements OnInit {
   
   constructor() {
+    this.formData = {
+      concurrency: 0,
+      autoUpload: false,
+      verbose: true
+    };
+    
+    this.files = [];
+    this.uploadInput = new EventEmitter<UploadInput>();
+    this.humanizeBytes = humanizeBytes;
   }
   
   ngOnInit() {
-    this.msgs.push({severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks'});
   }
   
-  msgs: Message[] = [];
-  head: any = ['证券代码', '名称', '时间维度', '交易量', '其他'];
-  cars: any = [
-    {
-      'dimName': '证券0000',
-      'childs': [
-        {
-          'dimName': '熊',
-          'childs': [
-            {
-              'dimName': '2017年06月01日',
-              'functionResult': [
-                '11111', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '2017年06月02日',
-              'functionResult': [
-                '11112', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '综合',
-              'functionResult': [
-                '11113', 'a'
-              ],
-              'high': 1
-            }
-          ],
-          'high': 3
-        },
-        {
-          'dimName': '亚',
-          'childs': [
-            {
-              'dimName': '2017年06月01日',
-              'functionResult': [
-                '22221', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '2017年06月02日',
-              'functionResult': [
-                '22222', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '综合',
-              'functionResult': [
-                '22223', 'a'
-              ],
-              'high': 1
-            }
-          ],
-          'high': 3
-        },
-        {
-          'dimName': '运',
-          'childs': [
-            {
-              'dimName': '2017年06月01日',
-              'functionResult': [
-                '33331', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '2017年06月02日',
-              'functionResult': [
-                '33332', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '综合',
-              'functionResult': [
-                '33333', 'a'
-              ],
-              'high': 1
-            }
-          ],
-          'high': 3
-        },
-        {
-          'dimName': '综合',
-          'childs': [
-            {
-              'dimName': '2017年06月01日',
-              'functionResult': [
-                '33331', 'a'
-              ],
-              'high': 1
-            }
-          ],
-          
-          'high': 1
-        }
-      ],
-      'high': 10
-    },
-    {
-      'dimName': '证券0001',
-      'childs': [
-        {
-          'dimName': '熊2',
-          'childs': [
-            {
-              'dimName': '2017年06月01日',
-              'functionResult': [
-                'X-11111', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '2017年06月02日',
-              'functionResult': [
-                'X-11112', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '综合',
-              'functionResult': [
-                'X-11113', 'a'
-              ],
-              'high': 1
-            }
-          ],
-          'high': 3
-        },
-        {
-          'dimName': '亚2',
-          'childs': [
-            {
-              'dimName': '2017年06月01日',
-              'functionResult': [
-                'X-22221', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '2017年06月02日',
-              'functionResult': [
-                'X-22222', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '综合',
-              'functionResult': [
-                'X-22223', 'a'
-              ],
-              'high': 1
-            }
-          ],
-          'high': 3
-        },
-        {
-          'dimName': '运2',
-          'childs': [
-            {
-              'dimName': '2017年06月01日',
-              'functionResult': [
-                'X-33331', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '2017年06月02日',
-              'functionResult': [
-                'X-33332', 'a'
-              ],
-              'high': 1
-            },
-            {
-              'dimName': '综合',
-              'functionResult': [
-                'X-33333', 'a'
-              ],
-              'high': 1
-            }
-          ],
-          'high': 3
-        },
-        {
-          'dimName': '综合',
-          'childs': [
-            {
-              'dimName': '2017年06月01日',
-              'functionResult': [
-                '33331', 'a'
-              ],
-              'high': 1
-            }
-          ],
-          
-          'high': 1
-        }
-      ],
-      'high': 10
+  
+  spanSuccee: boolean = false;
+  spanError: boolean = false;
+  uploading: boolean = true;
+  formData: FormData;
+  files: UploadFile[];
+  uploadInput: EventEmitter<UploadInput>;
+  humanizeBytes: Function;
+  dragOver: boolean;
+  
+  onUploadOutput(output: UploadOutput): void {
+    if (output.type === 'done') {
+      if (!this.files[0].response) {
+        this.spanSuccee = false;
+        this.spanError = true;
+      } else {
+        this.spanSuccee = true;
+        this.spanError = false;
+        
+        //
+        // if (this.files) {
+        //   for (let i = 0; i <= this.files.length; i++) {
+        //     this.removeFile(this.files[i].id);
+        //   }
+        // }
+        
+      }
     }
-  ];
+    if (output.type === 'allAddedToQueue') {
+    
+    } else if (output.type === 'addedToQueue') {
+      this.spanSuccee = false;
+      this.spanError = false;
+      this.files.push(output.file);
+    } else if (output.type === 'uploading') {
+      const index = this.files.findIndex(file => file.id === output.file.id);
+      this.files[index] = output.file;
+    } else if (output.type === 'removed') {
+      this.files = this.files.filter((file: UploadFile) => file !== output.file);
+    } else if (output.type === 'dragOver') {
+      this.dragOver = true;
+    } else if (output.type === 'dragOut') {
+      this.dragOver = false;
+    } else if (output.type === 'drop') {
+      this.dragOver = false;
+    }
+  }
+  
+  startUpload(): void {
+    let userToken = sessionStorage.getItem('userToken');
+    const event: UploadInput = {
+      type: 'uploadAll',
+      url: 'http://ngx-uploader.com/upload',
+      method: 'POST',
+      data: {foo: 'bar'},
+      concurrency: 0,
+      headers: {'Authorization': userToken}
+    };
+    this.uploadInput.emit(event);
+  }
   
   
+  removeFile(id: string): void {
+    this.uploadInput.emit({type: 'remove', id: id});
+  }
 }

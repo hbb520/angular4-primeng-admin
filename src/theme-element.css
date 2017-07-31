@@ -185,9 +185,9 @@
 
 /*ui-inputtext padding 修改    之前的padding太少了*/
 .ui-inputtext {
-  padding: 0.50em 0.25em !important;
+  padding: 0.48em 0.35em !important;
 }
 
 .ui-multiselect .ui-multiselect-label {
-  padding: 0.50em 0.25em !important;
+  padding: 0.48em 0.35em !important;
 }

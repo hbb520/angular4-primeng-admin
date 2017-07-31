@@ -1,0 +1,15 @@
+<my-breadcrumb name1="数据管理" name2="省级联动"></my-breadcrumb>
+
+
+<p-dropdown [options]="city1Array" placeholder="请选择" [(ngModel)]="city1NgModel" [filter]="true"
+            (onChange)="city1onChange()" [style]="{'width':'92px'}"
+            [panelStyle]="{'width':'180px'}"
+            scrollHeight="180px" name="city1"  ></p-dropdown>
+
+<p-dropdown [options]="city2Array" placeholder="请选择" [(ngModel)]="city2NgModel" (onChange)="city2onChange()"
+            [disabled]="city2Disabled" [style]="{'width':'92px'}" [panelStyle]="{'width':'180px'}"
+            scrollHeight="180px" name="city2"></p-dropdown>
+
+<p-dropdown [options]="city3Array" placeholder="请选择" [(ngModel)]="city3NgModel" [disabled]="city3Disabled"
+            [panelStyle]="{'width':'120px'}"
+            [style]="{'width':'92px'}" scrollHeight="180px" name="city3"></p-dropdown>

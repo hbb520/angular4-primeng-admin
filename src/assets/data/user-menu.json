@@ -21,7 +21,7 @@
       },
       {
         "name": "表格多行",
-        "link": "demo"
+        "link": "data-table2"
       },
       {
         "name": "图标",
@@ -54,6 +54,16 @@
       {
         "name": "tree",
         "link": "tree"
+      }
+    ]
+  },
+  {
+    "name": "上传",
+    "icon": "fa-upload",
+    "children": [
+      {
+        "name": "上传",
+        "link": "upload"
       }
     ]
   },
