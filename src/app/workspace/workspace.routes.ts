@@ -12,73 +12,74 @@ export const workspaceRoutes = [
       {
         path: 'data-table',
         loadChildren: '../data-table/data-table.module#MyDataTableModule',
-        data: {preload: true}
+        title: '普通表格'
       },
       {
         path: 'primeng-form',
         loadChildren: '../form-primeng/form-primeng.module#FormPrimengModule',
-        data: {preload: true}
+        title: 'primeng表格'
       },
       {
         path: 'ng-form',
         loadChildren: '../ng-form/ng-form.module#NgFormModule',
-        data: {preload: true}
+        title: '验证'
       },
       {
         path: 'input',
         loadChildren: '../input/input.module#InputModule',
-        data: {preload: true}
+        title: 'input'
       },
       {
         path: 'charts',
         loadChildren: '../charts/charts.module#ChartsModule',
-        data: {preload: true}
+        title: 'charts'
       },
       {
         path: 'tree',
         loadChildren: '../tree/tree.module#TreeModule',
-        data: {preload: true}
+        title: 'tree'
       }, {
         path: 'color',
         loadChildren: '../color/color.module#ColorModule',
-        // data: {preload: true}
+        title: 'color'
       }, {
         path: 'icon',
         loadChildren: '../icon/icon.module#IconModule',
-        // data: {preload: true}
+        title: 'icon'
       }, {
         path: 'citys',
         loadChildren: '../citys/citys.module#CitysModule',
-        // data: {preload: true}
+        title: '省级联动'
       }, {
         path: 'upload',
         loadChildren: '../upload/upload.module#UploadModule',
-        // data: {preload: true}
+        title: '上传'
       },
       {
         path: 'data-table2',
         loadChildren: '../data-table2/data-table2.module#UploadModule',
-        data: {preload: true}
+        data: {preload: true},
+        title: 'data-table2'
       }, {
         path: 'my-breadcrumb-demo',
-        loadChildren: '../my-components-demo/my-breadcrumb-demo/my-breadcrumb-demo.module#MyBreadcrumbDemoModule'
-        // data: {preload: true}
+        loadChildren: '../my-components-demo/my-breadcrumb-demo/my-breadcrumb-demo.module#MyBreadcrumbDemoModule',
+        title: '面包屑'
       }, {
         path: 'my-switch-demo',
-        loadChildren: '../my-components-demo/my-switch-demo/my-switch-demo.module#MySwitchDemoModule'
-        // data: {preload: true}
+        loadChildren: '../my-components-demo/my-switch-demo/my-switch-demo.module#MySwitchDemoModule',
+        title: '开关'
       }, {
         path: 'my-tag-demo',
-        loadChildren: '../my-components-demo/my-tag-demo/my-tag-demo.module#MyTagDemoModule'
-        // data: {preload: true}
+        loadChildren: '../my-components-demo/my-tag-demo/my-tag-demo.module#MyTagDemoModule',
+        title: '标签'
       }, {
         path: 'my-loading-demo',
-        loadChildren: '../my-components-demo/my-loading-demo/my-loading-demo.module#MyLoadingDemoModule'
-        // data: {preload: true}
+        loadChildren: '../my-components-demo/my-loading-demo/my-loading-demo.module#MyLoadingDemoModule',
+        title: '加载'
       }, {
         path: 'my-carousel-demo',
-        loadChildren: '../my-components-demo/my-carousel-demo/my-carousel-demo.module#MyCarouselDemoModule'
-        // data: {preload: true}
+        loadChildren: '../my-components-demo/my-carousel-demo/my-carousel-demo.module#MyCarouselDemoModule',
+        title: '跑马灯'
       },
       {
         path: '**',

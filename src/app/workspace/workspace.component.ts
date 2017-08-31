@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot } from '@angular/router';
+import {ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot} from '@angular/router';
 import {Car, Message} from '../common/car';
 import {beforeUrl} from '../common/public-data';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import {WorkspaceService} from './workspace.service';
+
 
 @Component({
   selector: 'app-workspace',
@@ -43,18 +44,19 @@ import {WorkspaceService} from './workspace.service';
   ]
 })
 export class WorkspaceComponent implements OnInit {
-
-  constructor(private myService: WorkspaceService,public router: Router) {
+  
+  constructor(private myService: WorkspaceService, public router: Router) {
   };
-
+  
   ngOnInit() {
     this.getMenu();
     if (sessionStorage.getItem('userToken')) {
       this.realname = sessionStorage.getItem('realname');
     } else {
-      this.router.navigateByUrl("login");
+      this.router.navigateByUrl('login');
     }
   }
+  
   /*************************  ********************************/
   informationNumber: any = 18;                      //头部我的消息数量
   menus: Car[];                                    //菜单
@@ -63,8 +65,10 @@ export class WorkspaceComponent implements OnInit {
   pTooltipIf: boolean = false;                     //pTooltipIf状态
   beforeUrl: string = beforeUrl;                   //api前缀地址
   timeout: any;                                    //错误信息时间
-  realname:string                                  //头部账号名字
-  menumsg:string
+  realname: string;                                  //头部账号名字
+  menumsg: string;
+
+  
   /************************* 获取菜单 ********************************/
   getMenu() {
     if (sessionStorage.getItem('menu111')) {
@@ -75,7 +79,7 @@ export class WorkspaceComponent implements OnInit {
         .then(
           menus => this.menus = menus,
           error => {
-            this.menumsg = '获取菜单失败,请刷新再试'
+            this.menumsg = '获取菜单失败,请刷新再试';
           }
         )
         .then(() => {
@@ -84,8 +88,9 @@ export class WorkspaceComponent implements OnInit {
           }
         });
     }
-
+    
   }
+  
   /************************* 改变左侧菜单宽度 ********************************/
   changeMenuWidth() {
     this.state = (this.state === 'active' ? 'inactive' : 'active');
@@ -103,11 +108,12 @@ export class WorkspaceComponent implements OnInit {
       this.pTooltipIf = false;
     }
   }
+  
   /************************* 退出登录 ********************************/
   loginOut() {
     sessionStorage.removeItem('userToken');
     sessionStorage.removeItem('menu111');
     sessionStorage.removeItem('realname');
-    this.router.navigateByUrl("login");
+    this.router.navigateByUrl('login');
   }
 }

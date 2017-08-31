@@ -1,19 +1,24 @@
-//封装一个http服务
+/*
+ * 封装一个 http 服务
+ * ngx-toastr    一个无依赖的全局信息提示组件  https://cipchk.github.io/ngx-notify/
+ * 将错误信息字符串返回给 component 层的操作终究麻烦
+ *
+ * */
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/timeout';
 import {Injectable} from '@angular/core';
-import {Http, RequestOptions, URLSearchParams, Headers,Response} from '@angular/http';
+import {Http, RequestOptions, URLSearchParams, Headers, Response} from '@angular/http';
 import {beforeUrl} from './public-data';
-
-
+import 'rxjs/add/operator/timeout';
+import {ToastrService} from 'ngx-toastr';
 @Injectable()
 export class Ajax {
-  url: string = '';                                //接口之前的部分
-  Headers: any = {
+  url: string = beforeUrl;                                //接口之前的部分
+  Headers: any = {                                        //Headers
     'Content-Type': 'application/json', 'Authorization': sessionStorage.getItem('userToken')
   };
+  timeout: number = 5000;                                 //超时时间
   
-  constructor(public http: Http) {
+  constructor(public http: Http, private toastr: ToastrService) {
   }
   
   get(endpoint: string, params?: any) {
@@ -26,57 +31,164 @@ export class Ajax {
       }
       options.search = !options.search && p || options.search;
     }
-    return this.http.get(this.url + endpoint,options).timeout(5000).catch(this.handleError);
+    let taht = this;
+    return this.http.get(this.url + endpoint, options).timeout(this.timeout).catch(
+      (error: Response | any) => {
+        if (error.status == 0) {
+          taht.toastr.info('请求未执行,1:服务未启动2:api地址错误');
+        } else {
+          if (error._body) {
+            const err = JSON.parse(error._body);
+            if (error.status >= 500) {
+              taht.toastr.warning(err.message.substring(0, 40));
+            } else {
+              taht.toastr.error(err.message.substring(0, 40));
+            }
+          } else {
+            if (error.status >= 500) {
+              taht.toastr.error('服务器超时');
+            } else {
+              if (error.message == 'Timeout has occurred') {
+                taht.toastr.warning('服务器超时');
+              } else {
+                taht.toastr.warning('服务器错误');
+              }
+            }
+          }
+        }
+        return Promise.reject(error);
+      });
   }
   
   post(endpoint: string, body: any) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.post(this.url + endpoint, body, options).timeout(5000).catch(this.handleError);
+    let taht = this;
+    return this.http.post(this.url + endpoint, body, options).timeout(this.timeout).catch(
+      (error: Response | any) => {
+        if (error.status == 0) {
+          taht.toastr.info('请求未执行,1:服务未启动2:api地址错误');
+        } else {
+          if (error._body) {
+            const err = JSON.parse(error._body);
+            if (error.status >= 500) {
+              taht.toastr.warning(err.message.substring(0, 40));
+            } else {
+              taht.toastr.error(err.message.substring(0, 40));
+            }
+          } else {
+            if (error.status >= 500) {
+              taht.toastr.error('服务器超时');
+            } else {
+              if (error.message == 'Timeout has occurred') {
+                taht.toastr.warning('服务器超时');
+              } else {
+                taht.toastr.warning('服务器错误');
+              }
+            }
+          }
+        }
+        return Promise.reject(error);
+      });
   }
   
   put(endpoint: string, body: any) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.put(this.url + endpoint, body, options).timeout(5000).catch(this.handleError);
+    let taht = this;
+    return this.http.put(this.url + endpoint, body, options).timeout(this.timeout).catch(
+      (error: Response | any) => {
+        if (error.status == 0) {
+          taht.toastr.info('请求未执行,1:服务未启动2:api地址错误');
+        } else {
+          if (error._body) {
+            const err = JSON.parse(error._body);
+            if (error.status >= 500) {
+              taht.toastr.warning(err.message.substring(0, 40));
+            } else {
+              taht.toastr.error(err.message.substring(0, 40));
+            }
+          } else {
+            if (error.status >= 500) {
+              taht.toastr.error('服务器超时');
+            } else {
+              if (error.message == 'Timeout has occurred') {
+                taht.toastr.warning('服务器超时');
+              } else {
+                taht.toastr.warning('服务器错误');
+              }
+            }
+          }
+        }
+        return Promise.reject(error);
+      }
+    );
   }
   
   delete(endpoint: string) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.delete(this.url + endpoint, options).timeout(5000).catch(this.handleError);
+    let taht = this;
+    return this.http.delete(this.url + endpoint, options).timeout(this.timeout).catch(
+      (error: Response | any) => {
+        if (error.status == 0) {
+          taht.toastr.info('请求未执行,1:服务未启动2:api地址错误');
+        } else {
+          if (error._body) {
+            const err = JSON.parse(error._body);
+            if (error.status >= 500) {
+              taht.toastr.warning(err.message.substring(0, 40));
+            } else {
+              taht.toastr.error(err.message.substring(0, 40));
+            }
+          } else {
+            if (error.status >= 500) {
+              taht.toastr.error('服务器超时');
+            } else {
+              if (error.message == 'Timeout has occurred') {
+                taht.toastr.warning('服务器超时');
+              } else {
+                taht.toastr.warning('服务器错误');
+              }
+            }
+          }
+        }
+        return Promise.reject(error);
+      }
+    );
   }
   
   patch(endpoint: string, body: any) {
     let headers = new Headers(this.Headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.patch(this.url + endpoint, body, options).timeout(5000).catch(this.handleError);
-  }
-
-
-  //错误信息封装...
-  private handleError(error: Response | any) {
-    console.log(error);
-    let errMsg: string;
-    if (error.status == 0) {
-      errMsg = `亲~~ 请求未执行,1:服务未启动接口2:api地址错误|error`;
-    } else if (error._body.substring(0, 1) == '{') {
-      const err = JSON.parse(error._body).defaultMessage || '未知错误';
-      if (error.status >= 500) {
-        errMsg = `${error.status} ${error.statusText} ${err}|warn`;
-      } else if (error.status == 403) {
-        errMsg = `${error.status} ${error.statusText} ${err}|info`;
-      } else {
-        errMsg = `${error.status} ${error.statusText} ${err}|error`;
+    let taht = this;
+    return this.http.patch(this.url + endpoint, body, options).timeout(this.timeout).catch(
+      (error: Response | any) => {
+        if (error.status == 0) {
+          taht.toastr.info('请求未执行,1:服务未启动2:api地址错误');
+        } else {
+          if (error._body) {
+            const err = JSON.parse(error._body);
+            if (error.status >= 500) {
+              taht.toastr.warning(err.message.substring(0, 40));
+            } else {
+              taht.toastr.error(err.message.substring(0, 40));
+            }
+          } else {
+            if (error.status >= 500) {
+              taht.toastr.error('服务器超时');
+            } else {
+              if (error.message == 'Timeout has occurred') {
+                taht.toastr.warning('服务器超时');
+              } else {
+                taht.toastr.warning('服务器错误');
+              }
+            }
+          }
+        }
+        return Promise.reject(error);
       }
-    } else {
-      if (error.status >= 500) {
-        errMsg = `${error.status} ${error.statusText} 服务器超时|warn`;
-      } else {
-        errMsg = `${error.status} ${error.statusText} 服务器错误|error`;
-      }
-    }
-    return Promise.reject(errMsg);
+    );
   }
 }
 

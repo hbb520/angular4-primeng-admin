@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Car, Message, SelectItem} from '../common/car';
 import {beforeUrl, China, pageAnimation, tagAnimation} from '../common/public-data';
 import {DataTableService} from './data-table.service';
-import NProgress from 'nprogress';
+
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
@@ -14,7 +14,7 @@ import NProgress from 'nprogress';
 })
 export class DataTableComponent implements OnInit {
   constructor(private myService: DataTableService) {
-    NProgress.start();
+  
   }
   
   ngOnInit() {
@@ -63,8 +63,8 @@ export class DataTableComponent implements OnInit {
       .then(cars => {
           this.cars = cars;
           this.first = pageNo - 1;
-          NProgress.done();
-        }, error => this.msgError(error)
+          
+        }, error => console.log(error)
       )
       .then(
         () => {
@@ -116,7 +116,7 @@ export class DataTableComponent implements OnInit {
     this.myService.getIndustries()
       .then(industriesArray => {
           this.industriesArray = industriesArray;
-        }, error => this.msgError(error)
+        }, error => console.log(error)
       )
       .then(
         () => {
@@ -154,7 +154,7 @@ export class DataTableComponent implements OnInit {
           console.log(res);
           this.dialog = false;
           this.msg(1, '添加成功');
-        }, error => this.msgError(error)
+        }, error => console.log(error)
       );
   }
   
@@ -179,7 +179,7 @@ export class DataTableComponent implements OnInit {
       .then(res => {
           console.log(res);
           this.dialog = false;
-        }, error => this.msgError(error)
+        }, error => console.log(error)
       );
     this.get(this.first + 1);                                                       //我们希望当数据停留在这一页时,分页页码也停留在此页
   }
@@ -201,7 +201,7 @@ export class DataTableComponent implements OnInit {
       .then(res => {
           console.log(res);
           this.dialog = false;
-        }, error => this.msgError(error)
+        }, error => console.log(error)
       );
     this.get(this.first + 1);
   }
@@ -233,7 +233,7 @@ export class DataTableComponent implements OnInit {
       .then(res => {
           console.log(res);
           this.dialog = false;
-        }, error => this.msgError(error)
+        }, error => console.log(error)
       );
     this.get(this.first + 1);
   }
@@ -325,16 +325,6 @@ export class DataTableComponent implements OnInit {
   }
   
   /************************* 信息返回函数 ********************************/
-  msgError(error) {
-    this.msgs.push({severity: <any>error.split('|')[1], detail: <any>error.split('|')[0]});
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-    this.timeout = setTimeout(() => {
-      this.msgs = [];
-    }, 3000);
-  }
-  
   msg(num, msg) {
     let type = 'info';
     if (num == 1) {

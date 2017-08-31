@@ -31,7 +31,9 @@
     "@types/js-base64": "^2.1.5",
     "chart.js":"*",
     "nprogress": "0.2.0",
-    "normalize.css":"7.0.0"
+    "normalize.css":"7.0.0",
+    "ngx-toastr": "^6.0.1"
+
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",
