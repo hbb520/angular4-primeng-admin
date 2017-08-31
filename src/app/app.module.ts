@@ -15,6 +15,7 @@ import {DataTableService} from './data-table/data-table.service';
 import {Ajax} from './common/ajax';
 
 import {ToastrModule} from 'ngx-toastr';
+import {NgProgressModule} from 'ngx-progressbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import {ToastrModule} from 'ngx-toastr';
     ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    NgProgressModule,
     ToastrModule.forRoot({
       timeOut: 2500,
       preventDuplicates: true

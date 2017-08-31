@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {workspaceRoutes} from './workspace/workspace.routes';
-import NProgress from 'nprogress';
+import {NgProgressService} from 'ngx-progressbar';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +12,10 @@ import NProgress from 'nprogress';
 
 export class AppComponent implements OnInit {
   ngOnInit() {
-    /*头部服务*/
+  
+  }
+  
+  constructor(private router: Router, private titleService: Title, public progressService: NgProgressService) {
     this.routerList.forEach(
       group => {
         this.componentList = group.children;
@@ -20,11 +23,11 @@ export class AppComponent implements OnInit {
     );
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        NProgress.start();    //顶部进度条
+        this.progressService.start();
       }
       
       if (event instanceof NavigationEnd) {
-        NProgress.done();
+        this.progressService.done();
         this.componentList.forEach(
           list => {
             if (this.router.url.indexOf(list.path) >= 0) {
@@ -34,9 +37,6 @@ export class AppComponent implements OnInit {
         );
       }
     });
-  }
-  
-  constructor(private router: Router, private titleService: Title) {
   };
   
   routerList = workspaceRoutes;

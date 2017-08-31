@@ -353,19 +353,6 @@ td {
   padding: 1px 3px !important;
 }
 
-/*进度条*/
-#nprogress .bar {
-  background-color: #B92ACE;
-  height: 4px;
-  top: 0px;
-}
-
-#nprogress .spinner-icon {
-  border-top-color: #B92ACE;
-  border-left-color: #B92ACE;
-}
-
-/*进度条 end*/
 
 /*分页 box 样式*/
 .paginator-box {
