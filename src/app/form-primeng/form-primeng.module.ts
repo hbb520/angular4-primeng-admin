@@ -57,7 +57,7 @@ import {FormPrimengComponent} from "./form-primeng.component";
     PaginatorModule,
     TooltipModule,
     OverlayPanelModule,
-
+    InputTextareaModule,
     MyBreadcrumbModule,
 
 

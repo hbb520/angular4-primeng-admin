@@ -57,7 +57,7 @@ import {Details} from './details';
     PaginatorModule,
     TooltipModule,
     OverlayPanelModule,
-
+    InputTextareaModule,
     MyBreadcrumbModule,
 
 

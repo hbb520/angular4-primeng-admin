@@ -1,81 +1,63 @@
 /*这里是对  primeng 的样式覆盖*/
-
+.router .ui-state-active{
+  background-color: #0073ea !important;
+  color: #ffffff !important;
+  border-color: #0073ea!important ;
+}
 
 /*1,错误消息位置*/
 .ui-growl {
-  z-index: 2000 !important;
+  /*z-index: 2000 !important;*/
 }
 
 /*2,OverlayPanel*/
 .ui-overlaypanel {
-  width: 300px !important;
+  /*width: 300px !important;*/
 }
 
-.ui-overlaypanel-content {
-  word-break: break-all;
-  color: #fff;
-  background-color: #2d353c;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;;
-}
+/*.ui-overlaypanel-content {*/
+
+/*}*/
 
 /*3,ui-tooltip*/
 .ui-tooltip {
-  z-index: 2000 !important;
+  /*z-index: 2000 !important;*/
 }
 
 .ui-tooltip .ui-tooltip-text {
-  width: 200px;
-  word-break: break-all;
-  display: block;
-  padding: 10px !important;
-  white-space: pre-wrap !important;
-  background-color: #324057;
-  opacity: 0.9;
+  /*width: 200px;*/
+  /*word-break: break-all;*/
+  /*display: block;*/
+  /*padding: 10px !important;*/
+  /*white-space: pre-wrap !important;*/
+  /*background-color: #324057;*/
+  /*opacity: 0.9;*/
 }
 
-.router .ui-datatable th.ui-state-active {
-  background: #8492A6 !important;
-  border-color: #8492A6 !important;;
-  color: #ffffff !important;
-}
-
-.ui-datatable tbody > tr.ui-widget-content.ui-state-highlight {
-  background-color: #8492A6 !important;
-  border-color: #8492A6 !important;;
-  color: #FFFFFF !important;
-}
 
 /*4,分页样式*/
-.ui-paginator {
-  padding: 10px 0 20px 0 !important;
-}
 
-.ui-paginator.ui-widget-header {
-  border: 0
-}
+/*.ui-paginator.ui-widget-header {*/
+  /*border: 0*/
+/*}*/
 
-.ui-paginator .ui-paginator-page {
-  padding: 5px 9px !important;
-}
 
-.ui-paginator .ui-paginator-prev, .ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-last {
-  padding: 5px 9px !important;
-}
+/*.ui-paginator .ui-paginator-prev, .ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-last {*/
+  /*padding: 5px 9px !important;*/
+/*}*/
 
-/*6,dialog*/
+/*5,dialog*/
 .ui-dialog.ui-widget .ui-dialog-titlebar {
-  padding: 8px 1.5em;
-  cursor: move;
+  /*padding: 8px 1.5em;*/
+  /*cursor: move;*/
 }
 
 .ui-dialog {
-  box-shadow: none !important;
+  /*box-shadow: none !important;*/
 }
 
 .ui-dialog .ui-dialog-buttonpane {
-  border: none !important;
+  /*border: none !important;*/
 }
 
 .ui-dialog .ui-dialog-footer {
@@ -85,9 +67,9 @@
 
 /*ui-inputtext padding 修改    之前的padding太少了*/
 .ui-inputtext {
-  padding: 0.48em 0.35em !important;
+  /*padding: 0.48em 0.35em !important;*/
 }
 
 .ui-multiselect .ui-multiselect-label {
-  padding: 0.48em 0.35em !important;
+  /*padding: 0.48em 0.35em !important;*/
 }

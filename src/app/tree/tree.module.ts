@@ -57,7 +57,7 @@ import {TreeComponent} from './tree.component';
     PaginatorModule,
     TooltipModule,
     OverlayPanelModule,
-
+    TreeModule,
     MyBreadcrumbModule,
     TreeTableModule,SharedModule,
 
