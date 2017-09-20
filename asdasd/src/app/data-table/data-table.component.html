@@ -1,0 +1,310 @@
+<p-growl [(value)]="msgs" life="1000"></p-growl>
+<div [@pageAnimation]="'in'">
+  <my-breadcrumb name1="数据管理" name2="data-table"></my-breadcrumb>
+
+  <div class="search-area">
+    <label class="mr15">行业</label>
+    <p-dropdown required [options]="industriesSelect" [style]="{'width':'150px','margin-right':'20px'}"
+                [(ngModel)]="industriesSearchNgModel" placeholder="请选择行业"></p-dropdown>
+    <label class="mr15">关键字</label>
+    <input type="text" pInputText [(ngModel)]="keywordNgModel" class="mr20" placeholder="请填写关键字"/>
+    <label class="mr15">时间</label>
+
+    <p-calendar [locale]="China" dateFormat="yy/mm/dd" [showIcon]="true" [inputStyle]="{'width':'100px'}"
+                [style]="{'margin-right':'35px'}" [(ngModel)]="startTime"></p-calendar>
+
+    <button pButton type="button" class="ui-button-secondary" label="清空搜索"
+            (click)="industriesSearchNgModel=null;keywordNgModel=null"></button>
+    <button pButton type="button" label="搜索" (click)="get(1)"></button>
+  </div>
+
+  <div class="operation-area">
+    <button pButton type="button" class="ui-button-success" label="添加品牌" (click)="addShow()"></button>
+    <button pButton type="button" class="ui-button-danger" label="批量删除" (click)="deleteAllShow()"></button>
+
+  </div>
+
+  <p-dataTable [value]="data"
+               [(selection)]="mySelection"
+               [responsive]="true">
+    <p-column selectionMode="multiple" [style]="{'width':'33px'}"></p-column>
+    <p-column field="logo" header="logo" [style]="{'width':'190px'}">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <img src="{{car[col.field]}}" alt="" class="table-img">
+      </ng-template>
+    </p-column>
+    <p-column field="createTime" header="创建时间" [sortable]="true">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        {{car[col.field] | date:"y/MM/dd HH:mm"}}
+      </ng-template>
+    </p-column>
+    <p-column field="name" header="品牌名称">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span style="color:#337ab7">{{car[col.field]}}</span>
+      </ng-template>
+    </p-column>
+    <p-column field="industryId" header="行业">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span class="my-tag" *ngIf="car[col.field]" [@tagAnimation]="tag_state">{{car[col.field]}}</span>
+      </ng-template>
+    </p-column>
+    <p-column field="ue4Open" header="编辑器公开" [sortable]="true">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span *ngIf="car[col.field];else elseBlock" class="text-success">是</span>
+        <ng-template #elseBlock><span class="text-warn">否</span></ng-template>
+      </ng-template>
+    </p-column>
+    <p-column field="clientOpen" header="客户端公开">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span *ngIf="car[col.field];else elseBlock" class="text-success">是</span>
+        <ng-template #elseBlock><span class="text-warn">否</span></ng-template>
+      </ng-template>
+    </p-column>
+    <p-column field="auditPassed" header="审核状态">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <span *ngIf="car[col.field];else elseBlock" class="my-tag my-tag-success"
+              [@tagAnimation]="tag_state">通过</span>
+        <ng-template #elseBlock><span class="my-tag my-tag-danger" [@tagAnimation]="tag_state">未通过</span>
+        </ng-template>
+      </ng-template>
+    </p-column>
+    <p-column styleClass="col-button" header="操作" [style]="{'width':'200px'}">
+      <ng-template let-col let-car="rowData" pTemplate="body">
+        <div id="handle-button">
+          <button pButton type="button" label="前往参数页" [routerLink]="['details',car.id]" class="ui-button-info"></button>
+          <button pButton type="button" label="编辑" (click)="editShow(car)" class="ui-button-success"></button>
+          <button pButton type="button" label="删除" (click)="deleteShow(car)" class="ui-button-danger"></button>
+        </div>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+  <div class="paginator-box">
+    <p-paginator rows="1" totalRecords="{{totalPages}}" (onPageChange)="paginate($event)"
+                 first="{{first}}"></p-paginator>
+    <div class="paginator-goto">
+      共 <span class="text-info">{{totalPages}}</span> 页 ; 前往 <input type="text" pInputText [(ngModel)]="gotoPage"
+                                                                    (blur)="blurGotoPage()"/> 页
+    </div>
+  </div>
+</div>
+
+
+<p-dialog header="{{dialogHeader}}" [(visible)]="dialog" modal="modal" width="500" [responsive]="true"
+          (onHide)="dialogHide($event)">
+  <form #formAdd="ngForm" novalidate role="form" (ngSubmit)="formAdd.form.valid && add()">
+    <div *ngIf="addHtmlNgif">
+      <div class="dialog-content ui-g-padding0">
+        <div class="ui-g">
+          <label class="ui-g-3">CT店名<span class="star">*</span>:</label>
+          <div class="ui-g-9">
+            <input pInputText [(ngModel)]="nameModel" placeholder="请填写CT店名" required name="ctdianming"
+                   [class.border-error]="formAdd.submitted && !ctdianming.valid" #ctdianming="ngModel"/>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formAdd.submitted && !ctdianming.valid">
+            <i class="fa fa-close mr5"></i>请填写CT店名
+          </div>
+        </div>
+        <div class="ui-g">
+          <label class="ui-g-3">店址<span class="star">*</span>:</label>
+          <div class="ui-g-9">
+            <p-dropdown [options]="city1Array" placeholder="请选择" [(ngModel)]="city1NgModel" [filter]="true"
+                        (onChange)="city1onChange()" [style]="{'width':'92px'}"
+                        [panelStyle]="{'width':'180px'}"
+                        [styleClass]="formAdd.submitted && !city1.valid?'border-error':''"
+                        scrollHeight="180px" name="city1" required #city1="ngModel"></p-dropdown>
+
+            <p-dropdown [options]="city2Array" placeholder="请选择" [(ngModel)]="city2NgModel" (onChange)="city2onChange()"
+                        [disabled]="city2Disabled" [style]="{'width':'92px'}" [panelStyle]="{'width':'180px'}"
+                        scrollHeight="180px" name="city2"></p-dropdown>
+
+            <p-dropdown [options]="city3Array" placeholder="请选择" [(ngModel)]="city3NgModel" [disabled]="city3Disabled"
+                        [panelStyle]="{'width':'120px'}"
+                        [style]="{'width':'92px'}" scrollHeight="180px" name="city3"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formAdd.submitted && !city1.valid">
+            <i class="fa fa-close mr5"></i>请选择省份
+          </div>
+        </div>
+
+        <div class="ui-g">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9">
+            <textarea rows="3" placeholder="请填写更加详细地址" style="width: 100%" pInputTextarea name="xiangxidizhi"
+                      [class.border-error]="formAdd.submitted && !xiangxidizhi.valid" [(ngModel)]="detailedAddressModel"
+                      #xiangxidizhi="ngModel"></textarea>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formAdd.submitted && !xiangxidizhi.valid">
+            <i class="fa fa-close mr5"></i>请填写更加详细地址
+          </div>
+        </div>
+        <div class="ui-g">
+          <label class="ui-g-3">店长<span class="star">*</span>:</label>
+          <div class="ui-g-9">
+            <input pInputText [(ngModel)]="shopManagerModel" placeholder="请填写店长" required name="dianzhang"
+                   [class.border-error]="formAdd.submitted && !dianzhang.valid" #dianzhang="ngModel"/>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formAdd.submitted && !dianzhang.valid">
+            <i class="fa fa-close mr5"></i>请填写店长
+          </div>
+        </div>
+        <div class="ui-g">
+          <label class="ui-g-3">联系电话<span class="star">*</span>:</label>
+          <div class="ui-g-9">
+            <input pInputText [(ngModel)]="phoneModel" placeholder="请填写联系电话" required name="lianxidianhua"
+                   [class.border-error]="formAdd.submitted && !lianxidianhua.valid" #lianxidianhua="ngModel"/>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formAdd.submitted && !lianxidianhua.valid">
+            <i class="fa fa-close mr5"></i>请填写联系电话
+          </div>
+        </div>
+      </div>
+
+      <p-footer>
+        <div class="dialog-footer">
+          <button type="button" pButton (click)="dialog=false" label="取消"></button>
+          <button type="button" pButton type="submit" label="确认"></button>
+        </div>
+      </p-footer>
+    </div>
+  </form>
+
+  <form #formEdit="ngForm" novalidate role="form" (ngSubmit)="formEdit.form.valid && edit()">
+    <div *ngIf="editHtmlNgif">
+      <div class="dialog-content ui-g-padding0">
+        <div class="ui-g">
+          <label class="ui-g-3">CT店名<span class="star">*</span>:</label>
+          <div class="ui-g-9">
+            <input pInputText [(ngModel)]="nameModel" placeholder="请填写CT店名" required name="ctdianming"
+                   [class.border-error]="formEdit.submitted && !ctdianming.valid" #ctdianming="ngModel"/>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formEdit.submitted && !ctdianming.valid">
+            <i class="fa fa-close mr5"></i>请填写CT店名
+          </div>
+        </div>
+        <div class="ui-g">
+          <label class="ui-g-3">店址<span class="star">*</span>:</label>
+          <div class="ui-g-9">
+            <p-dropdown [options]="city1Array" placeholder="请选择" [(ngModel)]="city1NgModel" [filter]="true"
+                        (onChange)="city1onChange()" [style]="{'width':'92px'}"
+                        [panelStyle]="{'width':'180px'}"
+                        [styleClass]="formEdit.submitted && !city1.valid?'border-error':''"
+                        scrollHeight="180px" name="city1" required #city1="ngModel"></p-dropdown>
+
+            <p-dropdown [options]="city2Array" placeholder="请选择" [(ngModel)]="city2NgModel" (onChange)="city2onChange()"
+                        [disabled]="city2Disabled" [style]="{'width':'92px'}" [panelStyle]="{'width':'180px'}"
+                        scrollHeight="180px" name="city2"></p-dropdown>
+
+            <p-dropdown [options]="city3Array" placeholder="请选择" [(ngModel)]="city3NgModel" [disabled]="city3Disabled"
+                        [panelStyle]="{'width':'120px'}"
+                        [style]="{'width':'92px'}" scrollHeight="180px" name="city3"></p-dropdown>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formEdit.submitted && !city1.valid">
+            <i class="fa fa-close mr5"></i>请选择省份
+          </div>
+        </div>
+
+        <div class="ui-g">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9">
+            <textarea rows="3" placeholder="请填写更加详细地址" style="width: 100%" pInputTextarea name="xiangxidizhi"
+                      [class.border-error]="formEdit.submitted && !xiangxidizhi.valid"
+                      [(ngModel)]="detailedAddressModel"
+                      #xiangxidizhi="ngModel"></textarea>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formEdit.submitted && !xiangxidizhi.valid">
+            <i class="fa fa-close mr5"></i>请填写更加详细地址
+          </div>
+        </div>
+        <div class="ui-g">
+          <label class="ui-g-3">店长<span class="star">*</span>:</label>
+          <div class="ui-g-9">
+            <input pInputText [(ngModel)]="shopManagerModel" placeholder="请填写店长" required name="dianzhang"
+                   [class.border-error]="formEdit.submitted && !dianzhang.valid" #dianzhang="ngModel"/>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formEdit.submitted && !dianzhang.valid">
+            <i class="fa fa-close mr5"></i>请填写店长
+          </div>
+        </div>
+        <div class="ui-g">
+          <label class="ui-g-3">联系电话<span class="star">*</span>:</label>
+          <div class="ui-g-9">
+            <input pInputText [(ngModel)]="phoneModel" placeholder="请填写联系电话" required name="lianxidianhua"
+                   [class.border-error]="formEdit.submitted && !lianxidianhua.valid" #lianxidianhua="ngModel"/>
+          </div>
+        </div>
+        <div class="ui-g error-input-msg">
+          <label class="ui-g-3"></label>
+          <div class="ui-g-9" *ngIf="formEdit.submitted && !lianxidianhua.valid">
+            <i class="fa fa-close mr5"></i>请填写联系电话
+          </div>
+        </div>
+      </div>
+
+      <p-footer>
+        <div class="dialog-footer">
+          <button type="button" pButton (click)="dialog=false" label="取消"></button>
+          <button type="button" pButton type="submit" label="确认"></button>
+        </div>
+      </p-footer>
+    </div>
+  </form>
+  <div *ngIf="deleteHtmlNgif">
+    <div class="ui-grid-row">
+      您确定要删除 <span class="text-info">{{mySelectionObject.name}}</span> 吗?
+    </div>
+    <div class="ui-grid-row">
+      {{mySelectionObject |json}}
+    </div>
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <button type="button" pButton label="确认" (click)="delete()"></button>
+        <button type="button" pButton (click)="dialog=false" label="取消"></button>
+      </div>
+    </p-footer>
+  </div>
+  <div *ngIf="deleteAllHtmlNgif">
+    <div class="ui-grid-row">
+      您确定要删除选中的 <span class="text-info">{{deleteAllArrray.length}}</span> 项吗?
+    </div>
+    <div class="ui-grid-row">
+      {{deleteAllArrray|json}}
+    </div>
+
+    <p-footer>
+      <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <button type="button" pButton label="确认" (click)="deleteAll()"></button>
+        <button type="button" pButton (click)="dialog=false" label="取消"></button>
+      </div>
+    </p-footer>
+  </div>
+</p-dialog>
+
+
+

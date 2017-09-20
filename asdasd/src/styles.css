@@ -1,0 +1,402 @@
+img, a, p, body, html, select, div, label, option, ul, li, dl, dd, span, input, select, i, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+}
+
+body {
+  overflow: auto;
+  font-weight: 400;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  color: #1f2f3d;
+  font-size: 14px;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+label {
+  cursor: inherit;
+  vertical-align: middle;
+}
+
+input,
+textarea,
+button {
+  outline: none;
+  resize: none;
+  font-family: "Microsoft Yahei";
+}
+
+button {
+  padding: 0 !important;
+}
+
+div {
+  display: block;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.none {
+  display: none !important;
+}
+
+.block {
+  display: block !important;
+}
+
+/*字体颜色*/
+.text-success {
+  color: #13ce66;
+}
+
+.text-info {
+  color: #50bfff;
+}
+
+.text-warn {
+  color: #f7ba2a;
+}
+
+.text-error {
+  color: #ff4949;
+}
+
+/*背景色*/
+.bc-success {
+  background-color: #13ce66;
+}
+
+.bc-info {
+  background-color: #50bfff;
+}
+
+.bc-warn {
+  background-color: #f7ba2a;
+}
+
+.bc-error {
+  background-color: #ff4949;
+}
+
+.border-error {
+  border-color: #ff4949 !important;
+}
+
+.padding0 {
+  padding: 0;
+}
+
+.star {
+  display: inline-block;
+  color: #FF4949;
+  position: relative;
+  top: 4px;
+  margin: 0 3px 0 0;
+}
+
+.error-input-msg {
+  height: 18px;
+  line-height: 18px;
+  color: #FF4949;
+  font-size: 12px;
+}
+
+/*标签 class 状态,审核状态,上架状态等等  span */
+.my-tag {
+  display: inline-block;
+  background-color: #8391a5;
+  padding: 2px 5px;
+  color: #fff;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.my-tag-gray {
+  background-color: #e4e8f1;
+  border-color: #e4e8f1;
+  color: #48576a;
+}
+
+.my-tag-primary {
+  background-color: rgba(32, 160, 255, .1);
+  border-color: rgba(32, 160, 255, .2);
+  color: #20a0ff;
+}
+
+.my-tag-success {
+  background-color: rgba(18, 206, 102, .1);
+  border-color: rgba(18, 206, 102, .2);
+  color: #13ce66;
+}
+
+.my-tag-warning {
+  background-color: rgba(247, 186, 41, .1);
+  border-color: rgba(247, 186, 41, .2);
+  color: #f7ba2a;
+}
+
+.my-tag-danger {
+  background-color: rgba(255, 73, 73, .1);
+  border-color: rgba(255, 73, 73, .2);
+  color: #ff4949;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr15 {
+  margin-right: 15px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mt-18 {
+  margin-top: -18px;
+}
+
+/*菜单栏*/
+.menu {
+  padding-top: 100px;
+  width: 150px;
+  position: fixed;
+  z-index: 800;
+  height: 100%;
+  background-color: #323a57;
+}
+
+/*菜单激活颜色*/
+.active-link {
+  background-color: rgba(0, 0, 0, .5);
+}
+
+body .ui-accordion .ui-accordion-header {
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+body .ui-accordion .ui-accordion-header a {
+  padding: .75em 1.25em .75em 3.4em !important;
+}
+
+body .ui-accordion .ui-accordion-header .fa {
+  left: 122px;
+}
+
+.ui-accordion .ui-accordion-content {
+  padding: 0 !important;
+  border: 0 !important;
+  background-color: #1f283d !important;
+
+}
+
+.ui-accordion .ui-accordion-content a {
+  display: block;
+  width: 150px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  color: #FFFFFF;
+}
+
+.ui-accordion .ui-accordion-content a:hover {
+  color: #FFFFFF !important;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+body .ui-accordion .ui-accordion-header {
+  background-color: #323a57;
+  color: #FFFFFF;
+}
+
+body .ui-accordion .ui-accordion-header:hover {
+  background-color: rgba(0, 0, 0, .5) !important;
+  color: #FFFFFF !important;
+}
+
+body .ui-accordion .ui-accordion-header:hover a {
+  color: #FFFFFF !important;
+}
+
+body .ui-accordion .ui-accordion-header a {
+  color: #FFFFFF;
+}
+
+body .ui-accordion .ui-accordion-header.ui-state-active {
+  background-color: #323a57;
+  color: #FFFFFF;
+}
+
+/*menu   end*/
+
+/*  这里 将  td  都居中了 */
+td {
+  text-align: center;
+}
+
+.td-left td {
+  text-align: left;
+}
+
+/*表格中img尺寸*/
+.table-img {
+  width: 160px;
+  height: 80px;
+  background-color: #FFFFFF;
+}
+
+/*搜索区域*/
+.search-area {
+  padding: 0px 15px 5px 15px;
+  background-color: #FFFFFF;
+}
+
+.search-area .label {
+  width: 64px;
+  display: inline-block;
+}
+
+.search-area .width {
+  width: 271px;
+}
+
+.search-area .seach-butotn-box {
+  width: 300px;
+}
+
+/*操作区域*/
+.operation-area {
+  padding: 11px 15px 0 0.5rem;
+  margin-bottom: 15px;
+}
+
+/*tr*/
+tr:hover {
+  background-color: #EFF2F7 !important;
+}
+
+/*td颜色*/
+th {
+  color: #1f2d3d !important;
+  border-color: #dfe6ec !important;
+  background-color: #eef1f6 !important;
+  font-weight: 700 !important;
+}
+
+td {
+  border-color: #dfe6ec !important;
+  color: #466070 !important;
+}
+
+.button-s span {
+  padding: 0.25em !important;
+}
+
+.link-a {
+  color: #2bc0ec !important;
+  text-decoration: underline;
+}
+
+.link-a:hover {
+  text-decoration: underline !important;
+}
+
+.dropdownerror {
+  border-color: #ff4949 !important;
+}
+
+#handle-button .ui-button-text-only .ui-button-text {
+  padding: 1px 3px !important;
+}
+
+
+/*分页 box 样式*/
+.paginator-box {
+  position: relative;
+}
+
+.paginator-goto {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  margin-left: 200px;
+}
+
+.paginator-goto input {
+  width: 29px;
+}
+
+/*分页 box 样式 end*/
+
+/*dialog*/
+.dialog-footer {
+  text-align: right;
+  padding: 10px 0px 0 0;
+}
+
+.dialog-content .input {
+  width: 100%;
+}
+
+.ui-g-padding0 .ui-g-1, .ui-g-padding0 .ui-g-2, .ui-g-padding0 .ui-g-3, .ui-g-padding0 .ui-g-4,
+.ui-g-padding0 .ui-g-5, .ui-g-padding0 .ui-g-6, .ui-g-padding0 .ui-g-7, .ui-g-padding0 .ui-g-8,
+.ui-g-padding0 .ui-g-9, .ui-g-padding0 .ui-g-10, .ui-g-padding0 .ui-g-11, .ui-g-padding0 .ui-g-12 {
+  padding: 0;
+}
+
+
+/*dialog-content  中下拉选择超出显示*/
+.dialog-content-inherit .ui-dialog-content {
+  overflow: inherit;
+}
+
+.high-td td {
+  height: 90px !important;
+}
+.none-padding-td td{
+  padding: 0 !important;
+}

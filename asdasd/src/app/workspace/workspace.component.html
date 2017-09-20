@@ -1,0 +1,74 @@
+<my-gotop></my-gotop>
+<p-growl [(value)]="msgs" [sticky]="true"></p-growl>
+
+<div class="header">
+  <ul class="header-left-ul">
+    <li class="header-li">
+      <a href="https://angular.cn/docs/ts/latest/quickstart.html" target="_blank">angular官网</a>
+    </li>
+    <li class="header-li">
+      <a href="https://www.primefaces.org/primeng/#/" target="_blank">primeng官网</a>
+    </li>
+    <li class="header-li">
+      <a href="https://www.primefaces.org/primeng/#/" target="_blank">primeng源码</a>
+    </li>
+    <li class="header-li">
+      <a href="https://github.com/AngularClass/awesome-angular" target="_blank">awesome</a>
+    </li>
+    <li class="header-li">
+      <a href="https://www.tslang.cn/docs/tutorial.html" target="_blank">TS中文</a>
+    </li>
+    <li class="header-li">
+      <a href="http://git.oschina.net/mumu-osc/NiceFish" target="_blank">NiceFish</a>
+    </li>
+    <li class="header-li">
+      <a href="https://github.com/angular/angular-cli" target="_blank">@angular/cli</a>
+    </li>
+    <li class="header-li">
+      <a href="http://www.smartisan.com/#/" target="_blank">ng4开发的网站</a>
+    </li>
+
+  </ul>
+  <ul style="float: right">
+    <li class="header-li">
+      <a>
+        <my-information number="{{informationNumber}}"></my-information>
+      </a>
+    </li>
+    <li class="header-li">
+      <a style="width: 150px;overflow: hidden;">{{realname}}</a>
+    </li>
+    <li class="header-li" style="width: 150px" >
+      <a class="fa fa-sign-out" (click)="loginOut()"></a>
+    </li>
+  </ul>
+</div>
+
+<div class="menu" [@menuState]="state">
+  <span class="text-error">{{menumsg}}</span>
+  <span class="fa fa-bars bars" (click)="changeMenuWidth()"></span>
+  <p-accordion>
+    <p-accordionTab *ngFor="let item of menus ;let i=index;" [selected]="i == 0">
+      <p-header>
+        <i class="item-url fa" [ngClass]="item.icon" [@imgState]="state"></i>
+        <span>{{item.name}}</span>
+      </p-header>
+      <ul>
+        <div *ngIf="!pTooltipIf">
+          <li *ngFor="let children of item.children"><a routerLink="{{children.link}}" routerLinkActive='active-link'>{{children.name}}</a>
+          </li>
+        </div>
+        <div *ngIf="pTooltipIf">
+          <li *ngFor="let children of item.children"><a routerLink="{{children.link}}" routerLinkActive='active-link'
+                                                        pTooltip="{{children.name}}"></a>
+          </li>
+        </div>
+      </ul>
+    </p-accordionTab>
+  </p-accordion>
+</div>
+
+
+<div class="router" [@routerState]="state">
+  <router-outlet></router-outlet>
+</div>
