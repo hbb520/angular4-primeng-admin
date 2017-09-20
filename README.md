@@ -62,6 +62,11 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 # 关于
 
+## 更新记录
+2017/09/20
+1,更新cli版本以及primeng版本
+2,制作一个自己的皮肤
+
 大家若果感觉有帮助,可以帮忙点个star, O(∩_∩)O~~~ ,我会继续更新的
 
 primeng 的群  163085042  欢迎大家来一起学习,我是个小白,我会积极回答大家的问题,一起学习ng以及primeng的 O(∩_∩)O~~
