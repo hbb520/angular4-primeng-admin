@@ -1,41 +1,58 @@
 
-.typefileinput input {
-  width: 200px;
-  background-color: #2d98ce;
-}
-
 .upload-button {
-  width: 300px;
-  display: block;
-  margin: 10px;
-  border-radius: 5px;
-  background: #02baf2;
-  outline: none;
-  font-size: 18px;
-  text-align: center;
-  padding: 10px 30px;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
+  border-color: #c4c4c4;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 4px;
   color: #fff;
-  border: none;
-  font-weight: 200;
-  transition: all .25s linear;
+  background-color: #20a0ff;
+  border-color: #20a0ff;
 }
 
 .upload-button input {
   display: none;
 }
 
+.upload-file {
+  margin: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.upload-file p {
+  padding: 8px 5px;
+}
+
+.upload-file:hover {
+  background-color: #eef1f6;
+}
+
+.upload-file:hover .delete-file {
+  display: block;
+}
+
 .progress-bar-container {
   width: 100%;
-  height: 40px;
-  border-radius: 10px;
-  background: #fff;
-  margin: 10px 0;
+  height: 6px;
+  border-radius: 6px;
+  background: #e4e8f1;
+  margin: 2px 0;
   position: relative;
-  border: 1px dashed #02baf2;
   color: #364347;
   font-size: 14px;
-  line-height: 40px;
+  line-height: 6px;
 }
 
 .progress-bar-container span {
@@ -43,60 +60,45 @@
 }
 
 .progress-bar-container .bar {
-  opacity: 0.5;
   z-index: 1;
   padding: 0;
   margin: 0;
-  border-radius: 10px;
+  border-radius: 6px;
   position: absolute;
   top: 0;
   left: 0;
-  height: 38px;
-  background: #c00;
-  text-align: right;
+  height: 6px;
+  background: #ff4949;
 }
 
 .progress-bar-container .bar .green {
-  background-color: #4cae4c !important;
+  background-color: #13ce66 !important;
   color: #ffffff !important;
 }
 
-.fa-download {
-  font-size: 25px;
+.delete-file {
+  position: absolute;
+  right: 26px;
+  top: 11px;
+  font-size: 14px;
   cursor: pointer;
-  margin-left: 66px;
-  background-color: #ffffff;
+  color: #ff4949;
   display: none;
+}
+
+.success-i {
   position: absolute;
-  top: 0px;
-  left: 50%;
-  padding: 5px;
-}
-
-.fa-download:hover {
-  display: inline-block;
-}
-
-.img-box {
-  width: 100%;
-  height: 100px;
-  position: relative;
-}
-
-.moduleimg {
+  right: 5px;
+  top: 11px;
+  font-size: 14px;
   cursor: pointer;
+  color: #13ce66;
 }
-
-.materialunits {
+.error-i{
   position: absolute;
-  top: 400px;
-  left: 513px;
-}
-
-.shanchu {
-  position: absolute;
-  right: -40px;
-  top: 5px;
-  font-size: 24px;
+  right: 5px;
+  top: 11px;
+  font-size: 14px;
   cursor: pointer;
+  color: #ff4949;
 }

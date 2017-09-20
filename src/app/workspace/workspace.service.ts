@@ -14,7 +14,7 @@ export class WorkspaceService {
   //获取菜单
   private menuUrl = 'assets/data/user-menu.json';
 
-  getMenu(): Promise<Car[]> {
+  getMenu(): Promise<any[]> {
     let url = `${this.menuUrl}`;
     return this.http.get(url)
       .toPromise()

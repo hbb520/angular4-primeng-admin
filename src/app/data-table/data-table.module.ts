@@ -25,7 +25,7 @@ import {
   ConfirmDialogModule,//删除弹出框
   InputTextareaModule,// InputTextarea
   OverlayPanelModule,
-  TooltipModule,
+  TooltipModule, EditorModule,
 } from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
@@ -57,9 +57,9 @@ import {Details} from './details';
     PaginatorModule,
     TooltipModule,
     OverlayPanelModule,
-
+    InputTextareaModule,
     MyBreadcrumbModule,
-
+    EditorModule,
 
     RouterModule.forChild([
       { path:'',component:DataTableComponent},

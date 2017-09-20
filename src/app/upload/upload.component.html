@@ -1,36 +1,43 @@
 <my-breadcrumb name1="上传" name2="上传"></my-breadcrumb>
+<p-growl [(value)]="msgs"></p-growl>
+<button pButton type="button" label="上传所有" class="btn-info FR" (click)="uploadShow()"></button>
+<br>
 
+<p-dialog header="上传" [(visible)]="dialog" width="600" [responsive]="true" [modal]="true"
+          (onHide)="dialogHide($event)" [contentStyle]="{'overflow':'visible'}" positionTop="150">
+  <div [hidden]="!uploadNgIf">
+    <div class="dialog-content">
+      <label class="upload-button">
+        <input type="file" accept="image/gif, image/jpeg,image/png" ngFileSelect
+               (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+        选择图片
+      </label>
 
-<div class="ui-g " id="cadId">
-  <div class="ui-g-12  typefileinput ">
-    <label class="upload-button">
-      <input type="file" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput"
-             multiple>
-      请选择文件
-    </label>
-  </div>
-
-  <div class="ui-g-11">
-    <div class="upload-file" *ngFor="let f of files; let i = index;">
-      <div class="progress-bar-container">
-        <span>{{ f.name }}</span>
-        <div class="bar" [style.width]="f.progress.data.percentage + '%'"
-             [style.background-color]=" spanSuccee? 'green': 'red'">
-          <span *ngIf="spanSuccee" style="color: #ffffff">上传成功</span>
-          <span *ngIf="spanError" style="color: #ffffff">上传失败,服务器超时</span>
+      <div class="upload-file" *ngFor="let f of files; let i = index;">
+        <p class="file-name">{{ f.name }}</p>
+        <div class="progress-bar-container">
+          <div class="bar" [style.width]="f.progress.data.percentage + '%'"
+               [style.background-color]=" f?.responseStatus == 201? '#13ce66': '#ff4949'">
+          </div>
         </div>
-        <span class="fa fa-trash shanchu" (click)="removeFile(f.id)"></span>
+        <span class="fa fa-trash delete-file" (click)="removeFile(f.id)"></span>
+        <i class="fa fa-check-circle success-i" aria-hidden="true" *ngIf="f?.responseStatus == 200"></i>
       </div>
+
+
+      <p-footer>
+        <div class="dialog-footer" style="padding: 20px 0 28px 0">
+          <button pButton type="button" label="上传所有" class="btn-info FR" (click)="startUpload()"
+                  *ngIf="files.length"></button>
+          <button pButton type="button" label="取消" class="ui-button-secondary FR" (click)="dialog=false"></button>
+        </div>
+      </p-footer>
     </div>
   </div>
-</div>
+
+</p-dialog>
 
 
-<button type="button" pButton icon="fa-upload" type="submit" label="上传CAD并保存" (click)="startUpload()"
-        *ngIf="files.length"></button>
-
-
-<br>
 展示 和 primeng 不一样的上传 (带请求头);样式大家自己可以组装一下;他的官网样式也不是很好
 
 

@@ -7,6 +7,7 @@
   min-width: 1000px;
   min-height: 500px;
   overflow: hidden;
+  padding-bottom: 110px;
 }
 
 .item-url {
@@ -31,52 +32,38 @@
 }
 
 .header {
-  background-color: #0099E6;
-  padding: 0px 20px;
-  height: 60px;
-  color: #FFFFFF;
   position: fixed;
   top: 0;
-  z-index: 900;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 20px;
   width: 100%;
-  min-width: 1165px;
+  height: 64px;
+  justify-content: space-between;
+  background-color: #108ee9;
+  box-shadow: 0 1px 10px rgba(0,0,0,.2);
+  z-index: 900;
 }
-
-.header .header-li {
-  float: left;
-}
-
-.header .header-li-li {
-  background-color: #0099E6;
-}
-
-.header-something-ul {
-  display: none;
-}
-
-.header-something:hover .header-something-ul {
-  display: block;
-}
-
-.header a {
+.header-li{
   display: inline-block;
-  color: #FFFFFF;
-  width: 100px;
-  line-height: 60px;
+  vertical-align: middle;
+}
+.header-item{
+  display: block;
+  color: #fff;
+  border-radius: 2px;
   text-align: center;
+  line-height: 100%;
+  padding: 13px 2px;
+  min-width: 50px;
+  transition: background-color .3s;
   cursor: pointer;
 }
-
-.header a:hover {
-  background-color: #5bc0de;
-}
-
-.header-left-ul {
-  display: none;
-}
-
-@media screen and (min-width: 1600px) {
-  .header-left-ul {
-    display: block;
-  }
+.header-item:hover{
+  background-color: #1565E9;
 }

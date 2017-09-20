@@ -2,46 +2,36 @@
 <p-growl [(value)]="msgs" [sticky]="true"></p-growl>
 
 <div class="header">
-  <ul class="header-left-ul">
-    <li class="header-li">
-      <a href="https://angular.cn/docs/ts/latest/quickstart.html" target="_blank">angular官网</a>
-    </li>
-    <li class="header-li">
-      <a href="https://www.primefaces.org/primeng/#/" target="_blank">primeng官网</a>
-    </li>
-    <li class="header-li">
-      <a href="https://www.primefaces.org/primeng/#/" target="_blank">primeng源码</a>
-    </li>
-    <li class="header-li">
-      <a href="https://github.com/AngularClass/awesome-angular" target="_blank">awesome</a>
-    </li>
-    <li class="header-li">
-      <a href="https://www.tslang.cn/docs/tutorial.html" target="_blank">TS中文</a>
-    </li>
-    <li class="header-li">
-      <a href="http://git.oschina.net/mumu-osc/NiceFish" target="_blank">NiceFish</a>
-    </li>
-    <li class="header-li">
-      <a href="https://github.com/angular/angular-cli" target="_blank">@angular/cli</a>
-    </li>
-    <li class="header-li">
-      <a href="http://www.smartisan.com/#/" target="_blank">ng4开发的网站</a>
-    </li>
+  <div>
+    <a href="https://angular.cn/guide/glossary">
+      <img src="./favicon.ico" alt="" width="40">
+    </a>
+    <a href="https://www.primefaces.org/primeng">
+      <img src="./assets/image/logo.png" alt="" width="180">
+    </a>
+  </div>
+  <div style="margin-right: 40px">
+    <ul>
+      <li class="header-li">
+        <a class="header-item" href="https://github.com/hbb520/angular4-primeng-admin" target="_blank">
+          <i class="fa fa-github"></i>
 
-  </ul>
-  <ul style="float: right">
-    <li class="header-li">
-      <a>
-        <my-information number="{{informationNumber}}"></my-information>
-      </a>
-    </li>
-    <li class="header-li">
-      <a style="width: 150px;overflow: hidden;">{{realname}}</a>
-    </li>
-    <li class="header-li" style="width: 150px" >
-      <a class="fa fa-sign-out" (click)="loginOut()"></a>
-    </li>
-  </ul>
+        </a>
+      </li>
+      <li class="header-li">
+        <a class="header-item">
+          <i class="fa fa-commenting"></i>
+
+        </a>
+      </li>
+      <li class="header-li">
+        <a class="header-item" (click)="loginOut()">
+          <i class="fa fa-sign-out"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
 </div>
 
 <div class="menu" [@menuState]="state">
