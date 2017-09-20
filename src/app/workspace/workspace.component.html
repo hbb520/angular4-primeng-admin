@@ -2,44 +2,25 @@
 <p-growl [(value)]="msgs" [sticky]="true"></p-growl>
 
 <div class="header">
-  <ul class="header-left-ul">
+  <div>
+    <a href="https://angular.cn" class="mr5"><img src="favicon.ico" alt="" width="42" ></a>
+    <a href="https://www.primefaces.org/primeng/#/"><img src="./assets/image/logo.png" alt="" width="180"></a>
+  </div>
+  <ul class="header-ul">
     <li class="header-li">
-      <a href="https://angular.cn/docs/ts/latest/quickstart.html" target="_blank">angular官网</a>
-    </li>
-    <li class="header-li">
-      <a href="https://www.primefaces.org/primeng/#/" target="_blank">primeng官网</a>
-    </li>
-    <li class="header-li">
-      <a href="https://www.primefaces.org/primeng/#/" target="_blank">primeng源码</a>
-    </li>
-    <li class="header-li">
-      <a href="https://github.com/AngularClass/awesome-angular" target="_blank">awesome</a>
-    </li>
-    <li class="header-li">
-      <a href="https://www.tslang.cn/docs/tutorial.html" target="_blank">TS中文</a>
-    </li>
-    <li class="header-li">
-      <a href="http://git.oschina.net/mumu-osc/NiceFish" target="_blank">NiceFish</a>
-    </li>
-    <li class="header-li">
-      <a href="https://github.com/angular/angular-cli" target="_blank">@angular/cli</a>
-    </li>
-    <li class="header-li">
-      <a href="http://www.smartisan.com/#/" target="_blank">ng4开发的网站</a>
-    </li>
-
-  </ul>
-  <ul style="float: right">
-    <li class="header-li">
-      <a>
-        <my-information number="{{informationNumber}}"></my-information>
+      <a href="https://github.com/hbb520/angular4-primeng-admin" class="header-item" >
+        <i class="fa fa-github"></i>
       </a>
     </li>
     <li class="header-li">
-      <a style="width: 150px;overflow: hidden;">{{realname}}</a>
+      <a href="" class="header-item">
+        <i class="fa fa-commenting"></i>
+      </a>
     </li>
-    <li class="header-li" style="width: 150px" >
-      <a class="fa fa-sign-out" (click)="loginOut()"></a>
+    <li class="header-li">
+      <a href="" class="header-item">
+        <i class="fa fa-sign-out" (click)="loginOut()"></i>
+      </a>
     </li>
   </ul>
 </div>

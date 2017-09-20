@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "angular4-primeng-admin"
+    "name": "angular4-primeng"
   },
   "apps": [
     {
@@ -19,15 +19,19 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/primeng/resources/themes/omega/theme.css",
-        "../node_modules/primeng/resources/primeng.min.css",
-        "../node_modules/nprogress/nprogress.css",
+        "./assets/resources/themes/my-theme/theme.css",
+        "./assets/resources/primeng.css",
         "../node_modules/normalize.css/normalize.css",
         "assets/css/font-awesome.min.css",
+        "../node_modules/quill/dist/quill.core.css",
+        "../node_modules/quill/dist/quill.snow.css",
         "theme-element.css",
         "styles.css"
       ],
-      "scripts": ["../node_modules/chart.js/dist/Chart.js"],
+      "scripts": [
+        "../node_modules/chart.js/dist/Chart.js",
+        "../node_modules/quill/dist/quill.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

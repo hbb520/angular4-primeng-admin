@@ -41,9 +41,6 @@ button {
   font-family: "Microsoft Yahei";
 }
 
-button {
-  padding: 0 !important;
-}
 
 div {
   display: block;
@@ -319,19 +316,6 @@ tr:hover {
   background-color: #EFF2F7 !important;
 }
 
-/*td颜色*/
-th {
-  color: #1f2d3d !important;
-  border-color: #dfe6ec !important;
-  background-color: #eef1f6 !important;
-  font-weight: 700 !important;
-}
-
-td {
-  border-color: #dfe6ec !important;
-  color: #466070 !important;
-}
-
 .button-s span {
   padding: 0.25em !important;
 }
@@ -378,7 +362,7 @@ td {
   padding: 10px 0px 0 0;
 }
 
-.dialog-content .input {
+.dialog-content input {
   width: 100%;
 }
 

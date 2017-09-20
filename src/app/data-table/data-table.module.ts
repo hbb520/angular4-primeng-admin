@@ -26,6 +26,7 @@ import {
   InputTextareaModule,// InputTextarea
   OverlayPanelModule,
   TooltipModule,
+  EditorModule,
 } from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
@@ -57,7 +58,8 @@ import {Details} from './details';
     PaginatorModule,
     TooltipModule,
     OverlayPanelModule,
-
+    InputTextareaModule,
+    EditorModule,
     MyBreadcrumbModule,
 
 
