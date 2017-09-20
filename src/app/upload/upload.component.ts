@@ -12,23 +12,23 @@ interface FormData {
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-  
+
   constructor() {
     this.formData = {
       concurrency: 0,
       autoUpload: false,
       verbose: true
     };
-    
+
     this.files = [];
     this.uploadInput = new EventEmitter<UploadInput>();
     this.humanizeBytes = humanizeBytes;
   }
-  
+
   ngOnInit() {
   }
   
-  
+
   spanSuccee: boolean = false;
   spanError: boolean = false;
   uploading: boolean = true;
@@ -37,7 +37,7 @@ export class UploadComponent implements OnInit {
   uploadInput: EventEmitter<UploadInput>;
   humanizeBytes: Function;
   dragOver: boolean;
-  
+
   onUploadOutput(output: UploadOutput): void {
     if (output.type === 'done') {
       if (!this.files[0].response) {
@@ -46,18 +46,18 @@ export class UploadComponent implements OnInit {
       } else {
         this.spanSuccee = true;
         this.spanError = false;
-        
+
         //
         // if (this.files) {
         //   for (let i = 0; i <= this.files.length; i++) {
         //     this.removeFile(this.files[i].id);
         //   }
         // }
-        
+
       }
     }
     if (output.type === 'allAddedToQueue') {
-    
+
     } else if (output.type === 'addedToQueue') {
       this.spanSuccee = false;
       this.spanError = false;
@@ -75,7 +75,7 @@ export class UploadComponent implements OnInit {
       this.dragOver = false;
     }
   }
-  
+
   startUpload(): void {
     let userToken = sessionStorage.getItem('userToken');
     const event: UploadInput = {
@@ -88,8 +88,8 @@ export class UploadComponent implements OnInit {
     };
     this.uploadInput.emit(event);
   }
-  
-  
+
+
   removeFile(id: string): void {
     this.uploadInput.emit({type: 'remove', id: id});
   }
