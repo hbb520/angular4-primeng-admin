@@ -44,10 +44,10 @@ import {WorkspaceService} from './workspace.service';
   ]
 })
 export class WorkspaceComponent implements OnInit {
-  
+
   constructor(private myService: WorkspaceService, public router: Router) {
   };
-  
+
   ngOnInit() {
     this.getMenu();
     if (sessionStorage.getItem('userToken')) {
@@ -56,10 +56,10 @@ export class WorkspaceComponent implements OnInit {
       this.router.navigateByUrl('login');
     }
   }
-  
+
   /*************************  ********************************/
   informationNumber: any = 18;                      //头部我的消息数量
-  menus: Car[];                                    //菜单
+  menus: any[];                                    //菜单
   msgs: Message[] = [];                            //消息
   state: string = 'inactive';                      //菜单状态
   pTooltipIf: boolean = false;                     //pTooltipIf状态
@@ -68,7 +68,7 @@ export class WorkspaceComponent implements OnInit {
   realname: string;                                  //头部账号名字
   menumsg: string;
 
-  
+
   /************************* 获取菜单 ********************************/
   getMenu() {
     if (sessionStorage.getItem('menu111')) {
@@ -88,9 +88,9 @@ export class WorkspaceComponent implements OnInit {
           }
         });
     }
-    
+
   }
-  
+
   /************************* 改变左侧菜单宽度 ********************************/
   changeMenuWidth() {
     this.state = (this.state === 'active' ? 'inactive' : 'active');
@@ -108,7 +108,7 @@ export class WorkspaceComponent implements OnInit {
       this.pTooltipIf = false;
     }
   }
-  
+
   /************************* 退出登录 ********************************/
   loginOut() {
     sessionStorage.removeItem('userToken');
