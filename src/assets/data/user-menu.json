@@ -1,0 +1,92 @@
+[
+  {
+    "name": "数据管理",
+    "icon": "fa-database",
+    "children": [
+      {
+        "name": "data-table",
+        "link": "data-table"
+      },
+      {
+        "name": "primeng验证",
+        "link": "primeng-form"
+      },
+      {
+        "name": "表单验证",
+        "link": "ng-form"
+      },
+      {
+        "name": "input",
+        "link": "input"
+      },
+      {
+        "name": "表格多行",
+        "link": "data-table2"
+      },
+      {
+        "name": "图标",
+        "link": "icon"
+      },
+      {
+        "name": "颜色",
+        "link": "color"
+      },
+      {
+        "name": "省级联动",
+        "link": "citys"
+      }
+    ]
+  },
+  {
+    "name": "charts",
+    "icon": "fa-line-chart",
+    "children": [
+      {
+        "name": "charts",
+        "link": "charts"
+      }
+    ]
+  },
+  {
+    "name": "tree",
+    "icon": "fa-tree",
+    "children": [
+      {
+        "name": "tree",
+        "link": "tree"
+      }
+    ]
+  },
+  {
+    "name": "上传",
+    "icon": "fa-upload",
+    "children": [
+      {
+        "name": "上传",
+        "link": "upload"
+      }
+    ]
+  },
+  {
+    "name": "组件",
+    "icon": "fa-building",
+    "children": [
+      {
+        "name": "面包屑",
+        "link": "my-breadcrumb-demo"
+      },
+      {
+        "name": "开关",
+        "link": "my-switch-demo"
+      },
+      {
+        "name": "标签",
+        "link": "my-tag-demo"
+      },
+      {
+        "name": "加载",
+        "link": "my-loading-demo"
+      }
+    ]
+  }
+]

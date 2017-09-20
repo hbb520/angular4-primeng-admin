@@ -1,0 +1,22 @@
+.div{
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  background-color: #4db3ff;
+}
+.div-span{
+  display: inline-block;
+  background-color: red;
+  color: #ffffff;
+  width: 150px;
+  height: 50px;
+  left: 92px;
+  top: 10px;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Safari and Chrome */
+}

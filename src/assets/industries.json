@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "creatorId": null,
+    "createTime": null,
+    "modifyTime": null,
+    "name": "房产"
+  },
+  {
+    "id": 2,
+    "creatorId": null,
+    "createTime": null,
+    "modifyTime": null,
+    "name": "家具"
+  },
+  {
+    "id": 3,
+    "creatorId": null,
+    "createTime": null,
+    "modifyTime": null,
+    "name": "建材"
+  },
+  {
+    "id": 4,
+    "creatorId": null,
+    "createTime": null,
+    "modifyTime": null,
+    "name": "其它"
+  },
+  {
+    "id": 5,
+    "creatorId": null,
+    "createTime": null,
+    "modifyTime": null,
+    "name": "建筑"
+  },
+  {
+    "id": 6,
+    "creatorId": null,
+    "createTime": null,
+    "modifyTime": null,
+    "name": "云舍易家"
+  }
+]

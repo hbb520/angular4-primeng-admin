@@ -1,0 +1,102 @@
+
+.typefileinput input {
+  width: 200px;
+  background-color: #2d98ce;
+}
+
+.upload-button {
+  width: 300px;
+  display: block;
+  margin: 10px;
+  border-radius: 5px;
+  background: #02baf2;
+  outline: none;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px 30px;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  font-weight: 200;
+  transition: all .25s linear;
+}
+
+.upload-button input {
+  display: none;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  background: #fff;
+  margin: 10px 0;
+  position: relative;
+  border: 1px dashed #02baf2;
+  color: #364347;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.progress-bar-container span {
+  z-index: 2;
+}
+
+.progress-bar-container .bar {
+  opacity: 0.5;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 38px;
+  background: #c00;
+  text-align: right;
+}
+
+.progress-bar-container .bar .green {
+  background-color: #4cae4c !important;
+  color: #ffffff !important;
+}
+
+.fa-download {
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: 66px;
+  background-color: #ffffff;
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  padding: 5px;
+}
+
+.fa-download:hover {
+  display: inline-block;
+}
+
+.img-box {
+  width: 100%;
+  height: 100px;
+  position: relative;
+}
+
+.moduleimg {
+  cursor: pointer;
+}
+
+.materialunits {
+  position: absolute;
+  top: 400px;
+  left: 513px;
+}
+
+.shanchu {
+  position: absolute;
+  right: -40px;
+  top: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}

@@ -1,0 +1,29 @@
+<p-growl [(value)]="msgs" [sticky]="true"></p-growl>
+
+<div [@pageAnimation] = "'in'">
+  <my-breadcrumb name1="input" name2="input"></my-breadcrumb>
+
+    <p-panel header="面板">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            First Name *:
+          </div>
+          <div class="ui-grid-col-6">
+            <p-calendar  [locale]="China" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+          </div>
+
+        </div>
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2"></div>
+          <div class="ui-grid-col-6">
+            <button pButton type="submit" label="Submit" ></button>
+          </div>
+          <div class="ui-grid-col-4"></div>
+        </div>
+      </div>
+    </p-panel>
+
+</div>
+

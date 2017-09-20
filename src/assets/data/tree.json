@@ -1,0 +1,45 @@
+[
+  {
+    "data": {
+      "name": "Documents",
+      "id": "75kb",
+      "type": "Folder"
+    },
+    "children": [
+      {
+        "data": {
+          "name": "Work",
+          "id": "55kb",
+          "type": "Folder"
+        },
+        "children": [
+          {
+            "data": {
+              "name": "Expenses.doc",
+              "id": "30kb",
+              "type": "Document"
+            },
+            "children": [
+              {
+                "data": {
+                  "name": "Expenses.doc",
+                  "id": "30kb",
+                  "type": "Document"
+                },
+                "children": [
+                  {
+                    "data": {
+                      "name": "Expenses.doc",
+                      "id": "30kb",
+                      "type": "Document"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
