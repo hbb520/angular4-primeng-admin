@@ -14,7 +14,7 @@
 
 5,项目展示了 primeng 的引用 以及 他的常用组件的用法
 
-6,项目展示了 primeng 的 皮肤制作
+6,项目展示了 primeng 的 皮肤制作(都说要接近国情)
 
 7,当你用ng4开发后台的时候,不知道该选用什么UI,那么不妨看看 [primeNg](https://www.primefaces.org/primeng/#/)
 
