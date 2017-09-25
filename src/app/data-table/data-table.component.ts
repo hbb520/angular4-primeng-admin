@@ -14,15 +14,15 @@ import {DataTableService} from './data-table.service';
 })
 export class DataTableComponent implements OnInit {
   constructor(private myService: DataTableService) {
-  
+
   }
-  
+
   ngOnInit() {
     this.getIndustries();
     this.getCitys();
     this.China = China;
   }
-  
+
   /************************* 定义********************************/
   msgs: Message[] = [];                                  //消息
   cars: Car;                                             // get获取数据 {}
@@ -31,7 +31,7 @@ export class DataTableComponent implements OnInit {
   totalCount: number = 0;                                //总条目数
   first: number = 0;                                     //初始时  分页 组件 停留的页数
   gotoPage: number = 1;                                  //前往页数
-  
+
   mySelection: Car[];                                    //选择
   mySelectionId: Car;                                    //选择的Id
   mySelectionObject: any;                                //选择时对象
@@ -42,7 +42,7 @@ export class DataTableComponent implements OnInit {
   deleteHtmlNgif: boolean = false;                       //删除dialog显示状态
   deleteAllHtmlNgif: boolean = false;                    //批量删除dialog显示状态
   deleteAllArrray: any[] = [];                           //批量删除数组
-  
+
   nameModel: any;                                        //品牌名称
   timeout: any;                                          //错误信息 msg 时间超时
   tag_state: string = 'active';                          //表格标签动画初始
@@ -63,7 +63,7 @@ export class DataTableComponent implements OnInit {
       .then(cars => {
           this.cars = cars;
           this.first = pageNo - 1;
-          
+
         }, error => console.log(error)
       )
       .then(
@@ -94,7 +94,7 @@ export class DataTableComponent implements OnInit {
         }
       );
   }
-  
+
   /************************* 分页函数 ********************************/
   paginate(event) {
     const num = event.page + 1;
@@ -102,7 +102,7 @@ export class DataTableComponent implements OnInit {
     this.tag_state = 'active';                                                                //我们想初始化表格里面的动画
     this.get(num);
   }
-  
+
   /************************* 前往页数 ********************************/
   blurGotoPage() {
     if (this.gotoPage > this.totalPages) {
@@ -110,7 +110,7 @@ export class DataTableComponent implements OnInit {
     }
     this.get(this.gotoPage);
   }
-  
+
   /************************* 行业数据 ********************************/
   getIndustries() {
     this.myService.getIndustries()
@@ -134,7 +134,7 @@ export class DataTableComponent implements OnInit {
         }
       );
   }
-  
+
   /************************* 添加 ********************************/
   addShow() {
     this.addHtmlNgif = true;
@@ -143,7 +143,7 @@ export class DataTableComponent implements OnInit {
       this.dialog = true;
     }, 1);
   }
-  
+
   /************************* 添加 ********************************/
   add() {
     let params = {
@@ -157,7 +157,7 @@ export class DataTableComponent implements OnInit {
         }, error => console.log(error)
       );
   }
-  
+
   /************************* 编辑 ********************************/
   editShow(car: Car) {
     this.editHtmlNgif = true;
@@ -169,7 +169,7 @@ export class DataTableComponent implements OnInit {
     this.mySelectionId = car.id;
     this.nameModel = car.name;                                                  //当然这里是应该进行http请求的
   }
-  
+
   edit() {
     let params = {
       'id': this.mySelectionId,
@@ -183,9 +183,9 @@ export class DataTableComponent implements OnInit {
       );
     this.get(this.first + 1);                                                       //我们希望当数据停留在这一页时,分页页码也停留在此页
   }
-  
+
   /************************* 删除 ********************************/
-  
+
   deleteShow(car: Car) {
     this.deleteHtmlNgif = true;
     this.dialogHeader = '删除';
@@ -195,7 +195,7 @@ export class DataTableComponent implements OnInit {
     this.mySelectionObject = car;
     this.deleteAllArrray = [car.id];
   }
-  
+
   delete() {
     this.myService.delete(this.deleteAllArrray)
       .then(res => {
@@ -205,7 +205,7 @@ export class DataTableComponent implements OnInit {
       );
     this.get(this.first + 1);
   }
-  
+
   /************************* 批量删除 ********************************/
   deleteAllShow() {
     console.log(this.mySelection);
@@ -227,7 +227,7 @@ export class DataTableComponent implements OnInit {
       this.msg(2, '请您至少勾选一条数据');
     }
   }
-  
+
   deleteAll() {
     this.myService.delete(this.deleteAllArrray)
       .then(res => {
@@ -237,7 +237,7 @@ export class DataTableComponent implements OnInit {
       );
     this.get(this.first + 1);
   }
-  
+
   /************************* 省级联动 ********************************/
   citys: any;                                             //省级 数据
   city1Array: any = [];
@@ -264,12 +264,12 @@ export class DataTableComponent implements OnInit {
                 value: i
               });
             }
-            
+
           }
         }
       );
   }
-  
+
   //省级 或 直辖市 级 下拉框change 事件
   city1onChange() {
     this.city2Array = [];
@@ -303,7 +303,7 @@ export class DataTableComponent implements OnInit {
       this.city3Array = [];
     }
   }
-  
+
   //第二个个下拉框change 事件
   city2onChange() {
     this.city3Array = [];
@@ -323,7 +323,7 @@ export class DataTableComponent implements OnInit {
       this.city3Disabled = false;
     }
   }
-  
+
   /************************* 信息返回函数 ********************************/
   msg(num, msg) {
     let type = 'info';
@@ -337,14 +337,8 @@ export class DataTableComponent implements OnInit {
       type = 'error';
     }
     this.msgs.push({severity: type, detail: msg});
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-    this.timeout = setTimeout(() => {
-      this.msgs = [];
-    }, 3000);
   }
-  
+
   /************************* 当Dialog关闭时回调 ********************************/
   dialogHide(event) {
     this.addHtmlNgif = false;
@@ -353,5 +347,5 @@ export class DataTableComponent implements OnInit {
     this.deleteAllHtmlNgif = false;
     this.mySelectionObject = null;
   }
-  
+
 }
