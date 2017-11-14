@@ -20,15 +20,15 @@
 
 项目目前基于
 
-[Angular4](https://angular.cn/docs/ts/latest/quickstart.html) [Angular CLI]
+[Angular5](https://angular.cn/docs/ts/latest/quickstart.html) [Angular CLI]
 
 [Angular CLI](https://cli.angular.io/) [Angular CLI]
 
-[primeNg](https://www.primefaces.org/primeng/#/) version ` ^4.1.0-rc.1`.[primeNg]
+[primeNg](https://www.primefaces.org/primeng/#/) version ` ^5`.[primeNg]
 
 [js-base64](https://github.com/dankogai/js-base64) version `2.1.5`.[js-base64]
 
-[ngx-uploader](https://github.com/jkuri/ngx-uploader) version `^3.0.5`.[ngx-uploader]目前没写
+[ngx-uploader](https://github.com/jkuri/ngx-uploader) version `^3.0.5`.[ngx-uploader]
 
 [项目预览](http://1.myhbb.applinzi.com/dist1/index.html) version `1.1.0`.
 
