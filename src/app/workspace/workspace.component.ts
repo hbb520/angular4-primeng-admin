@@ -103,7 +103,7 @@ export class WorkspaceComponent implements OnInit {
       this.pTooltipIf = true;
     } else {
       for (let i = 0; i < fa.length; i++) {
-        fa[i].getElementsByTagName('span')[0].style.display = 'block';
+        fa[i].getElementsByTagName('span')[0].style.display = 'inline-block';
       }
       this.pTooltipIf = false;
     }

@@ -2,17 +2,16 @@
 .router {
   padding-top: 60px;
   padding-right: 15px;
-  margin-left: 165px;
+  margin-left: 185px;
   overflow-x: auto;
   min-width: 1000px;
   min-height: 500px;
-  overflow: hidden;
-  padding-bottom: 110px;
+  padding-bottom: 50px;
 }
 
 .item-url {
   position: absolute;
-  top: 13px;
+  top: 16px;
 }
 
 .bars {

@@ -1,0 +1,96 @@
+{
+  "pageNo": 1,
+  "pageSize": 20,
+  "totalCount": 4,
+  "data": [
+    {
+      "id": 46,
+      "deleted": false,
+      "createTime": 1489140107000,
+      "modifyTime": 1489140107000,
+      "categoryId": 14,
+      "status": "CHECK_PENDING",
+      "spaceAttributeRelationModels": [
+        {
+          "id": 6,
+          "deleted": null,
+          "createTime": null,
+          "modifyTime": null,
+          "spaceId": 46,
+          "attributeId": 5,
+          "description": "23",
+          "attributeName": "水化热",
+          "attributeCategoryName": "安全性",
+          "attributeDescription": "指物质与水化合时所放出的热。"
+        }
+      ],
+      "categoryName": "多功能房"
+    },
+    {
+      "id": 45,
+      "deleted": false,
+      "createTime": 1489140034000,
+      "modifyTime": 1489140034000,
+      "categoryId": 14,
+      "status": "CHECK_PENDING",
+      "spaceAttributeRelationModels": [
+        {
+          "id": 5,
+          "deleted": null,
+          "createTime": null,
+          "modifyTime": null,
+          "spaceId": 45,
+          "attributeId": 5,
+          "description": null,
+          "attributeName": "水化热",
+          "attributeCategoryName": "安全性",
+          "attributeDescription": "指物质与水化合时所放出的热。"
+        }
+      ],
+      "categoryName": "多功能房"
+    },
+    {
+      "id": 44,
+      "deleted": false,
+      "createTime": 1489139989000,
+      "modifyTime": 1489139989000,
+      "categoryId": 14,
+      "status": "CHECK_PENDING",
+      "spaceAttributeRelationModels": [
+        {
+          "id": 4,
+          "deleted": null,
+          "createTime": null,
+          "modifyTime": null,
+          "spaceId": 44,
+          "attributeId": 5,
+          "description": null,
+          "attributeName": "水化热",
+          "attributeCategoryName": "安全性",
+          "attributeDescription": "指物质与水化合时所放出的热。"
+        }
+      ],
+      "categoryName": "多功能房"
+    },
+    {
+      "id": 9,
+      "deleted": false,
+      "createTime": 1488183740000,
+      "modifyTime": 1488183740000,
+      "categoryId": 14,
+      "status": "CHECK_PENDING",
+      "spaceAttributeRelationModels": [],
+      "categoryName": "多功能房"
+    }
+  ],
+  "spaceCategoryIds": null,
+  "attributeCategoryIds": null,
+  "modifyTime": null,
+  "deleted": null,
+  "creatorIds": null,
+  "totalPage": 1,
+  "firstPage": true,
+  "lastPage": true,
+  "prePage": 1,
+  "nextPage": 1
+}
