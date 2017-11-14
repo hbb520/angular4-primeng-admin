@@ -2,8 +2,49 @@
   <my-breadcrumb name1="data-table" name2="data-table" name3="详情"></my-breadcrumb>
 
   <h1>
-    这里取到路由过来的参数(id)  <span class="text-error">{{params.value.id}}</span> 然后你懂得
+    这里取到路由过来的参数(id) <span class="text-error">{{params.value.id}}</span> 然后你懂得
   </h1>
-  <p-editor [(ngModel)]="text" [style]="{'height':'320px'}"></p-editor>
+  <p-editor [(ngModel)]="text" [style]="{'height':'320px'}" Font >
+    <p-header>
+        <span class="ql-formats">
+              <button class="ql-bold">Bold</button><!--控制粗细-->
+              <button class="ql-italic">Italic</button>    <!--控制切斜-->
+              <button class="ql-underline">下划线</button>    <!--下划线-->
+              <button class="ql-link">link</button>    <!--链接-->
+              <button class="ql-list" value="ordered"></button><!--序号-->
+              <button class="ql-list" value="bullet"></button>    <!--点-->
+              <button class="ql-list" value="ql-blockquote"></button>    <!--引用-->
+              <button class="ql-code-block"></button>    <!--代码-->
+              <button class="ql-image" value="bullet"></button>    <!--图片-->
+          <select class="ql-color">
+              <option selected></option>
+              <option value="red"></option>
+              <option value="orange"></option>
+              <option value="yellow"></option>
+              <option value="green"></option>
+              <option value="blue"></option>
+              <option value="purple"></option>
+            </select>
+          <select class="ql-background">
+              <option selected></option>
+              <option value="red"></option>
+              <option value="orange"></option>
+              <option value="yellow"></option>
+              <option value="green"></option>
+              <option value="blue"></option>
+              <option value="purple"></option>
+            </select>
+           <select class="ql-font">
+              <option selected></option>
+              <option value="red"></option>
+              <option value="orange"></option>
+              <option value="yellow"></option>
+              <option value="green"></option>
+              <option value="blue"></option>
+              <option value="purple"></option>
+            </select>
+        </span>
+    </p-header>
+  </p-editor>
   {{text}}
 </div>

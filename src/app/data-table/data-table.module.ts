@@ -32,6 +32,7 @@ import {HttpModule, JsonpModule} from "@angular/http";
 import {MyBreadcrumbModule} from "../components/my-breadcrumb/my-breadcrumb";
 import {DataTableComponent} from "./data-table.component";
 import {Details} from './details';
+import {DataTableAdd} from './add';
 
 
 
@@ -39,8 +40,7 @@ import {Details} from './details';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
-    JsonpModule,
+
     CommonModule,
 
     ButtonModule,
@@ -64,9 +64,10 @@ import {Details} from './details';
     RouterModule.forChild([
       { path:'',component:DataTableComponent},
       { path: 'details/:id',  component:Details },
+      { path: 'add',  component:DataTableAdd },
     ])
   ],
-  declarations: [DataTableComponent,Details],
+  declarations: [DataTableComponent,Details,DataTableAdd],
   exports:[RouterModule]
 })
 export class MyDataTableModule { }

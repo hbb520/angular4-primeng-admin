@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "angular4-primeng"
+    "name": "angular5-primeng"
   },
   "apps": [
     {
@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "./assets/resources/themes/my-theme/theme.css",
+        "./assets/resources/themes/my-flick/theme.css",
         "./assets/resources/primeng.css",
         "../node_modules/normalize.css/normalize.css",
         "assets/css/font-awesome.min.css",

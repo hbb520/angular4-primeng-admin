@@ -31,11 +31,12 @@ export class LoginComponent implements OnInit {
 
       this.myService.login(this.userToken)
         .then(res => {
-          if (res.status == 200) {
-            console.log(res)
-            if (this.nameModel == JSON.parse(res._body).name && this.psModel == JSON.parse(res._body).passwrod) {
+          console.log(res);
+          if (res) {
+            console.log(res);
+            if (this.nameModel == res.name && this.psModel == res.passwrod) {
               this.btnLogin = '登 录 中 ...';
-              this.realname = JSON.parse(res._body).name;
+              this.realname = res.name;
               sessionStorage.setItem('userToken', this.userToken);
               sessionStorage.setItem('realname', this.realname);
               this.router.navigateByUrl('workspace');

@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
@@ -16,6 +15,7 @@ import {Ajax} from './common/ajax';
 
 import {ToastrModule} from 'ngx-toastr';
 import {NgProgressModule} from 'ngx-progressbar';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,7 @@ import {NgProgressModule} from 'ngx-progressbar';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     NgProgressModule,
     ToastrModule.forRoot({

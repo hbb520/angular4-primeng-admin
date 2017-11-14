@@ -253,11 +253,11 @@
   .ui-orderlist .ui-orderlist-item:not(.ui-state-highlight):hover a {
     color: #374c61; }
 
-.ui-picklist .ui-picklist-item:not(.ui-state-highlight):hover {
+.ui-picklist .ui-picklist-item:not(.ui-state-disabled):not(.ui-state-highlight):hover {
   border-color: #d1d7dc;
   background: #eef1f4;
   color: #374c61; }
-  .ui-picklist .ui-picklist-item:not(.ui-state-highlight):hover a {
+  .ui-picklist .ui-picklist-item:not(.ui-state-disabled):not(.ui-state-highlight):hover a {
     color: #374c61; }
 .ui-picklist .ui-picklist-droppoint-highlight {
   border-color: #5a92d1;
@@ -338,6 +338,15 @@
     background: #eef1f4;
     color: #374c61; }
     .ui-dialog .ui-dialog-titlebar-icon:hover a {
+      color: #374c61; }
+
+.ui-sidebar .ui-sidebar-close {
+  color: #ffffff; }
+  .ui-sidebar .ui-sidebar-close:hover {
+    border-color: #d1d7dc;
+    background: #eef1f4;
+    color: #374c61; }
+    .ui-sidebar .ui-sidebar-close:hover a {
       color: #374c61; }
 
 .ui-overlaypanel .ui-overlaypanel-close:hover {
@@ -469,7 +478,7 @@
 .ui-inputtext.ng-dirty.ng-invalid,
 p-dropdown.ng-dirty.ng-invalid > .ui-dropdown,
 p-autocomplete.ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext,
-p-calendar.ng-dirty.ng-invalid > .ui-inputtext,
+p-calendar.ng-dirty.ng-invalid > .ui-calendar > .ui-inputtext,
 p-chips.ng-dirty.ng-invalid > .ui-inputtext,
 p-inputmask.ng-dirty.ng-invalid > .ui-inputtext,
 p-checkbox.ng-dirty.ng-invalid .ui-chkbox-box,
@@ -539,3 +548,5 @@ p-togglebutton.ng-dirty.ng-invalid .ui-button {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px; }
+
+/*# sourceMappingURL=theme.css.map */

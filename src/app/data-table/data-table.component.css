@@ -1,3 +1,7 @@
 label{
   line-height: 29px;
 }
+.ui-g-2{
+  text-align: right;
+  padding-right: 15px;
+}

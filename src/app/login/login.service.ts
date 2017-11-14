@@ -3,23 +3,30 @@
  */
 import {Injectable} from '@angular/core';
 import {Http, Response, Headers, RequestOptions, Request} from '@angular/http';
-import {Car} from "../common/car";
+import {Car} from '../common/car';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
-import {beforeUrl} from "../common/public-data";
+import {beforeUrl} from '../common/public-data';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class LoginService {
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {
+  }
+
   //登录
   private loginUrl = 'assets/login.json';
-  login(userToken:string): Promise<Car>{
-    let headers = new Headers({ 'Content-Type': 'application/json' ,"Authorization": userToken});
-    let options = new RequestOptions({ headers: headers });
+
+  login(userToken: string): Promise<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': userToken
+      })
+    };
     return this.http
-      .get(this.loginUrl,options)
+      .get(this.loginUrl, httpOptions)
       .toPromise()
-      .then(res=>res)
-      .catch(res=>res);
+      .then(res => res)
+      .catch(res => res);
   }
 
 }//class end

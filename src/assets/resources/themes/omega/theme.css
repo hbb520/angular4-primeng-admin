@@ -253,11 +253,11 @@
   .ui-orderlist .ui-orderlist-item:not(.ui-state-highlight):hover a {
     color: #212121; }
 
-.ui-picklist .ui-picklist-item:not(.ui-state-highlight):hover {
+.ui-picklist .ui-picklist-item:not(.ui-state-disabled):not(.ui-state-highlight):hover {
   border-color: #c0c0c0;
   background: #eeeeee;
   color: #212121; }
-  .ui-picklist .ui-picklist-item:not(.ui-state-highlight):hover a {
+  .ui-picklist .ui-picklist-item:not(.ui-state-disabled):not(.ui-state-highlight):hover a {
     color: #212121; }
 .ui-picklist .ui-picklist-droppoint-highlight {
   border-color: #156090;
@@ -338,6 +338,15 @@
     background: #eeeeee;
     color: #212121; }
     .ui-dialog .ui-dialog-titlebar-icon:hover a {
+      color: #212121; }
+
+.ui-sidebar .ui-sidebar-close {
+  color: #1b1d1f; }
+  .ui-sidebar .ui-sidebar-close:hover {
+    border-color: #c0c0c0;
+    background: #eeeeee;
+    color: #212121; }
+    .ui-sidebar .ui-sidebar-close:hover a {
       color: #212121; }
 
 .ui-overlaypanel .ui-overlaypanel-close:hover {
@@ -469,7 +478,7 @@
 .ui-inputtext.ng-dirty.ng-invalid,
 p-dropdown.ng-dirty.ng-invalid > .ui-dropdown,
 p-autocomplete.ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext,
-p-calendar.ng-dirty.ng-invalid > .ui-inputtext,
+p-calendar.ng-dirty.ng-invalid > .ui-calendar > .ui-inputtext,
 p-chips.ng-dirty.ng-invalid > .ui-inputtext,
 p-inputmask.ng-dirty.ng-invalid > .ui-inputtext,
 p-checkbox.ng-dirty.ng-invalid .ui-chkbox-box,
@@ -684,12 +693,16 @@ p-togglebutton.ng-dirty.ng-invalid .ui-button {
 .ui-slider-vertical .ui-slider-range-max {
   top: 0; }
 
-.ui-progressbar .ui-progressbar-value {
-  border: 1px solid #3f94e9;
+.ui-progressbar.ui-progressbar-determinate .ui-progressbar-value {
+  border: 0 none;
   background: #8ec5fc; }
-
-.ui-progressbar .ui-progressbar-label {
+.ui-progressbar.ui-progressbar-determinate .ui-progressbar .ui-progressbar-label {
   color: #222222; }
+.ui-progressbar.ui-progressbar-indeterminate {
+  background: #8ec5fc; }
+  .ui-progressbar.ui-progressbar-indeterminate .ui-progressbar-value {
+    border: 0 none;
+    background-color: #186ba0; }
 
 .ui-widget-header .ui-button,
 .ui-widget-content .ui-button,

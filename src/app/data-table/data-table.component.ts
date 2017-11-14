@@ -25,15 +25,15 @@ export class DataTableComponent implements OnInit {
 
   /************************* 定义********************************/
   msgs: Message[] = [];                                  //消息
-  cars: Car;                                             // get获取数据 {}
-  data: Car[];                                           //数据数组
+  cars: any;                                             // get获取数据 {}
+  data: any[];                                           //数据数组
   totalPages: number = 1;                                //获取总页数
   totalCount: number = 0;                                //总条目数
   first: number = 0;                                     //初始时  分页 组件 停留的页数
   gotoPage: number = 1;                                  //前往页数
 
-  mySelection: Car[];                                    //选择
-  mySelectionId: Car;                                    //选择的Id
+  mySelection: any[];                                    //选择
+  mySelectionId: any;                                    //选择的Id
   mySelectionObject: any;                                //选择时对象
   dialog: boolean = false;                               //dialog初始时状态
   dialogHeader: string;                                  //头部信息
@@ -46,7 +46,7 @@ export class DataTableComponent implements OnInit {
   nameModel: any;                                        //品牌名称
   timeout: any;                                          //错误信息 msg 时间超时
   tag_state: string = 'active';                          //表格标签动画初始
-  industriesArray: Car[];                                //行业数组
+  industriesArray: any[];                                //行业数组
   industriesSelect: SelectItem[] = [];                   //行业选择框
   industriesSearchNgModel: any;
   keywordNgModel: any;

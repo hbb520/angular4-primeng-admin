@@ -1,0 +1,75 @@
+<div class="dialog-content-inherit" [@pageAnimation]="'in'">
+  <my-breadcrumb name1="data-table" name2="data-table" name3="添加商品"></my-breadcrumb>
+
+  <form #formAdd="ngForm" novalidate role="form" (ngSubmit)="formAdd.form.valid && add()">
+
+    <div class="dialog-content ui-g-padding0">
+      <div class="ui-g">
+        <label class="ui-g-2"><span class="star">*</span>CT店名:</label>
+        <div class="ui-g-6">
+          <input pInputText [(ngModel)]="nameModel" placeholder="请填写CT店名" required name="ctdianming"
+                 [class.border-error]="formAdd.submitted && !ctdianming.valid" #ctdianming="ngModel"/>
+        </div>
+      </div>
+      <div class="ui-g error-input-msg">
+        <label class="ui-g-2"></label>
+        <div class="ui-g-6" *ngIf="formAdd.submitted && !ctdianming.valid">
+          <i class="fa fa-close mr5"></i>请填写CT店名
+        </div>
+      </div>
+
+
+      <div class="ui-g">
+        <label class="ui-g-2">详细地址:</label>
+        <div class="ui-g-6">
+            <textarea rows="3" placeholder="请填写更加详细地址" style="width: 100%" pInputTextarea name="xiangxidizhi"
+                      [class.border-error]="formAdd.submitted && !xiangxidizhi.valid" [(ngModel)]="detailedAddressModel"
+                      #xiangxidizhi="ngModel"></textarea>
+        </div>
+      </div>
+      <div class="ui-g error-input-msg">
+        <label class="ui-g-2"></label>
+        <div class="ui-g-6" *ngIf="formAdd.submitted && !xiangxidizhi.valid">
+          <i class="fa fa-close mr5"></i>请填写更加详细地址
+        </div>
+      </div>
+      <div class="ui-g">
+        <label class="ui-g-2"><span class="star">*</span>店长:</label>
+        <div class="ui-g-6">
+          <input pInputText [(ngModel)]="shopManagerModel" placeholder="请填写店长" required name="dianzhang"
+                 [class.border-error]="formAdd.submitted && !dianzhang.valid" #dianzhang="ngModel"/>
+        </div>
+      </div>
+      <div class="ui-g error-input-msg">
+        <label class="ui-g-2"></label>
+        <div class="ui-g-6" *ngIf="formAdd.submitted && !dianzhang.valid">
+          <i class="fa fa-close mr5"></i>请填写店长
+        </div>
+      </div>
+      <div class="ui-g">
+        <label class="ui-g-2"><span class="star">*</span>联系电话:</label>
+        <div class="ui-g-6">
+          <input pInputText [(ngModel)]="phoneModel" placeholder="请填写联系电话" required name="lianxidianhua"
+                 [class.border-error]="formAdd.submitted && !lianxidianhua.valid" #lianxidianhua="ngModel"/>
+        </div>
+      </div>
+      <div class="ui-g error-input-msg">
+        <label class="ui-g-2"></label>
+        <div class="ui-g-6" *ngIf="formAdd.submitted && !lianxidianhua.valid">
+          <i class="fa fa-close mr5"></i>请填写联系电话
+        </div>
+      </div>
+    </div>
+    <div class="ui-g">
+      <label class="ui-g-2"></label>
+      <div class="ui-g-6">
+        <button type="button" pButton class="ui-button-secondary" (click)="dialog=false" label="取消"></button>
+        <button type="button" pButton type="submit" label="确认"></button>
+      </div>
+    </div>
+
+
+  </form>
+
+
+</div>
