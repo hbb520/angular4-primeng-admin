@@ -1,4 +1,3 @@
-<p-growl [(value)]="msgs" ></p-growl>
 <div [@pageAnimation]="'in'">
   <my-breadcrumb name1="数据管理" name2="data-table"></my-breadcrumb>
 
@@ -19,7 +18,7 @@
   </div>
 
   <div class="operation-area">
-    <button pButton type="button"  label="添加品牌" routerLink="add"></button>
+    <button pButton type="button" label="添加品牌" routerLink="add"></button>
     <button pButton type="button" class="ui-button-success" label="添加品牌" (click)="addShow()"></button>
     <button pButton type="button" class="ui-button-danger" label="批量删除" (click)="deleteAllShow()"></button>
 
@@ -96,7 +95,7 @@
     <div *ngIf="addHtmlNgif">
       <div class="dialog-content ui-g-padding0">
         <div class="ui-g">
-          <label class="ui-g-3">CT店名<span class="star">*</span>:</label>
+          <label class="ui-g-3">店名<span class="star">*</span>:</label>
           <div class="ui-g-9">
             <input pInputText [(ngModel)]="nameModel" placeholder="请填写CT店名" required name="ctdianming"
                    [class.border-error]="formAdd.submitted && !ctdianming.valid" #ctdianming="ngModel"/>
@@ -105,7 +104,7 @@
         <div class="ui-g error-input-msg">
           <label class="ui-g-3"></label>
           <div class="ui-g-9" *ngIf="formAdd.submitted && !ctdianming.valid">
-            <i class="fa fa-close mr5"></i>请填写CT店名
+            <i class="fa fa-close mr5"></i>请填写店名
           </div>
         </div>
         <div class="ui-g">
@@ -177,7 +176,7 @@
 
       <p-footer>
         <div class="dialog-footer">
-          <button type="button" pButton (click)="dialog=false" label="取消"></button>
+          <button type="button" pButton class="ui-button-secondary" (click)="dialog=false" label="取消"></button>
           <button type="button" pButton type="submit" label="确认"></button>
         </div>
       </p-footer>
@@ -270,23 +269,26 @@
 
       <p-footer>
         <div class="dialog-footer">
-          <button type="button" pButton (click)="dialog=false" label="取消"></button>
+          <button type="button" pButton class="ui-button-secondary" (click)="dialog=false" label="取消"></button>
           <button type="button" pButton type="submit" label="确认"></button>
         </div>
       </p-footer>
     </div>
   </form>
   <div *ngIf="deleteHtmlNgif">
-    <div class="ui-grid-row">
-      您确定要删除 <span class="text-info">{{mySelectionObject.name}}</span> 吗?
+    <div class="dialog-content">
+      <div class="ui-grid-row">
+        您确定要删除 <span class="text-info">{{mySelectionObject.name}}</span> 吗?
+      </div>
+      <div class="ui-grid-row">
+        {{mySelectionObject |json}}
+      </div>
     </div>
-    <div class="ui-grid-row">
-      {{mySelectionObject |json}}
-    </div>
+
     <p-footer>
       <div class="dialog-footer">
+        <button type="button" pButton class="ui-button-secondary" (click)="dialog=false" label="取消"></button>
         <button type="button" pButton label="确认" (click)="delete()"></button>
-        <button type="button" pButton (click)="dialog=false" label="取消"></button>
       </div>
     </p-footer>
   </div>
@@ -300,8 +302,8 @@
 
     <p-footer>
       <div class="dialog-footer">
+        <button type="button" pButton class="ui-button-secondary" (click)="dialog=false" label="取消"></button>
         <button type="button" pButton label="确认" (click)="deleteAll()"></button>
-        <button type="button" pButton (click)="dialog=false" label="取消"></button>
       </div>
     </p-footer>
   </div>

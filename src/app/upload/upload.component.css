@@ -1,4 +1,3 @@
-
 .upload-button {
   display: inline-block;
   line-height: 1;
@@ -31,74 +30,20 @@
   position: relative;
 }
 
-.upload-file p {
-  padding: 8px 5px;
-}
-
-.upload-file:hover {
-  background-color: #eef1f6;
-}
-
-.upload-file:hover .delete-file {
-  display: block;
-}
-
-.progress-bar-container {
+.progress-box {
   width: 100%;
-  height: 6px;
-  border-radius: 6px;
-  background: #e4e8f1;
-  margin: 2px 0;
-  position: relative;
-  color: #364347;
-  font-size: 14px;
-  line-height: 6px;
+  height: 164px;
+  text-align: center;
+  padding-top: 37px;
 }
 
-.progress-bar-container span {
-  z-index: 2;
+.img-box {
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
-.progress-bar-container .bar {
-  z-index: 1;
-  padding: 0;
-  margin: 0;
-  border-radius: 6px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 6px;
-  background: #ff4949;
+.img-box img {
+  width: 100%;
 }
 
-.progress-bar-container .bar .green {
-  background-color: #13ce66 !important;
-  color: #ffffff !important;
-}
-
-.delete-file {
-  position: absolute;
-  right: 26px;
-  top: 11px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #ff4949;
-  display: none;
-}
-
-.success-i {
-  position: absolute;
-  right: 5px;
-  top: 11px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #13ce66;
-}
-.error-i{
-  position: absolute;
-  right: 5px;
-  top: 11px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #ff4949;
-}

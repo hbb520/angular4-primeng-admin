@@ -24,15 +24,15 @@
 
 [Angular CLI](https://cli.angular.io/) [Angular CLI]
 
-[primeNg](https://www.primefaces.org/primeng/#/) version ` ^5`.[primeNg]
+[primeNg](https://www.primefaces.org/primeng/#/) version ` 5.0.0-rc.0`.[primeNg]
 
 [js-base64](https://github.com/dankogai/js-base64) version `2.1.5`.[js-base64]
 
-[ngx-uploader](https://github.com/jkuri/ngx-uploader) version `^3.0.5`.[ngx-uploader]
+[ngx-uploader](https://github.com/jkuri/ngx-uploader) version `4.2.1`.[ngx-uploader]
+ 
+[ngx-toastr](https://github.com/scttcper/ngx-toastr) version `6.5.0`.[ngx-toastr]
 
 [项目预览](http://1.myhbb.applinzi.com/dist1/index.html) version `1.1.0`.
-
-[大漠老师NiceFish](http://git.oschina.net/mumu-osc/NiceFish) 
 
 ## 下载@angular/cli
 
@@ -62,6 +62,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 2,制作一个自己的皮肤
 
+2018/01/01
+
+1,更新cli版本以及primeng版本至5.0
 
 
 # 关于

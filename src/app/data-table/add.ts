@@ -24,8 +24,13 @@ export class DataTableAdd implements OnInit {
   }
 
   params: any;
-  text:string
-  add(){
+  text: string;
+  nameModel: string;
+  shopManagerModel: any;
+  phoneModel: any;
+  detailedAddressModel: any;
+
+  add() {
 
   }
 }

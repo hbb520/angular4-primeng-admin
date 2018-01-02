@@ -23,28 +23,24 @@ export class LoginComponent implements OnInit {
   userToken: string;
   realname: string;
 
+
   login() {
     if (!this.nameModel || !this.psModel) {
       this.loginerrortext = '请填写账号密码';
     } else {
       this.userToken = `Basic ${Base64.encode(this.nameModel + ':' + this.psModel)}`;
-
       this.myService.login(this.userToken)
-        .then(res => {
+        .subscribe(res => {
+          this.btnLogin = '登 录 中 ...';
+          sessionStorage.setItem('userToken', this.userToken);
           console.log(res);
-          if (res) {
-            console.log(res);
-            if (this.nameModel == res.name && this.psModel == res.passwrod) {
-              this.btnLogin = '登 录 中 ...';
-              this.realname = res.name;
-              sessionStorage.setItem('userToken', this.userToken);
-              sessionStorage.setItem('realname', this.realname);
-              this.router.navigateByUrl('workspace');
-            } else {
-              this.loginerrortext = '您输入的账号密码有误';
-            }
-
-          } else if (res.status == 401) {
+          if (res.name === this.nameModel) {
+            this.router.navigateByUrl('workspace');
+          } else {
+            this.loginerrortext = '您输入的账号密码有误';
+          }
+        }, err => {
+          if (err.status == 401) {
             this.loginerrortext = '您输入的账号密码有误';
           } else {
             this.loginerrortext = '服务器正忙,请稍后再试';

@@ -1,9 +1,3 @@
-/*
- * 封装一个 http 服务
- * ngx-toastr    一个无依赖的全局信息提示组件  https://cipchk.github.io/ngx-notify/
- * 将错误信息字符串返回给 component 层的操作终究麻烦
- *
- * */
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/catch';
@@ -11,13 +5,14 @@ import {Response} from '@angular/http';
 import 'rxjs/add/operator/timeout';
 import {beforeUrl} from './public-data';
 import {ToastrService} from 'ngx-toastr';  //错误提示消息
+
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
 export class Ajax {
   url: string = beforeUrl;
-
+  timeout: number = 10000;                                 //超时时间
   constructor(public http: HttpClient, private toastr: ToastrService) {
   }
 
@@ -41,20 +36,17 @@ export class Ajax {
   parseParams(params: any): HttpParams {
     let ret = new HttpParams();
     if (params) {
-      // tslint:disable-next-line:forin
       for (const key in params) {
         let _data = params[key];
-        if (_data) {
+        if (_data !== null && _data !== undefined) {
           if (_data === '') {
             params[key] = null;
           } else if (Array.isArray(_data)) {
             if (params[key].length == 0) {
               params[key] = null;
             }
-          } else {
-            ret = ret.set(key, _data);
           }
-
+          ret = ret.set(key, _data);
         }
       }
     }
@@ -83,22 +75,17 @@ export class Ajax {
         if (error.status == 0) {
           that.toastr.info('请求未执行,1:服务未启动2:api地址错误');
         } else {
-          if (error._body) {
-            const err = JSON.parse(error._body);
+          if (error.error.errorInfo !== undefined) {
             if (error.status >= 500) {
-              that.toastr.warning(err.message.substring(0, 40));
+              that.toastr.warning(error.error.errorInfo.errMsg);
             } else {
-              that.toastr.error(err.message.substring(0, 40));
+              that.toastr.error(error.error.errorInfo.errMsg);
             }
           } else {
             if (error.status >= 500) {
-              that.toastr.error('服务器超时');
+              that.toastr.warning('服务器超时');
             } else {
-              if (error.message == 'Timeout has occurred') {
-                that.toastr.warning('服务器超时');
-              } else {
-                that.toastr.warning('服务器错误');
-              }
+              that.toastr.error('服务器错误');
             }
           }
         }
@@ -114,22 +101,17 @@ export class Ajax {
         if (error.status == 0) {
           that.toastr.info('请求未执行,1:服务未启动2:api地址错误');
         } else {
-          if (error._body) {
-            const err = JSON.parse(error._body);
+          if (error.error.errorInfo !== undefined) {
             if (error.status >= 500) {
-              that.toastr.warning(err.message.substring(0, 40));
+              that.toastr.warning(error.error.errorInfo.errMsg);
             } else {
-              that.toastr.error(err.message.substring(0, 40));
+              that.toastr.error(error.error.errorInfo.errMsg);
             }
           } else {
             if (error.status >= 500) {
-              that.toastr.error('服务器超时');
+              that.toastr.warning('服务器超时');
             } else {
-              if (error.message == 'Timeout has occurred') {
-                that.toastr.warning('服务器超时');
-              } else {
-                that.toastr.warning('服务器错误');
-              }
+              that.toastr.error('服务器错误');
             }
           }
         }
@@ -145,22 +127,17 @@ export class Ajax {
         if (error.status == 0) {
           that.toastr.info('请求未执行,1:服务未启动2:api地址错误');
         } else {
-          if (error._body) {
-            const err = JSON.parse(error._body);
+          if (error.error.errorInfo !== undefined) {
             if (error.status >= 500) {
-              that.toastr.warning(err.message.substring(0, 40));
+              that.toastr.warning(error.error.errorInfo.errMsg);
             } else {
-              that.toastr.error(err.message.substring(0, 40));
+              that.toastr.error(error.error.errorInfo.errMsg);
             }
           } else {
             if (error.status >= 500) {
-              that.toastr.error('服务器超时');
+              that.toastr.warning('服务器超时');
             } else {
-              if (error.message == 'Timeout has occurred') {
-                that.toastr.warning('服务器超时');
-              } else {
-                that.toastr.warning('服务器错误');
-              }
+              that.toastr.error('服务器错误');
             }
           }
         }
@@ -176,22 +153,17 @@ export class Ajax {
         if (error.status == 0) {
           that.toastr.info('请求未执行,1:服务未启动2:api地址错误');
         } else {
-          if (error._body) {
-            const err = JSON.parse(error._body);
+          if (error.error.errorInfo !== undefined) {
             if (error.status >= 500) {
-              that.toastr.warning(err.message.substring(0, 40));
+              that.toastr.warning(error.error.errorInfo.errMsg);
             } else {
-              that.toastr.error(err.message.substring(0, 40));
+              that.toastr.error(error.error.errorInfo.errMsg);
             }
           } else {
             if (error.status >= 500) {
-              that.toastr.error('服务器超时');
+              that.toastr.warning('服务器超时');
             } else {
-              if (error.message == 'Timeout has occurred') {
-                that.toastr.warning('服务器超时');
-              } else {
-                that.toastr.warning('服务器错误');
-              }
+              that.toastr.error('服务器错误');
             }
           }
         }
@@ -202,27 +174,22 @@ export class Ajax {
 
   patch(endpoint: string, body: any, reqOpts?: any) {
     let that = this;
-    return this.http.put(this.url + endpoint, body, this.httpOptionsFunction()).catch(
+    return this.http.patch(this.url + endpoint, body, this.httpOptionsFunction()).catch(
       (error: Response | any) => {
         if (error.status == 0) {
           that.toastr.info('请求未执行,1:服务未启动2:api地址错误');
         } else {
-          if (error._body) {
-            const err = JSON.parse(error._body);
+          if (error.error.errorInfo !== undefined) {
             if (error.status >= 500) {
-              that.toastr.warning(err.message.substring(0, 40));
+              that.toastr.warning(error.error.errorInfo.errMsg);
             } else {
-              that.toastr.error(err.message.substring(0, 40));
+              that.toastr.error(error.error.errorInfo.errMsg);
             }
           } else {
             if (error.status >= 500) {
-              that.toastr.error('服务器超时');
+              that.toastr.warning('服务器超时');
             } else {
-              if (error.message == 'Timeout has occurred') {
-                that.toastr.warning('服务器超时');
-              } else {
-                that.toastr.warning('服务器错误');
-              }
+              that.toastr.error('服务器错误');
             }
           }
         }

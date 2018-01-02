@@ -41,8 +41,6 @@ import {MyBreadcrumbModule} from '../components/my-breadcrumb/my-breadcrumb';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
-    JsonpModule,
     CommonModule,
     ReactiveFormsModule,
 

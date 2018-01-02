@@ -36,12 +36,8 @@ export const workspaceRoutes = [
       },
       {
         path: 'tree',
-        loadChildren: '../tree/tree.module#TreeModule',
+        loadChildren: '../tree/tree.module#TreeDemoModule',
         title: 'tree'
-      }, {
-        path: 'color',
-        loadChildren: '../color/color.module#ColorModule',
-        title: 'color'
       }, {
         path: 'icon',
         loadChildren: '../icon/icon.module#IconModule',
@@ -54,32 +50,6 @@ export const workspaceRoutes = [
         path: 'upload',
         loadChildren: '../upload/upload.module#UploadModule',
         title: '上传'
-      },
-      {
-        path: 'data-table2',
-        loadChildren: '../data-table2/data-table2.module#UploadModule',
-        data: {preload: true},
-        title: 'data-table2'
-      }, {
-        path: 'my-breadcrumb-demo',
-        loadChildren: '../my-components-demo/my-breadcrumb-demo/my-breadcrumb-demo.module#MyBreadcrumbDemoModule',
-        title: '面包屑'
-      }, {
-        path: 'my-switch-demo',
-        loadChildren: '../my-components-demo/my-switch-demo/my-switch-demo.module#MySwitchDemoModule',
-        title: '开关'
-      }, {
-        path: 'my-tag-demo',
-        loadChildren: '../my-components-demo/my-tag-demo/my-tag-demo.module#MyTagDemoModule',
-        title: '标签'
-      }, {
-        path: 'my-loading-demo',
-        loadChildren: '../my-components-demo/my-loading-demo/my-loading-demo.module#MyLoadingDemoModule',
-        title: '加载'
-      }, {
-        path: 'my-carousel-demo',
-        loadChildren: '../my-components-demo/my-carousel-demo/my-carousel-demo.module#MyCarouselDemoModule',
-        title: '跑马灯'
       },
       {
         path: '**',

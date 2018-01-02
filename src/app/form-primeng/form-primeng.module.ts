@@ -38,8 +38,6 @@ import {FormPrimengComponent} from "./form-primeng.component";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
-    JsonpModule,
     CommonModule,
     ReactiveFormsModule,
 

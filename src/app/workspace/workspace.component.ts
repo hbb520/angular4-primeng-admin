@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router, ActivatedRouteSnapshot, RouterState, RouterStateSnapshot} from '@angular/router';
-import {Car, Message} from '../common/car';
+import {Router} from '@angular/router';
 import {beforeUrl} from '../common/public-data';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import {WorkspaceService} from './workspace.service';
@@ -16,14 +15,14 @@ import {WorkspaceService} from './workspace.service';
         left: '0px'
       })),
       state('active', style({
-        left: '-110px'
+        left: '-130px'
       })),
       transition('inactive => active', animate('200ms ease-in')),
       transition('active => inactive', animate('200ms ease-out'))
     ]),
     trigger('routerState', [
       state('inactive', style({
-        marginLeft: '170px'
+        marginLeft: '180px'
       })),
       state('active', style({
         marginLeft: '50px'
@@ -36,7 +35,7 @@ import {WorkspaceService} from './workspace.service';
         left: '16px'
       })),
       state('active', style({
-        left: '123px'
+        left: '143px'
       })),
       transition('inactive => active', animate('200ms ease-in')),
       transition('active => inactive', animate('200ms ease-out'))
@@ -60,7 +59,6 @@ export class WorkspaceComponent implements OnInit {
   /*************************  ********************************/
   informationNumber: any = 18;                      //头部我的消息数量
   menus: any[];                                    //菜单
-  msgs: Message[] = [];                            //消息
   state: string = 'inactive';                      //菜单状态
   pTooltipIf: boolean = false;                     //pTooltipIf状态
   beforeUrl: string = beforeUrl;                   //api前缀地址
@@ -111,9 +109,7 @@ export class WorkspaceComponent implements OnInit {
 
   /************************* 退出登录 ********************************/
   loginOut() {
-    sessionStorage.removeItem('userToken');
-    sessionStorage.removeItem('menu111');
-    sessionStorage.removeItem('realname');
+    sessionStorage.clear();
     this.router.navigateByUrl('login');
   }
 }

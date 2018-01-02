@@ -1,41 +1,36 @@
 <my-breadcrumb name1="上传" name2="上传"></my-breadcrumb>
-<p-growl [(value)]="msgs"></p-growl>
-<button pButton type="button" label="上传所有" class="btn-info FR" (click)="uploadShow()"></button>
-<br>
-
-<p-dialog header="上传" [(visible)]="dialog" width="600" [responsive]="true" [modal]="true"
-          (onHide)="dialogHide($event)" [contentStyle]="{'overflow':'visible'}" positionTop="150">
-  <div [hidden]="!uploadNgIf">
-    <div class="dialog-content">
-      <label class="upload-button">
-        <input type="file" accept="image/gif, image/jpeg,image/png" ngFileSelect
-               (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
-        选择图片
-      </label>
-
-      <div class="upload-file" *ngFor="let f of files; let i = index;">
-        <p class="file-name">{{ f.name }}</p>
-        <div class="progress-bar-container">
-          <div class="bar" [style.width]="f.progress.data.percentage + '%'"
-               [style.background-color]=" f?.responseStatus == 201? '#13ce66': '#ff4949'">
+<div class="ui-g">
+  <label class="ui-g-2"><span class="star">*</span>品牌LOGO:</label>
+  <div class="ui-g-6">
+    <label class="upload-button">
+      <input type="file" ngFileSelect multiple
+             (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+      选择图片
+    </label>
+  </div>
+</div>
+<div class="ui-g">
+  <label class="ui-g-2"></label>
+  <div class="ui-g-6">
+    <el-card body-style="padding:0">
+      <div class="progress-box" *ngIf="progressboxNgif">
+        <div *ngFor="let f of files; let i = index;">
+          {{ f.name }}
+          <div>
+            <el-progress type="circle" [percentage]="f.progress?.data?.percentage"></el-progress>
           </div>
         </div>
-        <span class="fa fa-trash delete-file" (click)="removeFile(f.id)"></span>
-        <i class="fa fa-check-circle success-i" aria-hidden="true" *ngIf="f?.responseStatus == 200"></i>
       </div>
 
-
-      <p-footer>
-        <div class="dialog-footer" style="padding: 20px 0 28px 0">
-          <button pButton type="button" label="上传所有" class="btn-info FR" (click)="startUpload()"
-                  *ngIf="files.length"></button>
-          <button pButton type="button" label="取消" class="ui-button-secondary FR" (click)="dialog=false"></button>
-        </div>
-      </p-footer>
-    </div>
+      <div class="img-box" *ngIf="imgboxNgif">
+        <img src="{{imgReadUrl}}{{originImgUrl}}" alt="">
+      </div>
+    </el-card>
   </div>
-
-</p-dialog>
+</div>
+<div class="ui-g">
+  {{response|json}}
+</div>
 
 
 展示 和 primeng 不一样的上传 (带请求头);样式大家自己可以组装一下;他的官网样式也不是很好

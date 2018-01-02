@@ -2,6 +2,7 @@ import {trigger, state, style, transition, animate, keyframes} from '@angular/an
 
 /***********************接口地址前缀*********************/
 export const beforeUrl = '';
+export const imgReadUrl = 'http://vr.weiruict.com';
 
 //页面跳转动画
 export const pageAnimation = trigger('pageAnimation', [

@@ -8,7 +8,6 @@ import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {appRoutes} from './app.routes';
 import {LoginService} from './login/login.service';
-import {Preload} from './preloading';
 import {WorkspaceService} from './workspace/workspace.service';
 import {DataTableService} from './data-table/data-table.service';
 import {Ajax} from './common/ajax';
@@ -16,6 +15,7 @@ import {Ajax} from './common/ajax';
 import {ToastrModule} from 'ngx-toastr';
 import {NgProgressModule} from 'ngx-progressbar';
 import {HttpClientModule} from '@angular/common/http';
+import {InputTextModule} from 'primeng/primeng';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     FormsModule,
     RouterModule,
+    FormsModule,
+    InputTextModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -34,14 +36,10 @@ import {HttpClientModule} from '@angular/common/http';
       timeOut: 2500,
       preventDuplicates: true
     }), // 消息弹出
-    RouterModule.forRoot(
-      appRoutes,
-      {preloadingStrategy: Preload}
-    ),
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     Ajax,
-    Preload,
     LoginService,
     WorkspaceService,
     DataTableService,

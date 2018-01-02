@@ -1,3 +1,4 @@
+@charset "UTF-8";
 img, a, p, body, html, select, div, label, option, ul, li, dl, dd, span, input, select, i, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
@@ -18,9 +19,23 @@ body {
 html {
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
 }
 
 a {
+  text-decoration: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -41,21 +56,20 @@ button {
   font-family: "Microsoft Yahei";
 }
 
-
-div {
-  display: block;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 .none {
   display: none !important;
 }
 
 .block {
   display: block !important;
+}
+
+.FL {
+  float: left;
+}
+
+.FR {
+  float: right;
 }
 
 /*字体颜色*/
@@ -109,50 +123,10 @@ a:hover {
 }
 
 .error-input-msg {
-  height: 18px;
+  height: 25px;
   line-height: 18px;
   color: #FF4949;
-  font-size: 12px;
-}
-
-/*标签 class 状态,审核状态,上架状态等等  span */
-.my-tag {
-  display: inline-block;
-  background-color: #8391a5;
-  padding: 2px 5px;
-  color: #fff;
-  border-radius: 4px;
-  border: 1px solid transparent;
-}
-
-.my-tag-gray {
-  background-color: #e4e8f1;
-  border-color: #e4e8f1;
-  color: #48576a;
-}
-
-.my-tag-primary {
-  background-color: rgba(32, 160, 255, .1);
-  border-color: rgba(32, 160, 255, .2);
-  color: #20a0ff;
-}
-
-.my-tag-success {
-  background-color: rgba(18, 206, 102, .1);
-  border-color: rgba(18, 206, 102, .2);
-  color: #13ce66;
-}
-
-.my-tag-warning {
-  background-color: rgba(247, 186, 41, .1);
-  border-color: rgba(247, 186, 41, .2);
-  color: #f7ba2a;
-}
-
-.my-tag-danger {
-  background-color: rgba(255, 73, 73, .1);
-  border-color: rgba(255, 73, 73, .2);
-  color: #ff4949;
+  font-size: 13px;
 }
 
 .ml5 {
@@ -198,10 +172,11 @@ a:hover {
 /*菜单栏*/
 .menu {
   padding-top: 100px;
-  width: 150px;
+  width: 170px;
   position: fixed;
   z-index: 800;
   height: 100%;
+  color: #FFFFFF;
   background-color: #323a57;
 }
 
@@ -217,7 +192,7 @@ body .ui-accordion .ui-accordion-header {
 }
 
 body .ui-accordion .ui-accordion-header a {
-  padding: .75em 1.25em .75em 3.4em !important;
+  padding: 1.00em 1.25em 1.00em 3.4em !important;
 }
 
 body .ui-accordion .ui-accordion-header .fa {
@@ -228,15 +203,14 @@ body .ui-accordion .ui-accordion-header .fa {
   padding: 0 !important;
   border: 0 !important;
   background-color: #1f283d !important;
-
 }
 
 .ui-accordion .ui-accordion-content a {
   display: block;
-  width: 150px;
+  width: 170px;
   text-align: center;
-  height: 40px;
-  line-height: 40px;
+  height: 46px;
+  line-height: 46px;
   color: #FFFFFF;
 }
 
@@ -281,9 +255,10 @@ td {
 
 /*表格中img尺寸*/
 .table-img {
-  width: 160px;
-  height: 80px;
+  max-width: 100%;
+  max-height: 100%;
   background-color: #FFFFFF;
+  display: inline-block;
 }
 
 /*搜索区域*/
@@ -292,12 +267,13 @@ td {
   background-color: #FFFFFF;
 }
 
-.search-area .label {
-  width: 64px;
+.search-area .label-width-75 {
+  width: 75px;
+  text-align: right;
   display: inline-block;
 }
 
-.search-area .width {
+.search-area .search-row-width {
   width: 271px;
 }
 
@@ -337,6 +313,9 @@ tr:hover {
   padding: 1px 3px !important;
 }
 
+.handle-button .ui-button-text-only .ui-button-text {
+  padding: 1px 3px !important;
+}
 
 /*分页 box 样式*/
 .paginator-box {
@@ -372,7 +351,6 @@ tr:hover {
   padding: 0;
 }
 
-
 /*dialog-content  中下拉选择超出显示*/
 .dialog-content-inherit .ui-dialog-content {
   overflow: inherit;
@@ -381,6 +359,77 @@ tr:hover {
 .high-td td {
   height: 90px !important;
 }
-.none-padding-td td{
+
+.none-padding-td td {
   padding: 0 !important;
+}
+
+/*标签 class 状态,审核状态,上架状态等等  span */
+.my-tag {
+  display: inline-block;
+  background-color: #8391a5;
+  padding: 2px 5px;
+  color: #fff;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.my-tag-gray {
+  background-color: #e4e8f1;
+  border-color: #e4e8f1;
+  color: #48576a;
+}
+
+.my-tag-primary {
+  background-color: rgba(32, 160, 255, .1);
+  border-color: rgba(32, 160, 255, .2);
+  color: #20a0ff;
+}
+
+.my-tag-success {
+  background-color: rgba(18, 206, 102, .1);
+  border-color: rgba(18, 206, 102, .2);
+  color: #13ce66;
+}
+
+.my-tag-warning {
+  background-color: rgba(247, 186, 41, .1);
+  border-color: rgba(247, 186, 41, .2);
+  color: #f7ba2a;
+}
+
+.my-tag-danger {
+  background-color: rgba(255, 73, 73, .1);
+  border-color: rgba(255, 73, 73, .2);
+  color: #ff4949;
+}
+
+.wrapper {
+  clear: both;
+  overflow: hidden;
+}
+
+.o-hidden {
+  overflow: hidden;
+}
+
+.clear {
+  clear: both;
+  height: 0px;
+  width: 100%;
+  font-size: 1px;
+  line-height: 0px;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.center {
+  text-align: center;
+}
+
+.ellipsis {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

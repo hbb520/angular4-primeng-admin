@@ -2,12 +2,13 @@
  * 这里可能放很多公用的api接口
  */
 import {Injectable} from '@angular/core';
-import {Http, Response, Headers, RequestOptions, Request} from '@angular/http';
-import {Car} from '../common/car';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import {beforeUrl} from '../common/public-data';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
+
 @Injectable()
 export class LoginService {
   constructor(private http: HttpClient) {
@@ -15,18 +16,23 @@ export class LoginService {
 
   //登录
   private loginUrl = 'assets/login.json';
-
-  login(userToken: string): Promise<any> {
-    let httpOptions = {
+  login(userToken: string): Observable<any> {
+    let httpOptions: any;
+    httpOptions = {
       headers: new HttpHeaders({
+        'Content-Type': 'application/json',
         'Authorization': userToken
       })
     };
+    let url = this.loginUrl;
     return this.http
-      .get(this.loginUrl, httpOptions)
-      .toPromise()
-      .then(res => res)
-      .catch(res => res);
+      .get(url,httpOptions)
+      .pipe(
+        tap((res: any) => res),
+        catchError((error: Response | any) => {
+          return Promise.reject(error);
+        })
+      );
   }
 
 }//class end

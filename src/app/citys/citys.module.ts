@@ -41,8 +41,6 @@ import {CitysComponent} from './citys.component';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
-    JsonpModule,
     CommonModule,
     ReactiveFormsModule,
 

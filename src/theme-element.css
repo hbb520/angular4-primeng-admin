@@ -1,12 +1,78 @@
 /*这里是对  primeng 的样式覆盖*/
-.router .ui-state-active{
+.router .ui-state-active {
   background-color: #0073ea !important;
   color: #ffffff !important;
-  border-color: #0073ea!important ;
+  border-color: #0073ea !important;
+}
+
+.router .ui-state-active a {
+  color: #ffffff !important;
 }
 
 .ui-dialog .ui-dialog-footer {
   border: none !important;
 }
 
+.ui-multiselect:not(.ui-state-disabled):hover {
+  border-color: #0073ea;
+  background: #FFFFFF;
+  color: #0073ea;
+}
 
+/*消息色*/
+#toast-container .toast {
+  box-shadow: none !important;
+}
+
+#toast-container .toast-success {
+  background-image: none !important;
+  background-color: #13ce66;
+}
+
+#toast-container .toast-info {
+  background-image: none !important;
+  background-color: #50bfff;
+}
+
+#toast-container .toast-warning {
+  background-image: none !important;
+  background-color: #f7ba2a;
+}
+
+#toast-container .toast-error {
+  background-image: none !important;
+  background-color: #ff4949;
+}
+
+tr td,
+tr td div {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.formBox label.ui-g-2 {
+  line-height: 36px;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.formBox {
+  width: 900px;
+  padding: 10px 0 50px 0;
+  margin-left: 100px;
+}
+
+.label36 {
+  line-height: 36px;
+}
+
+.ui-overlaypanelFFF .ui-overlaypanel-content {
+  cursor: pointer;
+  background-color: #FFFFFF !important;
+}
+
+/*dialog 面板超出500高度滚动条*/
+.ui-dialog .dialog-content {
+  overflow-y: auto !important;
+  max-height: 500px !important;
+}

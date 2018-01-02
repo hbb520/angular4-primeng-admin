@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Car, Message, SelectItem} from '../common/car';
 import {beforeUrl, China, pageAnimation, tagAnimation} from '../common/public-data';
 import {DataTableService} from './data-table.service';
+import {ToastrService} from 'ngx-toastr';
+import {SelectItem} from 'primeng/primeng';
 
 @Component({
   selector: 'app-data-table',
@@ -13,7 +14,8 @@ import {DataTableService} from './data-table.service';
   ]
 })
 export class DataTableComponent implements OnInit {
-  constructor(private myService: DataTableService) {
+  constructor(private myService: DataTableService,
+              private toastr: ToastrService) {
 
   }
 
@@ -24,7 +26,6 @@ export class DataTableComponent implements OnInit {
   }
 
   /************************* 定义********************************/
-  msgs: Message[] = [];                                  //消息
   cars: any;                                             // get获取数据 {}
   data: any[];                                           //数据数组
   totalPages: number = 1;                                //获取总页数
@@ -63,7 +64,6 @@ export class DataTableComponent implements OnInit {
       .then(cars => {
           this.cars = cars;
           this.first = pageNo - 1;
-
         }, error => console.log(error)
       )
       .then(
@@ -153,13 +153,13 @@ export class DataTableComponent implements OnInit {
       .then(res => {
           console.log(res);
           this.dialog = false;
-          this.msg(1, '添加成功');
+          this.toastr.success('添加成功');
         }, error => console.log(error)
       );
   }
 
   /************************* 编辑 ********************************/
-  editShow(car: Car) {
+  editShow(car: any) {
     this.editHtmlNgif = true;
     this.dialogHeader = '编辑';
     window.setTimeout(() => {
@@ -186,7 +186,7 @@ export class DataTableComponent implements OnInit {
 
   /************************* 删除 ********************************/
 
-  deleteShow(car: Car) {
+  deleteShow(car: any) {
     this.deleteHtmlNgif = true;
     this.dialogHeader = '删除';
     window.setTimeout(() => {
@@ -211,7 +211,7 @@ export class DataTableComponent implements OnInit {
     console.log(this.mySelection);
     if (this.mySelection) {
       if (this.mySelection.length == 0) {
-        this.msg(2, '请您至少勾选一条数据');
+        this.toastr.info('请您至少勾选一条数据');
       } else {
         this.deleteAllHtmlNgif = true;
         this.dialogHeader = '批量删除';
@@ -224,7 +224,7 @@ export class DataTableComponent implements OnInit {
         }, 1);
       }
     } else {
-      this.msg(2, '请您至少勾选一条数据');
+      this.toastr.info('请您至少勾选一条数据');
     }
   }
 
@@ -253,7 +253,7 @@ export class DataTableComponent implements OnInit {
     this.myService.getCitys()
       .then(citys => {
           this.citys = citys;
-        }, res => this.msg(4, '省市县数据获取失败')
+        }, res => this.toastr.error('获取失败')
       )
       .then(
         () => {
@@ -324,20 +324,6 @@ export class DataTableComponent implements OnInit {
     }
   }
 
-  /************************* 信息返回函数 ********************************/
-  msg(num, msg) {
-    let type = 'info';
-    if (num == 1) {
-      type = 'success';
-    } else if (num == 2) {
-      type = 'info';
-    } else if (num == 3) {
-      type = 'warn';
-    } else if (num == 4) {
-      type = 'error';
-    }
-    this.msgs.push({severity: type, detail: msg});
-  }
 
   /************************* 当Dialog关闭时回调 ********************************/
   dialogHide(event) {

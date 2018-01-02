@@ -25,7 +25,7 @@ import {
   ConfirmDialogModule,//删除弹出框
   InputTextareaModule,// InputTextarea
   OverlayPanelModule,
-  TooltipModule, TreeTableModule,
+  TooltipModule, TreeTableModule, TreeModule,
 } from 'primeng/primeng';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
@@ -57,7 +57,7 @@ import {TreeComponent} from './tree.component';
     PaginatorModule,
     TooltipModule,
     OverlayPanelModule,
-
+    TreeModule,
     MyBreadcrumbModule,
     TreeTableModule,SharedModule,
 
@@ -68,4 +68,4 @@ import {TreeComponent} from './tree.component';
   declarations: [TreeComponent],
   exports:[RouterModule]
 })
-export class TreeModule { }
+export class TreeDemoModule { }

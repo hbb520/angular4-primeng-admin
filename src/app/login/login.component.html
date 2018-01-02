@@ -1,38 +1,59 @@
-<div class="login-div">
-  <form class="login-form">
-    <div class="ui-g">
-      <div class="ui-g-12">
-        <h1>
-          系统管理后台
-        </h1>
-      </div>
-      <div class="ui-g-12">
-        <div class="input-box">
-          <span class="fa fa-user"></span>
-          <input type="text" placeholder="请输入用户名" [(ngModel)]="nameModel" name="nameModel" (focus)="inputFocus()">
-        </div>
-      </div>
-      <div class="ui-g-12">
-        <div class="input-box">
-          <span class="fa fa-unlock-alt "></span>
-          <input type="password" placeholder="请输入密码" [(ngModel)]="psModel" name="psModel" (focus)="inputFocus()">
-        </div>
-      </div>
-      <div class="ui-g-12" style="color: #FF4949;height: 33px">
-      {{loginerrortext}}
-      </div>
-      <div class="ui-g-12">
-        <button  type="button" (click)="login()">{{btnLogin}}</button>
-      </div>
-      <div class="ui-g-10">
-        默认账号:binbinadmin
-      </div>
-      <div class="ui-g-10">
-        默认密码:123456
-      </div>
-      <div class="ui-g-10">
-        数据用的是json,但是该写的都写了,差的就是一个正确的接口
-      </div>
+<div class="background">
+  <div class="login-container">
+    <div class="title-box">
+      数联中国商品管理后台
     </div>
-  </form>
+    <div class="login-box">
+      <div class="logo">
+        <img src="assets/images/favicon.ico">
+      </div>
+      <form #formAdd="ngForm" novalidate role="form" (ngSubmit)="formAdd.form.valid && login()">
+
+        <div class="login-body">
+          <div class="ui-g">
+            <div class="ui-g-12">
+              <span class="fa fa-user"></span>
+              <input type="text" pInputText
+                     placeholder="默认用户:binbinadmin"
+                     [(ngModel)]="nameModel"
+                     name="nameMode"
+                     required
+                     (focus)="inputFocus()"
+                     #nameMode="ngModel"
+              >
+            </div>
+          </div>
+          <div class="ui-g error-input-msg">
+            <div class="ui-g-12" *ngIf="formAdd.submitted && !nameMode.valid">
+              <i class="fa fa-times-circle mr5"></i>请输入账户
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-g-12">
+              <span class="fa fa-unlock-alt "></span>
+              <input type="password" pInputText
+                     placeholder="请输入密码"
+                     [(ngModel)]="psModel"
+                     name="psMode"
+                     required
+                     (focus)="inputFocus()"
+                     #psMode="ngModel">
+            </div>
+          </div>
+          <div class="ui-g error-input-msg">
+            <div class="ui-g-12" *ngIf="formAdd.submitted && !psMode.valid">
+              <i class="fa fa-times-circle mr5"></i>请输入密码
+            </div>
+          </div>
+          <div class="ui-g error-input-msg">
+            <div class="ui-g-12">
+              {{loginerrortext}}
+            </div>
+          </div>
+          <button class="btn login-btn" type="submit">{{btnLogin}}</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>

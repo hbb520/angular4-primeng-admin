@@ -1,42 +1,86 @@
-.login-form {
-  width: 300px;
-  margin: 0 auto;
-  color: #FFFFFF;
-  text-align: center;
-  padding-top: 150px;
 
-}
-
-.login-form h1 {
-  margin-bottom: 30px;
-}
-
-.login-div {
+.background {
   width: 100%;
+  min-width: 1320px;
   height: 100%;
-  background-color: #324057;
-}
-
-input {
-  background: transparent;
-  border: 0;
-  -webkit-appearance: none;
-  border-radius: 0;
-  padding: 5px 5px 5px 15px;
-  color: #eee;
-  height: 30px;
-  font-size: 14px !important;
-}
-
-.input-box {
+  background-color: #289973;
   position: relative;
-  font-size: 18px;
-  border: 1px solid hsla(0, 0%, 100%, .1);
-  background: rgba(0, 0, 0, .1);
-  border-radius: 5px;
 }
 
-button {
+.login-container {
+  width: 1280px;
+  height: 720px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -360px;
+  margin-left: -640px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.title-box {
+  float: left;
+  width: 548px;
+  height: 100%;
+  background: #ebebeb url("../../assets/image/titlebg.png") 50px 55px no-repeat;
+  text-align: center;
+  line-height: 650px;
+  font-size: 34px;
+  color: #20a0ff;
+}
+
+.login-box {
+  float: left;
+  width: 420px;
+  margin-top: 110px;
+  margin-left: 155px;
+}
+
+.logo {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+}
+
+.logo img {
+  height: 100%;
+}
+
+.login-body {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.login-body input {
+  width: 100%;
+  padding: 18px 5px 18px 70px;
+  font-size: 16px;
+}
+
+.login-body .ui-g-12 {
+  position: relative;
+  padding: 0;
+}
+
+.login-body .ui-g-12 .fa-user {
+  position: absolute;
+  top: 16px;
+  left: 21px;
+  font-size: 24px;
+}
+
+.login-body .ui-g-12 .fa-unlock-alt {
+  position: absolute;
+  top: 16px;
+  left: 21px;
+  font-size: 24px;
+}
+
+.login-btn {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
@@ -44,7 +88,7 @@ button {
   margin: 0;
   padding: 10px 15px;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 24px;
   box-sizing: border-box;
   outline: 0;
   line-height: 30px;
@@ -57,12 +101,9 @@ button {
   overflow: visible;
 }
 
-button:hover {
+.login-btn:hover, .login-btn:active, .login-btn:focus {
   background: #4db3ff;
   border-color: #4db3ff;
   color: #fff;
 }
 
-.ui-g-12 {
-
-}

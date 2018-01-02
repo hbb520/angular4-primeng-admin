@@ -5,16 +5,16 @@
 
     <div class="dialog-content ui-g-padding0">
       <div class="ui-g">
-        <label class="ui-g-2"><span class="star">*</span>CT店名:</label>
+        <label class="ui-g-2"><span class="star">*</span>店名:</label>
         <div class="ui-g-6">
-          <input pInputText [(ngModel)]="nameModel" placeholder="请填写CT店名" required name="ctdianming"
+          <input pInputText [(ngModel)]="nameModel" placeholder="请填写店名" required name="ctdianming"
                  [class.border-error]="formAdd.submitted && !ctdianming.valid" #ctdianming="ngModel"/>
         </div>
       </div>
       <div class="ui-g error-input-msg">
         <label class="ui-g-2"></label>
         <div class="ui-g-6" *ngIf="formAdd.submitted && !ctdianming.valid">
-          <i class="fa fa-close mr5"></i>请填写CT店名
+          <i class="fa fa-close mr5"></i>请填写店名
         </div>
       </div>
 
@@ -63,7 +63,7 @@
     <div class="ui-g">
       <label class="ui-g-2"></label>
       <div class="ui-g-6">
-        <button type="button" pButton class="ui-button-secondary" (click)="dialog=false" label="取消"></button>
+        <button type="button" pButton class="ui-button-secondary" label="取消"></button>
         <button type="button" pButton type="submit" label="确认"></button>
       </div>
     </div>

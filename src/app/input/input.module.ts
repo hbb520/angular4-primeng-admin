@@ -39,8 +39,6 @@ import {InputComponent} from "./input.component";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
-    JsonpModule,
     CommonModule,
     ReactiveFormsModule,
 

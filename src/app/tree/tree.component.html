@@ -10,4 +10,9 @@
     <p-column field="type" header="Type"></p-column>
   </p-treeTable>
   <p>Selected Nodes: <span *ngFor="let file of selectedFiles2">{{file.data.name}} </span></p>
+
+
+
+  <p-tree [value]="filesTree4" selectionMode="checkbox" [(selection)]="selectedFiles3" (onNodeSelect)="onNodeSelect($event)"></p-tree>
+  <p>Selected Nodes: <span *ngFor="let file of selectedFiles3">{{file.data}} </span></p>
 </div>
