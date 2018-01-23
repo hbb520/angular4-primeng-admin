@@ -2,8 +2,6 @@
 
 项目地址预览地址:http://1.myhbb.applinzi.com/dist1/login
 
-自己克隆他的官网代码布置的国内文档,国外的有点慢:http://1.backapp.applinzi.com/dist/#/inputtext
-
 项目介绍:项目后台模板,展示了一个真实的项目模板,从零到bulid的过程,以及primeng的坑 , 
 
 1,项目暂时不去展示ng4的一些组件,主要展示 primeng 的用法以及 ng4的简单用法,针对刚学习ng4的同学 
