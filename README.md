@@ -36,7 +36,7 @@
 
 [项目预览](http://1.myhbb.applinzi.com/dist1/index.html) version `1.1.0`.
 
-## 下载@angular/cli
+## 下载@angular/cli 
 
 npm 下载   npm install -g @angular/cli
 
@@ -72,7 +72,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 # 关于
 
 
-大家若果感觉有帮助,可以帮忙点个star, O(∩_∩)O~~~ ,我会继续更新的
+大家若果感觉有帮助,可以帮忙点个star, O(∩_∩)O~~~~ ,我会继续更新的
 
 primeng 的群  163085042  欢迎大家来一起学习,我是个小白,我会积极回答大家的问题,一起学习ng以及primeng的 O(∩_∩)O~~
 
